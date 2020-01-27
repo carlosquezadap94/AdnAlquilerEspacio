@@ -34,13 +34,17 @@ class MotosParquingAdapter:ListAdapter<AlquilerEntity,MotosParquingAdapter.ViewH
 
     class ViewHolder(private val binding:MotocicletaItemBinding) : RecyclerView.ViewHolder(binding.root)
     {
-        init {
+
+        /*
+         init {
             binding.setClickListener { view ->
                 binding.viewModel?.plantId?.let { plantId ->
                     navigateToPlant(plantId, view)
                 }
             }
         }
+         */
+
 
         fun bind(plantings: AlquilerEntity) {
             with(binding) {
