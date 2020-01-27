@@ -1,7 +1,7 @@
 pipeline {
   //Donde se va a ejecutar el Pipeline
   agent {
-    label 'Slave5'
+    label 'Slave4'
   }
 
   //Opciones específicas de Pipeline dentro del Pipeline
@@ -12,7 +12,7 @@ pipeline {
 
   //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
-    jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
+	jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
     gradle 'Gradle4.5_Centos' //Preinstalada en la Configuración del Master
   }
 
