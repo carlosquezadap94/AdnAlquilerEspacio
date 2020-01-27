@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/controlerFragment">
+
+    <fragment
+        android:id="@+id/controlerFragment"
+        android:name="com.adn.adnalquilerparqueadero.presentacion.fragmentos.ControlerFragment"
+        android:label="fragment_controler"
+        tools:layout="@layout/fragment_controler" >
+        <action
+            android:id="@+id/action_controlerFragment_to_resumenFragment"
+            app:destination="@id/resumenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resumenFragment"
+        android:name="com.adn.adnalquilerparqueadero.presentacion.fragmentos.ResumenFragment"
+        android:label="fragment_resumen"
+        tools:layout="@layout/fragment_resumen" />
+</navigation>
