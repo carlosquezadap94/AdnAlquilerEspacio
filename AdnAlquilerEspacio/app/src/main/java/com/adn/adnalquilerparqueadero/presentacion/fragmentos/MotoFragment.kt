@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.adn.adnalquilerparqueadero.R
+import com.adn.adnalquilerparqueadero.databinding.FragmentMotoBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -18,8 +19,12 @@ class MotoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_moto, container, false)
+        val binding = FragmentMotoBinding.inflate(inflater,container,false)
+
+
+
+
+        return binding.root
     }
 
 

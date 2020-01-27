@@ -35,17 +35,11 @@ class ControlerFragment : Fragment()
         viewPager.adapter = ParqueaderoPageAdapter(this)
 
         val tabLayout = binding.tabLayout
+
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.setIcon(getTabIcon(position))
             tab.text = getTabTitle(position)
         }.attach()
-
-
-
-
-
-
-
 
         return binding.root
     }
