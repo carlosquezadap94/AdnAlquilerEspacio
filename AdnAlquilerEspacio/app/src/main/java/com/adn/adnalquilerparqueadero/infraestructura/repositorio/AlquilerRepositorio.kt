@@ -3,25 +3,29 @@ package com.adn.adnalquilerparqueadero.infraestructura.repositorio
 import androidx.lifecycle.LiveData
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.infraestructura.db.dao.AlquilerDao
-import com.adn.adnalquilerparqueadero.infraestructura.db.entities.AlquilerEntity
+import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 
 class AlquilerRepositorio private constructor(private val alquilerDao: AlquilerDao) {
 
 
     suspend fun createAlquiler(alquiler: Alquiler)
     {
-        val alquilerEntity = AlquilerEntity()
+        val alquilerEntity = AlquilerEntidad()
         alquilerDao.insert(alquilerEntity)
     }
 
-    //Todo suspend function
+    //Todo  Repasar concepto suspend function
     //suspend function is a function that could be started, paused and resume
-    suspend fun getAlquiler(placa: String):LiveData<AlquilerEntity>
+    /*
+    suspend fun getAlquiler(placa: String):LiveData<AlquilerEntidad>
     {
         return alquilerDao.getAlquiler(placa)
     }
+     */
 
-    suspend fun getAlquilerFromTipoV(tipoV: String):LiveData<List<AlquilerEntity>>
+
+
+    suspend fun getAlquilerFromTipoV(tipoV: String):LiveData<List<AlquilerEntidad>>
     {
         return alquilerDao.getAlquilerFromTV(tipoV)
     }

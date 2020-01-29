@@ -2,19 +2,23 @@ package com.adn.adnalquilerparqueadero.dominio.modelo
 
 import java.util.*
 
-class Alquiler(placa:String,cc:Int,tipoV:String,horaLLegada:Date,horaSalida:Date)
+class Alquiler(tipoEspacioVehiculo:String,vehiculo: Vehiculo,horaLLegada:Date,horaSalida:Date):IPrecioAlquiler
 {
-    var placa: String?=null
-    var cc: Int?=null
-    var tipoVehiculo: String?=null
-    var horaLlegada: Date?=null
-    var horaSalida: Date?=null
+    private var tipoEspacioVehiculo:String?=null
+    private var vehiculo: Vehiculo?=null
+    private var horaLlegada: Date?=null
+    private var horaSalida: Date?=null
 
     init {
-        this.placa = placa
-        this.cc = cc
-        this.tipoVehiculo = tipoV
+        this.vehiculo = vehiculo
         this.horaLlegada = horaLLegada
         this.horaSalida = horaSalida
+        this.tipoEspacioVehiculo = tipoEspacioVehiculo
     }
+
+    override fun calcularValor(calcularAlquiler: CalcularAlquiler) {
+
+    }
+
+
 }

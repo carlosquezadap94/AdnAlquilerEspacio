@@ -6,10 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.adn.adnalquilerparqueadero.infraestructura.db.dao.AlquilerDao
-import com.adn.adnalquilerparqueadero.infraestructura.db.entities.AlquilerEntity
+import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 
-@Database(entities = [AlquilerEntity::class], version = 1, exportSchema = false)
-@TypeConverters(Converters::class)
+@Database(entities = [AlquilerEntidad::class], version = 10, exportSchema = false)
+@TypeConverters(DateConverters::class)
 abstract class AppDatabase:RoomDatabase()
 {
     abstract fun alquilerDao(): AlquilerDao

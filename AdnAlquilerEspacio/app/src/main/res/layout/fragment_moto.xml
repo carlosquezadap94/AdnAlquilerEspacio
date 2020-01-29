@@ -5,12 +5,13 @@
 
 
     <data>
-
-
+        <variable
+            name="viewModel"
+            type="com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotosListViewModel" />
     </data>
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentacion.fragmentos.MotoFragment">
@@ -21,10 +22,25 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:spanCount="3"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-1dp"
             tools:listitem="@layout/motocicleta_item">
 
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.982"
+            app:srcCompat="@drawable/ic_add_circle_outline_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

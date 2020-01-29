@@ -19,7 +19,7 @@ package com.google.samples.apps.sunflower.utilities
 import android.content.Context
 import com.adn.adnalquilerparqueadero.infraestructura.db.AppDatabase
 import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerRepositorio
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerListViewModelFactory
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotosListViewModelFactory
 
 /**
  * Static methods used to inject classes needed for various Activities and Fragments.
@@ -31,9 +31,9 @@ object InjectorUtils {
                 AppDatabase.getInstance(context.applicationContext).alquilerDao())
     }
 
-    fun provideAlquilerListViewModelFactory(context: Context): AlquilerListViewModelFactory {
+    fun provideAlquilerListViewModelFactory(context: Context): MotosListViewModelFactory {
         val repository = getAlquilerRepository(context)
-        return AlquilerListViewModelFactory(repository)
+        return MotosListViewModelFactory(repository)
     }
 
 }

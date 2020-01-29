@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.MotocicletaItemBinding
-import com.adn.adnalquilerparqueadero.infraestructura.db.entities.AlquilerEntity
+import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 
 //Todo verificar documentacion de ListAdapter
-class MotosParquingAdapter:ListAdapter<AlquilerEntity,MotosParquingAdapter.ViewHolder>(AlquilerDiffCallback()) {
+class MotosParquingAdapter:ListAdapter<AlquilerEntidad,MotosParquingAdapter.ViewHolder>(AlquilerDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)=
          ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context),
@@ -44,7 +44,7 @@ class MotosParquingAdapter:ListAdapter<AlquilerEntity,MotosParquingAdapter.ViewH
          */
 
 
-        fun bind(alquileres: AlquilerEntity) {
+        fun bind(alquileres: AlquilerEntidad) {
             with(binding) {
                 //viewModel = PlantAndGardenPlantingsViewModel(plantings)
                 executePendingBindings()
@@ -57,14 +57,14 @@ class MotosParquingAdapter:ListAdapter<AlquilerEntity,MotosParquingAdapter.ViewH
 }
 
 
-private class AlquilerDiffCallback : DiffUtil.ItemCallback<AlquilerEntity>() {
-    override fun areItemsTheSame(oldItem: AlquilerEntity, newItem: AlquilerEntity): Boolean {
+private class AlquilerDiffCallback : DiffUtil.ItemCallback<AlquilerEntidad>() {
+    override fun areItemsTheSame(oldItem: AlquilerEntidad, newItem: AlquilerEntidad): Boolean {
         return oldItem.id == newItem.id
 
     }
 
     @SuppressLint("DiffUtilEquals")
-    override fun areContentsTheSame(oldItem: AlquilerEntity, newItem: AlquilerEntity): Boolean {
+    override fun areContentsTheSame(oldItem: AlquilerEntidad, newItem: AlquilerEntidad): Boolean {
         return oldItem == newItem
     }
 

@@ -40,7 +40,6 @@ android {
     }
 
 
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -81,7 +80,8 @@ dependencies {
     implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
 
-
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
 
     //Room
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"

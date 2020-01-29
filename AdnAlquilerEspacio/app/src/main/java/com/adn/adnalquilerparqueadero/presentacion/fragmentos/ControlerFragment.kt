@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.FragmentControlerBinding
+import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 import com.adn.adnalquilerparqueadero.presentacion.adapters.ParqueaderoPageAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 

@@ -5,19 +5,22 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.adn.adnalquilerparqueadero.infraestructura.db.entities.AlquilerEntity
+import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 
 @Dao
 interface AlquilerDao {
 
-    @Query("SELECT * FROM alquilerEspacio ae WHERE ae.placa = :placa")
-    fun getAlquiler(placa: String): LiveData<AlquilerEntity>
 
 
-    @Query("SELECT * FROM alquilerEspacio ae WHERE ae.tipoVehiculo = :tipoVehiculo")
-    fun getAlquilerFromTV(tipoVehiculo: String): LiveData<List<AlquilerEntity>>
+    @Query("SELECT * FROM alquilerEspacio ae WHERE ae.vehiculo_placa = :placa AND ae.estaActivo = 1")
+    fun getAlquiler(placa: String): LiveData<AlquilerEntidad>
+
+
+
+    @Query("SELECT * FROM alquilerEspacio ae WHERE ae.tipoEspacioVehiculo = :tipoVehiculo")
+    fun getAlquilerFromTV(tipoVehiculo: String): LiveData<List<AlquilerEntidad>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(alquiler: AlquilerEntity)
+    suspend fun insert(alquiler: AlquilerEntidad)
 
 }
