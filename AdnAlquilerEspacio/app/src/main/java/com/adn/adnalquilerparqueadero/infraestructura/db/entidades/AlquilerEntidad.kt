@@ -19,7 +19,7 @@ data class AlquilerEntidad(
     val horaSalida: Date?=null,
     val estaActivo: Boolean=true
 ){
-     inner class Vehiculo
+    open class Vehiculo
     {
          var placa:String?=null
     }

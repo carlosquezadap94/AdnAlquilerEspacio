@@ -7,5 +7,5 @@ import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerReposi
 class MotosListViewModelFactory(private val repository:AlquilerRepositorio)
     :ViewModelProvider.NewInstanceFactory()
     {
-    override fun <T : ViewModel> create(modelClass: Class<T>) = MotosListViewModel(repository) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>) = AlquilerMotosListViewModel(repository) as T
     }

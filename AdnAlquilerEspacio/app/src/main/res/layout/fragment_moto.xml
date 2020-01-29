@@ -6,8 +6,16 @@
 
     <data>
         <variable
+            name="existeMoto"
+            type="boolean" />
+
+        <variable
             name="viewModel"
-            type="com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotosListViewModel" />
+            type="com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosListViewModel" />
+        <variable
+            name="callback"
+            type="com.adn.adnalquilerparqueadero.utilities.Callback" />
+
     </data>
 
 
@@ -17,7 +25,7 @@
         tools:context=".presentacion.fragmentos.MotoFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewMoto"
+            android:id="@+id/recyclerViewMotos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
@@ -29,16 +37,45 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:isGone="@{existeMoto}">
+
+            <TextView
+                android:id="@+id/empty_garden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No hay motocicletas"
+                android:textAppearance="?attr/textAppearanceHeadline5" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_plant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorPrimary"
+                android:text="Agregar moto"
+                app:backgroundTint="?attr/colorOnPrimary"/>
+
+        </LinearLayout>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_fragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.954"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:clickable="true"
+            android:onClick="@{() -> callback.click()}"
             app:layout_constraintVertical_bias="0.982"
             app:srcCompat="@drawable/ic_add_circle_outline_black_24dp" />
 

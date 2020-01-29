@@ -13,4 +13,5 @@ las otras clases, debe marcarla con la palabra clave abierta;
 open abstract class Vehiculo
 {
     abstract var placa:String
+    abstract fun tipoVehiculo():String
 }
