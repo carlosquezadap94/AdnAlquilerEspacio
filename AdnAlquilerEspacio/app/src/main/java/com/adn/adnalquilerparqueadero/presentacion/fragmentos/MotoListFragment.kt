@@ -11,10 +11,9 @@ import androidx.lifecycle.observe
 import com.adn.adnalquilerparqueadero.databinding.FragmentMotoBinding
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosListViewModel
 import com.adn.adnalquilerparqueadero.presentacion.adapters.MotosParquingAdapter
-import com.adn.adnalquilerparqueadero.utilities.Callback
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
 
-class MotoFragment : Fragment()
+class MotoListFragment : Fragment()
 {
 
     private val alquilerMotosListviewModel: AlquilerMotosListViewModel by viewModels {
@@ -25,28 +24,23 @@ class MotoFragment : Fragment()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentMotoBinding.inflate(inflater,container,false).apply {
-            viewModel = alquilerMotosListviewModel
-            lifecycleOwner = viewLifecycleOwner
+    ): View?
+    {
 
-            callback = object :Callback{
-                override fun click() {
-                    abrirDialog()
-                }
-
-            }
-        }
+        val binding = FragmentMotoBinding.inflate(inflater,container,false)
+        //Todo Validar
+        context ?: return binding.root
 
         var adapter = MotosParquingAdapter()
-
         binding.recyclerViewMotos.adapter = adapter
+
+        subscribeUi(adapter,binding)
+
 
         binding.addFragment.setOnClickListener {
             abrirDialog()
         }
 
-        subscribeUi(adapter,binding)
         return binding.root
     }
 
@@ -63,10 +57,10 @@ class MotoFragment : Fragment()
         dialogFragment.show(fragmentTransaction, "dialog")
     }
 
-    private fun subscribeUi(adapter: MotosParquingAdapter, binding: FragmentMotoBinding)
+    private fun subscribeUi(adapter: MotosParquingAdapter,bindin:FragmentMotoBinding)
     {
         alquilerMotosListviewModel.motos.observe(viewLifecycleOwner) { result ->
-            binding.existeMoto = !result.isNullOrEmpty()
+            bindin.tieneParqueos = !result.isNullOrEmpty()
             adapter.submitList(result)
         }
     }

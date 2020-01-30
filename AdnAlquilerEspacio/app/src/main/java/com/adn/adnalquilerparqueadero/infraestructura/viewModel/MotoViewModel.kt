@@ -6,16 +6,17 @@ import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerRepositorio
 import kotlinx.coroutines.launch
 
-class MotoViewModel(val alquilerRepositorio: AlquilerRepositorio): ViewModel()
+class MotoViewModel(private val alquilerRepositorio: AlquilerRepositorio): ViewModel()
 {
 
 
-    fun agregarAlquiler(alquiler: Alquiler){
+     fun agregarAlquiler(alquiler: Alquiler){
         viewModelScope.launch {
             alquilerRepositorio.createAlquiler(alquiler)
         }
     }
 
-    fun placaExiste(placa:String) =alquilerRepositorio.estaAlquilado(placa)
+     fun placaExiste(placa:String) =
+        alquilerRepositorio.estaAlquilado(placa)
 
 }

@@ -9,7 +9,7 @@ import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerReposi
 class AlquilerMotosListViewModel internal constructor( alquilerRepositorio: AlquilerRepositorio):ViewModel()
 {
     val motos :LiveData<List<AlquilerEntidad>> =alquilerRepositorio.getAlquilerFromTipoV(MOTOCICLETA)
-    val existeMoto = alquilerRepositorio.getAlquilerFromTipoV(MOTOCICLETA)
+
 
     companion object{
         private const val MOTOCICLETA ="MOTOCICLETA"

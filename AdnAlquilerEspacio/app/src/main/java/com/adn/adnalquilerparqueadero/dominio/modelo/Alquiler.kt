@@ -15,7 +15,7 @@ class Alquiler(vehiculo: Vehiculo,horaLLegada:Date):IPrecioAlquiler
 
 
     override fun calcularValor(calcularAlquiler: CalcularAlquiler) {
-
+        return calcularAlquiler.calcularDiasparqueo(horaLlegada!!,horaSalida!!)
     }
 
 

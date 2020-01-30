@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerRepositorio
 
-class MotoViewModelFactory(val repositorio: AlquilerRepositorio): ViewModelProvider.NewInstanceFactory()
+class ResumentViewModelFactory(private val repository:AlquilerRepositorio)
+    :ViewModelProvider.NewInstanceFactory()
 {
-    override fun <T : ViewModel> create(modelClass: Class<T>) = MotoViewModel(repositorio) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>) = ViewModelResumen(repository) as T
 }

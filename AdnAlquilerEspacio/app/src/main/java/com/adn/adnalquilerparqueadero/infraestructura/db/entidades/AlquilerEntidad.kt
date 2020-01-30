@@ -8,21 +8,26 @@ import com.adn.adnalquilerparqueadero.dominio.modelo.Vehiculo
 import java.util.*
 
 @Entity(tableName = "alquilerEspacio")
-data class AlquilerEntidad(
-    @ColumnInfo(name = "id")
+class AlquilerEntidad(
     @PrimaryKey(autoGenerate = true)
-    val id: Int?=null,
-    val tipoEspacioVehiculo:String?=null,
+    var id: Int?=null,
+    var tipoEspacioVehiculo:String?=null,
     @Embedded(prefix = "vehiculo_")
-    val vehiculo: Vehiculo?=null,
-    val horaLlegada: Date?=null,
-    val horaSalida: Date?=null,
-    val estaActivo: Boolean=true
-){
-    open class Vehiculo
+    var vehiculo: Vehiculo?=null,
+    var horaLlegada: Date?= Date(),
+    var horaSalida: Date?=Date(),
+    var estaActivo: Boolean=true
+)
+{
+    open class Vehiculo( placa:String)
     {
-         var placa:String?=null
+        var placa:String?=null
+        init {
+            this.placa = placa
+        }
     }
+
+
 }
 
 

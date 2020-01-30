@@ -3,7 +3,7 @@ package com.adn.adnalquilerparqueadero.presentacion.adapters
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.adn.adnalquilerparqueadero.presentacion.fragmentos.AutoFragment
-import com.adn.adnalquilerparqueadero.presentacion.fragmentos.MotoFragment
+import com.adn.adnalquilerparqueadero.presentacion.fragmentos.MotoListFragment
 import com.adn.adnalquilerparqueadero.presentacion.fragmentos.ResumenFragment
 
 const val MY_PARQUEADERO_RESUMEN_INDEX = 0
@@ -18,7 +18,7 @@ class ParqueaderoPageAdapter(fragment: Fragment) :FragmentStateAdapter(fragment)
 
        private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
            MY_PARQUEADERO_RESUMEN_INDEX to { ResumenFragment() },
-           MOTO_PAGE_INDEX to { MotoFragment() },
+           MOTO_PAGE_INDEX to { MotoListFragment() },
            AUTO_PAGE_INDEX to { AutoFragment() }
        )
 

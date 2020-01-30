@@ -4,6 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+    <data>
+        
+        <variable
+            name="viewModel"
+            type="com.adn.adnalquilerparqueadero.infraestructura.viewModel.ViewModelResumen" />
+        
+        
+    </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,8 +119,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
+                        android:text="@{viewModel.cant_motos}"
                         android:textColor="@color/red"
-                        android:text="10"
                         android:textSize="@dimen/text35" />
 
                     <TextView
@@ -141,8 +149,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
+                        android:text="@{viewModel.cant_motos_disponible}"
                         android:textColor="@color/green"
-                        android:text="10"
                         android:textSize="@dimen/text35" />
 
                     <TextView
@@ -227,7 +235,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="10"
+
+                        android:text="20"
                         android:textSize="@dimen/text35" />
 
                     <TextView
@@ -255,7 +264,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
                         android:textColor="@color/red"
-                        android:text="10"
+                        android:text="@{viewModel.cant_carros}"
                         android:textSize="@dimen/text35" />
 
                     <TextView
@@ -284,9 +293,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
+                        android:text="@{viewModel.cant_carros_diponible}"
                         android:textColor="@color/green"
-                        android:text="10"
-                        android:textSize="@dimen/text35" />
+                        android:textSize="@dimen/text35"
+                        android:tooltipText="12" />
 
                     <TextView
                         android:layout_width="wrap_content"
