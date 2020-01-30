@@ -28,8 +28,6 @@ class MotoListFragment : Fragment()
     {
 
         val binding = FragmentMotoBinding.inflate(inflater,container,false)
-        //Todo Validar
-        context ?: return binding.root
 
         var adapter = MotosParquingAdapter()
         binding.recyclerViewMotos.adapter = adapter

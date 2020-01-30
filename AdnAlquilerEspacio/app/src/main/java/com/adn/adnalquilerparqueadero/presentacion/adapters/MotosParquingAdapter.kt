@@ -11,7 +11,6 @@ import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.MotocicletaItemBinding
 import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 
-//Todo verificar documentacion de ListAdapter
 class MotosParquingAdapter:ListAdapter<AlquilerEntidad,MotosParquingAdapter.ViewHolder>(AlquilerDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)=
@@ -20,53 +19,29 @@ class MotosParquingAdapter:ListAdapter<AlquilerEntidad,MotosParquingAdapter.View
              parent,
              false))
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-
-
-
-
-
     class ViewHolder(private val binding:MotocicletaItemBinding) : RecyclerView.ViewHolder(binding.root)
     {
-
-        /*
-         init {
-            binding.setClickListener { view ->
-                binding.viewModel?.plantId?.let { plantId ->
-                    navigateToPlant(plantId, view)
-                }
-            }
-        }
-         */
-
-
         fun bind(alquileres: AlquilerEntidad) {
             with(binding) {
                 //viewModel = PlantAndGardenPlantingsViewModel(plantings)
                 executePendingBindings()
             }
         }
-
-
     }
-
 }
-
 
 private class AlquilerDiffCallback : DiffUtil.ItemCallback<AlquilerEntidad>() {
     override fun areItemsTheSame(oldItem: AlquilerEntidad, newItem: AlquilerEntidad): Boolean {
         return oldItem.id == newItem.id
-
     }
 
     @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(oldItem: AlquilerEntidad, newItem: AlquilerEntidad): Boolean {
         return oldItem == newItem
     }
-
 
 }

@@ -5,8 +5,6 @@ import java.util.*
 
 public class CalcularAlquiler
 {
-
-
     fun valorPorVehiculo(vehiculo: Vehiculo,alquiler: Alquiler):Float
     {
         var valor_pagar = 0f
@@ -50,7 +48,6 @@ public class CalcularAlquiler
         }
     }
 
-
     companion object
     {
         const val PRECIO_ADICIONAL_MOTO = 2000
@@ -61,7 +58,4 @@ public class CalcularAlquiler
 
 
     }
-
-
-
 }

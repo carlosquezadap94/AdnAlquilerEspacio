@@ -10,7 +10,6 @@ class AlquilerMotosListViewModel internal constructor( alquilerRepositorio: Alqu
 {
     val motos :LiveData<List<AlquilerEntidad>> =alquilerRepositorio.getAlquilerFromTipoV(MOTOCICLETA)
 
-
     companion object{
         private const val MOTOCICLETA ="MOTOCICLETA"
     }

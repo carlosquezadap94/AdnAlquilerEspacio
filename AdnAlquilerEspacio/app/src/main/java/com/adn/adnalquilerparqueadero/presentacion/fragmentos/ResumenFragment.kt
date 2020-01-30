@@ -23,11 +23,9 @@ import com.google.samples.apps.sunflower.utilities.InjectorUtils
  */
 class ResumenFragment : Fragment()
 {
-
     private val resumentViewModel: ViewModelResumen by viewModels {
         InjectorUtils.provideResumenAlquilerViewModelFactory(requireContext())
     }
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -38,11 +36,7 @@ class ResumenFragment : Fragment()
                 false).apply {
                 viewModel = resumentViewModel
                 lifecycleOwner = viewLifecycleOwner
-
             }
-
-
         return binding.root
     }
-
 }

@@ -26,8 +26,6 @@ class AlquilerEntidad(
             this.placa = placa
         }
     }
-
-
 }
 
 

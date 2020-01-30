@@ -8,8 +8,6 @@ import kotlinx.coroutines.launch
 
 class MotoViewModel(private val alquilerRepositorio: AlquilerRepositorio): ViewModel()
 {
-
-
      fun agregarAlquiler(alquiler: Alquiler){
         viewModelScope.launch {
             alquilerRepositorio.createAlquiler(alquiler)

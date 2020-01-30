@@ -7,28 +7,23 @@ import java.util.*
 
 class AlquilerRepositorio (private val alquilerDao: AlquilerDao) {
 
-
     suspend fun createAlquiler(alquiler: Alquiler)
     {
         val alquilerEntity = AlquilerEntidad(estaActivo = true,horaLlegada = Date(),tipoEspacioVehiculo = alquiler.vehiculo!!.tipoVehiculo(),vehiculo = AlquilerEntidad.Vehiculo(alquiler.vehiculo!!.placa))
         alquilerDao.insert(alquilerEntity)
     }
+
     fun obtenerAlquilerPorPlaca(placa: String)=alquilerDao.getAlquiler(placa)
     fun estaAlquilado(placa: String)=alquilerDao.estaAlquilado(placa)
     fun getAlquilerFromTipoV(tipoV: String)=alquilerDao.getAlquilerFromTV(tipoV)
     fun obtenerCantidadXtipoVehiculo(tipoV: String) = alquilerDao.obtenerCantidadPorTV(tipoV)
 
-
     companion object
-    {
-        //Todo repasar concepto
-        //Volatile fields provide memory visibility and guarantee that the value that is being read
-        @Volatile private var instance: AlquilerRepositorio? = null
+    {  @Volatile private var instance: AlquilerRepositorio? = null
 
         fun getInstance(alquiler: AlquilerDao) =
             instance ?: synchronized(this) {
                 instance ?: AlquilerRepositorio(alquiler).also { instance = it }
             }
     }
-
 }

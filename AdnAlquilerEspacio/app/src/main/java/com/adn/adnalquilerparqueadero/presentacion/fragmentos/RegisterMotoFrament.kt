@@ -39,8 +39,6 @@ class RegisterMotoFrament : DialogFragment() {
             motoViewModel = motoRegistroViewModel
             lifecycleOwner = viewLifecycleOwner
 
-
-
             callback = object :Callback{
                 override fun click()
                 {
@@ -69,16 +67,11 @@ class RegisterMotoFrament : DialogFragment() {
                     {
                         Toast.makeText(activity,"Deben ingresar todos los datos",Toast.LENGTH_SHORT).show()
                     }
-
-
                 }
             }
 
-
         }
-
         return binding.root
     }
-
 
 }

@@ -24,7 +24,6 @@ const val AUTO_PAGE_INDEX = 2
 
 class ControlerFragment : Fragment()
 {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,8 +43,6 @@ class ControlerFragment : Fragment()
 
         return binding.root
     }
-
-
 
     private fun getTabIcon(position: Int): Int {
         return when (position) {

@@ -9,9 +9,6 @@ import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntid
 
 @Dao
 interface AlquilerDao {
-
-
-
     @Query("SELECT * FROM alquilerEspacio ae WHERE ae.vehiculo_placa = :placa AND ae.estaActivo = 1")
     fun getAlquiler(placa: String): LiveData<AlquilerEntidad>
 

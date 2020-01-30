@@ -22,5 +22,4 @@ class DescripcionFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_descripcion, container, false)
     }
 
-
 }

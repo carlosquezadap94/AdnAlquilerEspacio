@@ -5,7 +5,6 @@ import java.util.*
 
 
 class DateConverters {
-
     @TypeConverter
     fun toDate(dateLong:Long) = Date(dateLong)
 

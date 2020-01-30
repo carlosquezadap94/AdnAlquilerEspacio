@@ -19,14 +19,10 @@ package com.google.samples.apps.sunflower.utilities
 import android.content.Context
 import com.adn.adnalquilerparqueadero.infraestructura.db.AppDatabase
 import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerRepositorio
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotoViewModel
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotoViewModelFactory
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotosListViewModelFactory
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.ResumentViewModelFactory
 
-/**
- * Static methods used to inject classes needed for various Activities and Fragments.
- */
 object InjectorUtils {
 
     private fun getAlquilerRepository(context: Context): AlquilerRepositorio {
@@ -48,6 +44,4 @@ object InjectorUtils {
         val repository = getAlquilerRepository(context)
         return ResumentViewModelFactory(repository)
     }
-
-
 }
