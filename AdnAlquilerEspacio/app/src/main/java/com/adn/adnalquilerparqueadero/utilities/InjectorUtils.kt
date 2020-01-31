@@ -19,7 +19,10 @@ package com.google.samples.apps.sunflower.utilities
 import android.content.Context
 import com.adn.adnalquilerparqueadero.infraestructura.db.AppDatabase
 import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerRepositorio
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.*
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.factory.DetalleVehiculoViewModelFactory
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.factory.MotoViewModelFactory
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.factory.MotosListViewModelFactory
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.factory.ResumentViewModelFactory
 
 object InjectorUtils {
 
@@ -30,22 +33,31 @@ object InjectorUtils {
 
     fun provideAlquilerListViewModelFactory(context: Context): MotosListViewModelFactory {
         val repository = getAlquilerRepository(context)
-        return MotosListViewModelFactory(repository)
+        return MotosListViewModelFactory(
+            repository
+        )
     }
 
     fun provideMotoAlquilerViewModelFactory(context: Context): MotoViewModelFactory {
         val repository = getAlquilerRepository(context)
-        return MotoViewModelFactory(repository)
+        return MotoViewModelFactory(
+            repository
+        )
     }
 
     fun provideResumenAlquilerViewModelFactory(context: Context): ResumentViewModelFactory {
         val repository = getAlquilerRepository(context)
-        return ResumentViewModelFactory(repository)
+        return ResumentViewModelFactory(
+            repository
+        )
     }
 
     fun provideDetalleAlquilerViewModelFactory(context: Context,id:Int): DetalleVehiculoViewModelFactory {
         val repository = getAlquilerRepository(context)
-        return DetalleVehiculoViewModelFactory(repository,id)
+        return DetalleVehiculoViewModelFactory(
+            repository,
+            id
+        )
     }
 
 }

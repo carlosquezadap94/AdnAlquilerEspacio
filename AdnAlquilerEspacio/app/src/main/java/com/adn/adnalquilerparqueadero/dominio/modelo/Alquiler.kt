@@ -1,8 +1,10 @@
 package com.adn.adnalquilerparqueadero.dominio.modelo
 
+import com.adn.adnalquilerparqueadero.dominio.interfaz.IPrecioAlquiler
 import java.util.*
 
-class Alquiler(vehiculo: Vehiculo,horaLLegada:Date):IPrecioAlquiler
+class Alquiler(vehiculo: Vehiculo,horaLLegada:Date):
+    IPrecioAlquiler
 {
      var vehiculo: Vehiculo?=null
      var horaLlegada: Date?=null

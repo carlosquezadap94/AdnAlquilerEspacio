@@ -7,16 +7,14 @@ import java.util.*
 
 class AlquilerRepositorio (private val alquilerDao: AlquilerDao) {
 
-    suspend fun createAlquiler(alquiler: Alquiler)
-    {
+    suspend fun createAlquiler(alquiler: Alquiler) {
         val alquilerEntity = AlquilerEntidad(estaActivo = true,horaLlegada = Date(),tipoEspacioVehiculo = alquiler.vehiculo!!.tipoVehiculo(),vehiculo = AlquilerEntidad.Vehiculo(alquiler.vehiculo!!.placa))
         alquilerDao.insert(alquilerEntity)
     }
 
     fun obtenerAlquilerPorPlaca(placa: String)=alquilerDao.getAlquiler(placa)
 
-    fun actualizarAlquiler(alquiler: AlquilerEntidad)
-    {
+    fun actualizarAlquiler(alquiler: AlquilerEntidad) {
         alquiler.apply {
             horaSalida = Date()
             estaActivo=false
