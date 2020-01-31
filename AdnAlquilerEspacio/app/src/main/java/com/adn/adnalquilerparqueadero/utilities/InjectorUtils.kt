@@ -19,9 +19,7 @@ package com.google.samples.apps.sunflower.utilities
 import android.content.Context
 import com.adn.adnalquilerparqueadero.infraestructura.db.AppDatabase
 import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerRepositorio
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotoViewModelFactory
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotosListViewModelFactory
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.ResumentViewModelFactory
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.*
 
 object InjectorUtils {
 
@@ -44,4 +42,10 @@ object InjectorUtils {
         val repository = getAlquilerRepository(context)
         return ResumentViewModelFactory(repository)
     }
+
+    fun provideDetalleAlquilerViewModelFactory(context: Context,id:Int): DetalleVehiculoViewModelFactory {
+        val repository = getAlquilerRepository(context)
+        return DetalleVehiculoViewModelFactory(repository,id)
+    }
+
 }

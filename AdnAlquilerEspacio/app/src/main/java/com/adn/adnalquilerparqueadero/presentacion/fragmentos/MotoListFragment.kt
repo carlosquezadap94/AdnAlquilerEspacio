@@ -13,6 +13,8 @@ import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosLis
 import com.adn.adnalquilerparqueadero.presentacion.adapters.MotosParquingAdapter
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
 
+
+
 class MotoListFragment : Fragment()
 {
 

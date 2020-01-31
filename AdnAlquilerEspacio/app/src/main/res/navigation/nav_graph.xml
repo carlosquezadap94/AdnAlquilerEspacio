@@ -11,12 +11,21 @@
         android:label="fragment_controler"
         tools:layout="@layout/fragment_controler" >
         <action
-            android:id="@+id/action_controlerFragment_to_resumenFragment"
-            app:destination="@id/resumenFragment" />
+            android:id="@+id/action_controlerFragment_to_descripcionFragment"
+            app:destination="@id/descripcionFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
     </fragment>
     <fragment
-        android:id="@+id/resumenFragment"
-        android:name="com.adn.adnalquilerparqueadero.presentacion.fragmentos.ResumenFragment"
-        android:label="fragment_resumen"
-        tools:layout="@layout/fragment_resumen" />
+        android:id="@+id/descripcionFragment"
+        android:name="com.adn.adnalquilerparqueadero.presentacion.fragmentos.DetalleVehiculo"
+        android:label="fragment_descripcion"
+        tools:layout="@layout/fragment_descripcion" >
+        <argument
+            android:name="alquilerId"
+            app:argType="integer" />
+    </fragment>
+
 </navigation>

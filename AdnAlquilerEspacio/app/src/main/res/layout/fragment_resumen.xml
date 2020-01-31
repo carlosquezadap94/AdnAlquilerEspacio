@@ -149,7 +149,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="@{viewModel.cant_motos_disponible}"
                         android:textColor="@color/green"
                         android:textSize="@dimen/text35" />
 
@@ -293,7 +292,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="@{viewModel.cant_carros_diponible}"
                         android:textColor="@color/green"
                         android:textSize="@dimen/text35"
                         android:tooltipText="12" />

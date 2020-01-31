@@ -8,19 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
 import com.adn.adnalquilerparqueadero.R
-import com.adn.adnalquilerparqueadero.databinding.FragmentMotoBinding
 import com.adn.adnalquilerparqueadero.databinding.FragmentResumenBinding
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosListViewModel
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.ResumentViewModelFactory
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.ViewModelResumen
-import com.adn.adnalquilerparqueadero.presentacion.adapters.MotosParquingAdapter
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
 
-/**
- * A simple [Fragment] subclass.
- */
 class ResumenFragment : Fragment()
 {
     private val resumentViewModel: ViewModelResumen by viewModels {
@@ -37,6 +29,10 @@ class ResumenFragment : Fragment()
                 viewModel = resumentViewModel
                 lifecycleOwner = viewLifecycleOwner
             }
+
         return binding.root
     }
+
+
+
 }

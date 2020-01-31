@@ -8,7 +8,7 @@ import com.adn.adnalquilerparqueadero.dominio.modelo.Vehiculo
 import java.util.*
 
 @Entity(tableName = "alquilerEspacio")
-class AlquilerEntidad(
+data class AlquilerEntidad(
     @PrimaryKey(autoGenerate = true)
     var id: Int?=null,
     var tipoEspacioVehiculo:String?=null,

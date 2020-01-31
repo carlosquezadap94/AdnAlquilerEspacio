@@ -52,7 +52,6 @@ class AlquilerEntityTest {
     fun insertUserAndRead()= runBlocking {
         alquilerDao.insert(alquiler)
         val result = alquilerDao.getAlquilerById(1)
-        Assert.assertEquals(result.vehiculo!!.placa, result.vehiculo!!.placa)
     }
 
 

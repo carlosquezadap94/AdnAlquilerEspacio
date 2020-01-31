@@ -1,5 +1,6 @@
 package com.adn.adnalquilerparqueadero.presentacion.fragmentos
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,6 +41,7 @@ class RegisterMotoFrament : DialogFragment() {
             lifecycleOwner = viewLifecycleOwner
 
             callback = object :Callback{
+                @SuppressLint("FragmentLiveDataObserve")
                 override fun click()
                 {
                      var placa = binding.editextPlaca.text.toString()

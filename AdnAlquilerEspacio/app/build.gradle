@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'jacoco'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 
 android {
     compileSdkVersion 29
@@ -63,6 +65,7 @@ android {
     dataBinding {
         enabled = true
     }
+
 }
 
 
@@ -105,6 +108,9 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.2.0'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
+
+
+
 
 
     //Rx
