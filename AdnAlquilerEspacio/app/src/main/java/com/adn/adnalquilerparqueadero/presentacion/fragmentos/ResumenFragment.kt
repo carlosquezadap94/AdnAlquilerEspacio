@@ -11,16 +11,15 @@ import androidx.fragment.app.viewModels
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.FragmentResumenBinding
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.ViewModelResumen
-import com.google.samples.apps.sunflower.utilities.InjectorUtils
 
 class ResumenFragment : Fragment()
 {
-    private val resumentViewModel: ViewModelResumen by viewModels {
-        InjectorUtils.provideResumenAlquilerViewModelFactory(requireContext())
-    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
+
+        /*
         val binding = DataBindingUtil
             .inflate<FragmentResumenBinding>(inflater,
                 R.layout.fragment_resumen,
@@ -31,6 +30,9 @@ class ResumenFragment : Fragment()
             }
 
         return binding.root
+         */
+
+        return null
     }
 
 

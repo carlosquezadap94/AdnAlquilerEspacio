@@ -1,21 +1,12 @@
 package com.adn.adnalquilerparqueadero.dominio.modelo
 
-import com.adn.adnalquilerparqueadero.dominio.interfaz.IPrecioAlquiler
+import androidx.room.Embedded
 import java.util.*
 
-class Alquiler(vehiculo: Vehiculo,horaLLegada:Date):
-    IPrecioAlquiler
-{
-     var vehiculo: Vehiculo?=null
-     var horaLlegada: Date?=null
-     var horaSalida: Date?=null
-
-    init {
-        this.vehiculo = vehiculo
-        this.horaLlegada = horaLLegada
-    }
-
-    override fun calcularValor(calcularAlquiler: CalcularAlquiler) {
-        return calcularAlquiler.calcularDiasparqueo(horaLlegada!!,horaSalida!!)
-    }
-}
+class Alquiler (
+    var id: Int?=null,
+    var vehiculo: Vehiculo?=null,
+    var horaLlegada: Date?= Date(),
+    var horaSalida: Date?= Date(),
+    var estaActivo: Boolean=true
+)

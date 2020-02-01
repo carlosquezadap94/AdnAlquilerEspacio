@@ -1,16 +1,19 @@
 package com.adn.adnalquilerparqueadero.infraestructura.viewModel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
-import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerRepositorio
+import com.adn.adnalquilerparqueadero.dominio.servicios.ServicioAlquilerDominio
 
-class AlquilerMotosListViewModel internal constructor( alquilerRepositorio: AlquilerRepositorio):ViewModel()
+class AlquilerMotosListViewModel internal constructor():ViewModel()
 {
-    val motos :LiveData<List<AlquilerEntidad>> =alquilerRepositorio.getAlquilerFromTipoV(MOTOCICLETA)
 
-    companion object{
-        private const val MOTOCICLETA ="MOTOCICLETA"
+    private var serviceAlquilerDominio: ServicioAlquilerDominio
+
+    init {
+        serviceAlquilerDominio =  ServicioAlquilerDominio()
     }
+
+    val motos  = serviceAlquilerDominio.obtenerVehiculosPorTipo(MOTOCICLETA)
+
+
+
 }

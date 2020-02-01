@@ -2,13 +2,12 @@ package com.adn.adnalquilerparqueadero.infraestructura.viewModel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerRepositorio
+import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosListViewModel
 
-class MotosListViewModelFactory(private val repository:AlquilerRepositorio)
+class MotosListViewModelFactory()
     :ViewModelProvider.NewInstanceFactory()
     {
-    override fun <T : ViewModel> create(modelClass: Class<T>) = AlquilerMotosListViewModel(
-        repository
-    ) as T
+        @Suppress("UNCHECKED_CAST")
+        override fun <T : ViewModel> create(modelClass: Class<T>) = AlquilerMotosListViewModel() as T
     }

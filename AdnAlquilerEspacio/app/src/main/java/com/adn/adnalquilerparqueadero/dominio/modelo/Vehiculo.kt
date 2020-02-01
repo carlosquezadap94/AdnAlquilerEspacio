@@ -10,8 +10,16 @@ las otras clases, debe marcarla con la palabra clave abierta;
  de lo contrario, recibirá un error que dice "el tipo es final,
   por lo que no se puede heredar ".
  */
-open abstract class Vehiculo
+open class Vehiculo(placa:String,cc:Int,tipoVehiculo:String)
 {
-    abstract var placa:String
-    abstract fun tipoVehiculo():String
+    var placa:String?=null
+    var cc:Int?=null
+    var tipoVehiculo:String?=null
+
+
+    init {
+        this.placa = placa
+        this.cc = cc
+        this.tipoVehiculo = tipoVehiculo
+    }
 }

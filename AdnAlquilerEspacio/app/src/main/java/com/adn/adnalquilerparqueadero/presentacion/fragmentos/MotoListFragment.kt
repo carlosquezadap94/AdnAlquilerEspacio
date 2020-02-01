@@ -7,21 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
 import com.adn.adnalquilerparqueadero.databinding.FragmentMotoBinding
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosListViewModel
 import com.adn.adnalquilerparqueadero.presentacion.adapters.MotosParquingAdapter
-import com.google.samples.apps.sunflower.utilities.InjectorUtils
-
-
+import com.adn.adnalquilerparqueadero.utilities.InjectUtils
 
 class MotoListFragment : Fragment()
 {
 
-    private val alquilerMotosListviewModel: AlquilerMotosListViewModel by viewModels {
-        InjectorUtils.provideAlquilerListViewModelFactory(requireContext())
-    }
 
+    private val alquilerMotosListviewModel: AlquilerMotosListViewModel by viewModels {
+        InjectUtils.provideAlquilerMotosViewModelFactoy(requireActivity())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,10 +56,12 @@ class MotoListFragment : Fragment()
 
     private fun subscribeUi(adapter: MotosParquingAdapter,bindin:FragmentMotoBinding)
     {
-        alquilerMotosListviewModel.motos.observe(viewLifecycleOwner) { result ->
+        /*
+         alquilerMotosListviewModel.motos.observe(viewLifecycleOwner) { result ->
             bindin.tieneParqueos = !result.isNullOrEmpty()
             adapter.submitList(result)
         }
+         */
     }
 
 

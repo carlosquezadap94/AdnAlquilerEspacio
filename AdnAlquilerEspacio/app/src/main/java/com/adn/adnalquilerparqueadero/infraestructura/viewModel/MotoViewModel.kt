@@ -1,20 +1,28 @@
 package com.adn.adnalquilerparqueadero.infraestructura.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
-import com.adn.adnalquilerparqueadero.infraestructura.repositorio.AlquilerRepositorio
-import kotlinx.coroutines.launch
+import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
+import com.adn.adnalquilerparqueadero.dominio.servicios.ServicioAlquilerDominio
 
-class MotoViewModel(private val alquilerRepositorio: AlquilerRepositorio): ViewModel()
+class MotoViewModel(): ViewModel()
 {
-     fun agregarAlquiler(alquiler: Alquiler){
-        viewModelScope.launch {
-            alquilerRepositorio.createAlquiler(alquiler)
-        }
+    private var serviceAlquilerDominio:ServicioAlquilerDominio
+
+    init {
+        serviceAlquilerDominio =  ServicioAlquilerDominio()
     }
 
-     fun placaExiste(placa:String) =
-        alquilerRepositorio.estaAlquilado(placa)
+
+
+     suspend fun agregarAlquiler(alquilerDTO: AlquilerDTO)
+     {
+         serviceAlquilerDominio.agregarAlquiler(alquilerDTO)
+     }
+
+    fun placaExiste(placa:String): LiveData<Boolean> = serviceAlquilerDominio.estaAlquilado(placa)
+
 
 }
+
+
