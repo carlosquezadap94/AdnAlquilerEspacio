@@ -2,8 +2,15 @@ package com.adn.adnalquilerparqueadero.dominio.inyeccion
 
 import com.adn.adnalquilerparqueadero.dominio.servicios.ServicioAlquiler
 import dagger.Component
+import javax.inject.Singleton
 
-@Component(modules = arrayOf(ModuloApp::class,ConfiguracionModulos::class))
-interface ComponenteApp{
-    fun inject(servicioAlquiler: ServicioAlquiler)
+
+@Singleton
+@Component(modules = [ModuloApp::class,
+    ConfiguracionModulos::class,
+    RoomModule::class])
+public interface ComponenteApp
+{
+    public fun inject(servicioAlquiler: ServicioAlquiler)
+
 }

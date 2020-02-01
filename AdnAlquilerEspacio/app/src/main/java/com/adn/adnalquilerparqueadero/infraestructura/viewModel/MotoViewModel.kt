@@ -13,8 +13,6 @@ class MotoViewModel(): ViewModel()
         serviceAlquilerDominio =  ServicioAlquiler()
     }
 
-
-
      suspend fun agregarAlquiler(alquilerDTO: AlquilerDTO)
      {
          serviceAlquilerDominio.agregarAlquiler(alquilerDTO)

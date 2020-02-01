@@ -1,7 +1,8 @@
-package com.adn.adnalquilerparqueadero.infraestructura.db
+package com.adn.adnalquilerparqueadero.dominio.inyeccion
 
 import android.app.Application
 import androidx.room.Room
+import com.adn.adnalquilerparqueadero.infraestructura.db.AppDatabase
 import com.adn.adnalquilerparqueadero.infraestructura.db.dao.AlquilerDao
 import dagger.Module
 import dagger.Provides
@@ -10,11 +11,11 @@ import javax.inject.Singleton
 @Module
 class RoomModule(app:Application) {
 
-    lateinit var appDatabase:AppDatabase
+    var appDatabase: AppDatabase
 
     init {
         appDatabase =
-            Room.databaseBuilder(app, AppDatabase::class.java, "demo-db").build()
+            Room.databaseBuilder(app, AppDatabase::class.java, "app-db").build()
     }
 
     @Singleton
@@ -25,7 +26,7 @@ class RoomModule(app:Application) {
 
     @Singleton
     @Provides
-    fun providesProductDao(appDatabase: AppDatabase): AlquilerDao? {
+    fun providesProductDao(appDatabase: AppDatabase): AlquilerDao {
         return appDatabase.alquilerDao()
     }
 

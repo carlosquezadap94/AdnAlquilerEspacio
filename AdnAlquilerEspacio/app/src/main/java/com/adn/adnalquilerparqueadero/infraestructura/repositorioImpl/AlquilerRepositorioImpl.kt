@@ -2,6 +2,7 @@ package com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl
 
 import androidx.lifecycle.LiveData
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
+import com.adn.adnalquilerparqueadero.dominio.inyeccion.DaggerComponenteApp
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.repositorio.IAlquilerRepositorio
 import com.adn.adnalquilerparqueadero.infraestructura.db.dao.AlquilerDao
@@ -10,9 +11,15 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-class AlquilerRepositorioImpl @Inject constructor(): IAlquilerRepositorio {
+class AlquilerRepositorioImpl @Inject constructor(alquilerDao:AlquilerDao): IAlquilerRepositorio {
 
-    lateinit var alquilerDao: AlquilerDao
+
+
+    @Inject lateinit var alquilerDao:AlquilerDao
+
+    init {
+        this.alquilerDao = alquilerDao
+    }
 
     override suspend  fun  createAlquiler(alquilerDTO: AlquilerDTO)
     {

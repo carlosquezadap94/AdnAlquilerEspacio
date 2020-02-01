@@ -9,25 +9,26 @@ import javax.inject.Inject
 
 class ServicioAlquiler :IserviceAlquiler {
 
-     @Inject public lateinit var repositorioAlquilerImpl:AlquilerRepositorioImpl
+     @Inject public lateinit var iAlquilerRepositorioImpl: AlquilerRepositorioImpl
 
     init {
-        DaggerComponenteApp.create().inject(this)
+       val component = DaggerComponenteApp.builder().build()
+        component.inject(this)
     }
 
     override suspend fun agregarAlquiler(alquilerDTO: AlquilerDTO)
     {
-        repositorioAlquilerImpl.createAlquiler(alquilerDTO)
+        iAlquilerRepositorioImpl.createAlquiler(alquilerDTO)
     }
 
     override fun obtenerVehiculosPorTipo(tipoVehiculo: String):  List<Alquiler>{
-       return repositorioAlquilerImpl.getAlquilerFromTipoV(tipoVehiculo)
+       return iAlquilerRepositorioImpl.getAlquilerFromTipoV(tipoVehiculo)
     }
 
 
     override fun estaAlquilado(placa:String): LiveData<Boolean>
     {
-        return repositorioAlquilerImpl.estaAlquilado(placa)
+        return iAlquilerRepositorioImpl.estaAlquilado(placa)
     }
 
 

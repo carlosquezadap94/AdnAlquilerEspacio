@@ -58,7 +58,7 @@ class RegisterMotoFrament : DialogFragment() {
                         motoExiste.observe(this@RegisterMotoFrament, androidx.lifecycle.Observer {
                             if (it)
                             {
-                                Toast.makeText(activity!!.applicationContext,"ya se registro un vehiculo con esta placa",Toast.LENGTH_SHORT).show()
+                                Toast.makeText(activity!!.applicationContext,"Ya se registro un vehiculo con esta placa",Toast.LENGTH_SHORT).show()
                             }else{
                                 lifecycleScope.launch {
                                     agregarAlquiler(placa,cc)
