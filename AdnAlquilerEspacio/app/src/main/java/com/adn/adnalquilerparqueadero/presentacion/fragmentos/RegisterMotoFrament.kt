@@ -60,7 +60,9 @@ class RegisterMotoFrament : DialogFragment() {
                             {
                                 Toast.makeText(activity!!.applicationContext,"ya se registro un vehiculo con esta placa",Toast.LENGTH_SHORT).show()
                             }else{
-                                lifecycleScope.launch { agregarAlquiler(placa,cc) }
+                                lifecycleScope.launch {
+                                    agregarAlquiler(placa,cc)
+                                }
                             }
                         })
                     }

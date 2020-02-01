@@ -6,8 +6,8 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class ConfiguracionModulos
+public abstract class ConfiguracionModulos
 {
     @Binds
-    abstract fun repositorioUsuario(repositorioUsuarioImpl: IAlquilerRepositorio): AlquilerRepositorioImpl
+    public abstract fun repositorioAlquiler(repositorioImpl: AlquilerRepositorioImpl):IAlquilerRepositorio
 }

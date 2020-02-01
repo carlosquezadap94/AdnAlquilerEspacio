@@ -6,11 +6,11 @@ import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.repositorio.IAlquilerRepositorio
 import com.adn.adnalquilerparqueadero.infraestructura.db.dao.AlquilerDao
 import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
-import org.modelmapper.ModelMapper
 import java.util.*
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-class AlquilerRepositorioImpl (): IAlquilerRepositorio {
+class AlquilerRepositorioImpl @Inject constructor(): IAlquilerRepositorio {
 
     lateinit var alquilerDao: AlquilerDao
 
