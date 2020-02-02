@@ -11,28 +11,30 @@ import androidx.fragment.app.viewModels
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.FragmentResumenBinding
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.ViewModelResumen
+import com.adn.adnalquilerparqueadero.utilities.InjectUtils
 
 class ResumenFragment : Fragment()
 {
 
 
+    private val motoResumentViewModel: ViewModelResumen by viewModels {
+        InjectUtils.provideMotoViewModelFactoy(requireActivity())
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
 
-        /*
+
         val binding = DataBindingUtil
             .inflate<FragmentResumenBinding>(inflater,
                 R.layout.fragment_resumen,
                 container,
                 false).apply {
-                viewModel = resumentViewModel
                 lifecycleOwner = viewLifecycleOwner
             }
 
         return binding.root
-         */
 
-        return null
     }
 
 

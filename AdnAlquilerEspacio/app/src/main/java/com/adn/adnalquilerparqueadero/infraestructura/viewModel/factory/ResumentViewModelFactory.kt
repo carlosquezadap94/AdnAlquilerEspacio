@@ -7,11 +7,11 @@ import com.adn.adnalquilerparqueadero.infraestructura.viewModel.ViewModelResumen
 
 
 
-class ResumentViewModelFactory(private val repository:AlquilerRepositorioImpl)
+class ResumentViewModelFactory()
     :ViewModelProvider.NewInstanceFactory()
 {
 
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>) = ViewModelResumen(repository) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>) = ViewModelResumen() as T
 }

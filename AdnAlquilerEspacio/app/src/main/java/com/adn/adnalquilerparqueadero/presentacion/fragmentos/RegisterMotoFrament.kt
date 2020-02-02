@@ -12,12 +12,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.adn.adnalquilerparqueadero.databinding.FragmentDialogBinding
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
+import com.adn.adnalquilerparqueadero.dominio.excepciones.ExcepcionNegocio
 import com.adn.adnalquilerparqueadero.dominio.modelo.Vehiculo
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosListViewModel
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotoViewModel
 import com.adn.adnalquilerparqueadero.utilities.Callback
 import com.adn.adnalquilerparqueadero.utilities.InjectUtils
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.*
 
 const val MOTOCICLETA ="MOTOCICLETA"
@@ -53,41 +55,42 @@ class RegisterMotoFrament : DialogFragment() {
 
                     if (!placa.isNullOrEmpty() and !cc.isNullOrEmpty())
                     {
-                        var motoExiste = motoRegistroviewModel.placaExiste(placa)
-
-                        motoExiste.observe(this@RegisterMotoFrament, androidx.lifecycle.Observer {
-                            if (it)
+                        try {
+                            if (motoRegistroviewModel.placaExiste(placa))
                             {
                                 Toast.makeText(activity!!.applicationContext,"Ya se registro un vehiculo con esta placa",Toast.LENGTH_SHORT).show()
+
                             }else{
                                 lifecycleScope.launch {
                                     agregarAlquiler(placa,cc)
                                 }
                             }
-                        })
+                        }catch (e:ExcepcionNegocio)
+                        {
+                            Toast.makeText(activity,e.message,Toast.LENGTH_SHORT).show()
+                        }catch (e:Exception)
+                        {
+
+                            Toast.makeText(activity,e.message,Toast.LENGTH_SHORT).show()
+                        }
                     }
                     else
                     {
                         Toast.makeText(activity,"Deben ingresar todos los datos",Toast.LENGTH_SHORT).show()
                     }
                 }
-
             }
-
         }
-
         return binding.root
     }
 
-
     suspend fun agregarAlquiler(cc:String, placa:String)
     {
-
            //Todo Implementar factory
-        var vehiculo = Vehiculo(placa,cc.toInt(), MOTOCICLETA)
+        val vehiculo = Vehiculo(placa,cc.toInt(), MOTOCICLETA)
 
         //Todo Implementar Factory
-        var alquiler = AlquilerDTO(vehiculo, Date())
+        val alquiler = AlquilerDTO(vehiculo, Date())
 
         motoRegistroviewModel.agregarAlquiler(alquiler)
 

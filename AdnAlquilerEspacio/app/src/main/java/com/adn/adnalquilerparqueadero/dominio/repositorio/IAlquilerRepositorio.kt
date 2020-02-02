@@ -15,7 +15,7 @@ interface IAlquilerRepositorio {
 
    fun obtenerAlquilerPorId(id: Int):Alquiler
 
-   fun estaAlquilado(placa: String):LiveData<Boolean>
+   fun estaAlquilado(placa: String):Boolean
 
    fun getAlquilerFromTipoV(tipoV: String):List<Alquiler>
 

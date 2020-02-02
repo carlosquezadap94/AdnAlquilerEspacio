@@ -18,7 +18,7 @@ class MotoViewModel(): ViewModel()
          serviceAlquilerDominio.agregarAlquiler(alquilerDTO)
      }
 
-    fun placaExiste(placa:String): LiveData<Boolean> = serviceAlquilerDominio.estaAlquilado(placa)
+    fun placaExiste(placa:String) = serviceAlquilerDominio.estaAlquilado(placa)
 
 
 }

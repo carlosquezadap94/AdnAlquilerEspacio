@@ -17,7 +17,7 @@ interface AlquilerDao {
     fun getAlquilerById(id:Int):   AlquilerEntidad
 
     @Query("SELECT EXISTS(SELECT 1 FROM alquilerEspacio ae WHERE ae.vehiculo_placa = :placa AND ae.estaActivo = 1 LIMIT 1 )")
-    fun estaAlquilado(placa: String):LiveData<Boolean>
+    fun estaAlquilado(placa: String):Boolean
 
     @Query("SELECT * FROM alquilerEspacio ae WHERE ae.vehiculo_tipoVehiculo = :tipoVehiculo AND ae.estaActivo = 1")
     fun getAlquilerFromTV(tipoVehiculo: String): List<AlquilerEntidad>

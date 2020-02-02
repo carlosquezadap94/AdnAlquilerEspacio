@@ -50,24 +50,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimmen5"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@{viewModel.alquiler.vehiculo.placa}" />
+                    android:fontFamily="@font/roboto_regular" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimmen5"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@{viewModel.alquiler.vehiculo.placa}" />
+                    android:fontFamily="@font/roboto_regular"/>
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimmen5"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@{viewModel.alquiler.horaLlegada.toString()}" />
+                    android:fontFamily="@font/roboto_regular"/>
 
 
             </LinearLayout>
@@ -77,7 +74,6 @@
                 android:id="@+id/btn_pagar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                isGone="@{!viewModel.alquiler.estaActivo}"
                 android:text="PAGAR"
                 >
 

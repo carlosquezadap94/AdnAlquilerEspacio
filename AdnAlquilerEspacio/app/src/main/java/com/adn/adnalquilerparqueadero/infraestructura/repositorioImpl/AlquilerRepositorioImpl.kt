@@ -7,25 +7,26 @@ import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.repositorio.IAlquilerRepositorio
 import com.adn.adnalquilerparqueadero.infraestructura.db.dao.AlquilerDao
 import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
+import kotlinx.coroutines.runBlocking
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-class AlquilerRepositorioImpl @Inject constructor(alquilerDao:AlquilerDao): IAlquilerRepositorio {
+class AlquilerRepositorioImpl @Inject constructor(): IAlquilerRepositorio {
 
 
 
-    @Inject lateinit var alquilerDao:AlquilerDao
+    //@Inject
+     lateinit var alquilerDao:AlquilerDao
 
-    init {
-        this.alquilerDao = alquilerDao
-    }
+
 
     override suspend  fun  createAlquiler(alquilerDTO: AlquilerDTO)
     {
         val alquilerEntity = AlquilerEntidad(estaActivo = true,
             horaLlegada = Date(),
             vehiculo = alquilerDTO.vehiculo)
+
         alquilerDao.insert(alquilerEntity)
     }
 
@@ -46,23 +47,21 @@ class AlquilerRepositorioImpl @Inject constructor(alquilerDao:AlquilerDao): IAlq
         return convertToDomain(alquilerEntidad)
     }
 
-    override fun estaAlquilado(placa: String): LiveData<Boolean> {
-       return alquilerDao.estaAlquilado(placa)
-    }
+    override fun estaAlquilado(placa: String) = alquilerDao.estaAlquilado(placa)
 
     override fun getAlquilerFromTipoV(tipoV: String): List<Alquiler> {
 
         val alquileresEntidad = alquilerDao.getAlquilerFromTV(tipoV)
-        val alquileres:ArrayList<Alquiler> = ArrayList()
 
+        val alquileres:ArrayList<Alquiler> = ArrayList()
         for (alquilerEntidad in alquileresEntidad){
             alquileres.add(convertToDomain(alquilerEntidad))
         }
         return alquileres
     }
 
-    override fun obtenerCantidadXtipoVehiculo(tipoV: String): String {
-        return alquilerDao.obtenerCantidadPorTV(tipoV)
+    override fun obtenerCantidadXtipoVehiculo(tipoV: String) = runBlocking {
+        alquilerDao.obtenerCantidadPorTV(tipoV)
     }
 
 
@@ -86,8 +85,6 @@ class AlquilerRepositorioImpl @Inject constructor(alquilerDao:AlquilerDao): IAlq
             horaSalida = alquilerEntidad.horaSalida ,
             horaLlegada = alquilerEntidad.horaSalida,
             estaActivo = alquilerEntidad.estaActivo )
-
-
         return alquiler
     }
 

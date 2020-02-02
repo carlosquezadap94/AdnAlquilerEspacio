@@ -6,10 +6,10 @@ import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRe
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class DetalleMotoVehiculoViewModel (val alquilerRepositorioImpl: AlquilerRepositorioImpl, val idAlquiler:Int):ViewModel()
+class DetalleMotoVehiculoViewModel ( val idAlquiler:Int):ViewModel()
 {
 
-    val alquiler = alquilerRepositorioImpl.obtenerAlquilerPorId(idAlquiler)
+
 
     fun pagarAlquiler(alquiler: AlquilerEntidad)
     {

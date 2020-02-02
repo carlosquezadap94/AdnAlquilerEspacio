@@ -56,12 +56,15 @@ class MotoListFragment : Fragment()
 
     private fun subscribeUi(adapter: MotosParquingAdapter,bindin:FragmentMotoBinding)
     {
+
         /*
          alquilerMotosListviewModel.motos.observe(viewLifecycleOwner) { result ->
             bindin.tieneParqueos = !result.isNullOrEmpty()
             adapter.submitList(result)
         }
          */
+
+
     }
 
 
