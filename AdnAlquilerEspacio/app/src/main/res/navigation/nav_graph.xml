@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/descripcionFragment"
-        android:name="com.adn.adnalquilerparqueadero.presentacion.fragmentos.DetalleVehiculo"
+        android:name="com.adn.adnalquilerparqueadero.presentacion.fragmentos.DetalleAlquilerVehiculo"
         android:label="fragment_descripcion"
         tools:layout="@layout/fragment_descripcion" >
         <argument

@@ -7,7 +7,7 @@ import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntid
 
 interface IAlquilerRepositorio {
 
-   suspend fun createAlquiler(alquilerDTO: AlquilerDTO)
+   suspend fun crearAlquiler(alquilerDTO: AlquilerDTO)
 
    fun obtenerAlquilerPorPlaca(placa: String):Alquiler
 

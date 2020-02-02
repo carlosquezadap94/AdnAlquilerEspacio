@@ -10,7 +10,7 @@
 
         <variable
             name="motoViewModel"
-            type="com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotoViewModel" />
+            type="com.adn.adnalquilerparqueadero.infraestructura.viewModel.VehiculoViewModel" />
 
 
     </data>

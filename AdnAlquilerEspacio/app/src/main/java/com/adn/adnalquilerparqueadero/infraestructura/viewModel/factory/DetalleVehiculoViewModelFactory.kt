@@ -6,9 +6,11 @@ import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRe
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.DetalleMotoVehiculoViewModel
 
 
-class DetalleVehiculoViewModelFactory( val idAlquiler:Int):ViewModelProvider.NewInstanceFactory(){
-
+class DetalleVehiculoViewModelFactory( val idAlquiler:Int)
+    :ViewModelProvider.NewInstanceFactory()
+{
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>) = DetalleMotoVehiculoViewModel(idAlquiler) as T
+    override fun <T : ViewModel?> create(modelClass: Class<T>)
+            = DetalleMotoVehiculoViewModel(idAlquiler) as T
 }

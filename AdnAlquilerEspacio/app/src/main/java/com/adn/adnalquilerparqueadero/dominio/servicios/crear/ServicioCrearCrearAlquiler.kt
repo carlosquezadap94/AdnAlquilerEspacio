@@ -1,9 +1,9 @@
-package com.adn.adnalquilerparqueadero.dominio.servicios
+package com.adn.adnalquilerparqueadero.dominio.servicios.crear
 
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.excepciones.ExcepcionNegocio
 import com.adn.adnalquilerparqueadero.dominio.inyeccion.DaggerComponenteApp
-import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
+import com.adn.adnalquilerparqueadero.dominio.servicios.IServiceValidaciones
 import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
 import java.util.regex.Pattern
 import javax.inject.Inject
@@ -16,13 +16,15 @@ const val CANTIDAD_AUTOMOVIL = 20
 
 
 
-class ServicioAlquiler :IserviceAlquiler,IServiceValidaciones {
+class ServicioCrearCrearAlquiler :
+    IserviceCrearAlquiler,
+    IServiceValidaciones {
 
      @Inject public lateinit var iAlquilerRepositorioImpl: AlquilerRepositorioImpl
 
     init {
        val component = DaggerComponenteApp.builder().build()
-        component.inject(this)
+        component.injectCrear(this)
     }
 
     override suspend fun agregarAlquiler(alquilerDTO: AlquilerDTO)
@@ -38,7 +40,7 @@ class ServicioAlquiler :IserviceAlquiler,IServiceValidaciones {
             {
                 if (validarPlacaCarro(placa!!))
                 {
-                    iAlquilerRepositorioImpl.createAlquiler(alquilerDTO)
+                    iAlquilerRepositorioImpl.crearAlquiler(alquilerDTO)
                 }
                 else
                 {
@@ -55,7 +57,7 @@ class ServicioAlquiler :IserviceAlquiler,IServiceValidaciones {
             {
                 if (validarPlacaMoto(placa!!))
                 {
-                    iAlquilerRepositorioImpl.createAlquiler(alquilerDTO)
+                    iAlquilerRepositorioImpl.crearAlquiler(alquilerDTO)
                 }
                 else
                 {

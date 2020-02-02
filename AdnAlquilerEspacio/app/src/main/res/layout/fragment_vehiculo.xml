@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosListViewModel" />
+            type="com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerListViewModel" />
         <variable
             name="callback"
             type="com.adn.adnalquilerparqueadero.utilities.Callback" />
@@ -18,10 +18,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentacion.fragmentos.MotoListFragment">
+        tools:context=".presentacion.fragmentos.AlquilerListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewMotos"
+            android:id="@+id/recycler_view_vehiculo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
@@ -29,7 +29,7 @@
             app:isGone="@{!tieneParqueos}"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="-1dp"
-            tools:listitem="@layout/motocicleta_item">
+            tools:listitem="@layout/vehiculo_item">
 
 
         </androidx.recyclerview.widget.RecyclerView>

@@ -7,29 +7,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.adn.adnalquilerparqueadero.databinding.FragmentMotoBinding
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosListViewModel
-import com.adn.adnalquilerparqueadero.presentacion.adapters.MotosParquingAdapter
+import com.adn.adnalquilerparqueadero.databinding.FragmentVehiculoBinding
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerListViewModel
+import com.adn.adnalquilerparqueadero.presentacion.adapters.VehiculosAlquiladosAdapter
 import com.adn.adnalquilerparqueadero.utilities.InjectUtils
 
-class MotoListFragment : Fragment()
+class AlquilerListFragment : Fragment()
 {
 
 
-    private val alquilerMotosListviewModel: AlquilerMotosListViewModel by viewModels {
-        InjectUtils.provideAlquilerMotosViewModelFactoy(requireActivity())
+    private val alquilerListViewModel: AlquilerListViewModel by viewModels {
+        InjectUtils.provideAlquilerViewModelFactoy()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View?
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View?
     {
 
-        val binding = FragmentMotoBinding.inflate(inflater,container,false)
+        val binding = FragmentVehiculoBinding.inflate(inflater,container,false)
 
-        var adapter = MotosParquingAdapter()
-        binding.recyclerViewMotos.adapter = adapter
+        var adapter = VehiculosAlquiladosAdapter()
+        binding.recyclerViewVehiculo.adapter = adapter
 
         subscribeUi(adapter,binding)
 
@@ -54,17 +53,14 @@ class MotoListFragment : Fragment()
         dialogFragment.show(fragmentTransaction, "dialog")
     }
 
-    private fun subscribeUi(adapter: MotosParquingAdapter,bindin:FragmentMotoBinding)
+    private fun subscribeUi(adapter: VehiculosAlquiladosAdapter, bindin:FragmentVehiculoBinding)
     {
-
         /*
          alquilerMotosListviewModel.motos.observe(viewLifecycleOwner) { result ->
             bindin.tieneParqueos = !result.isNullOrEmpty()
             adapter.submitList(result)
         }
          */
-
-
     }
 
 

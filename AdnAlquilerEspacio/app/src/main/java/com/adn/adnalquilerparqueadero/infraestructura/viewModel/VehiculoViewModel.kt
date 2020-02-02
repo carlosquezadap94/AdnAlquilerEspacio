@@ -1,16 +1,15 @@
 package com.adn.adnalquilerparqueadero.infraestructura.viewModel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
-import com.adn.adnalquilerparqueadero.dominio.servicios.ServicioAlquiler
+import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearCrearAlquiler
 
-class MotoViewModel(): ViewModel()
+class VehiculoViewModel(): ViewModel()
 {
-    private var serviceAlquilerDominio: ServicioAlquiler
+    private var serviceAlquilerDominio: ServicioCrearCrearAlquiler
 
     init {
-        serviceAlquilerDominio =  ServicioAlquiler()
+        serviceAlquilerDominio =  ServicioCrearCrearAlquiler()
     }
 
      suspend fun agregarAlquiler(alquilerDTO: AlquilerDTO)
@@ -19,7 +18,6 @@ class MotoViewModel(): ViewModel()
      }
 
     fun placaExiste(placa:String) = serviceAlquilerDominio.estaAlquilado(placa)
-
 
 }
 

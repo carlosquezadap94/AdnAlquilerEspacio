@@ -1,26 +1,24 @@
 package com.adn.adnalquilerparqueadero.utilities
 
-import android.content.Context
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosListViewModel
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotoViewModel
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.factory.MotoViewModelFactory
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.factory.MotosListViewModelFactory
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.factory.DetalleVehiculoViewModelFactory
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.factory.VehiculoViewModelFactory
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.factory.VehiculosListViewModelFactory
 
 object InjectUtils {
 
 
-    fun provideAlquilerMotosViewModelFactoy(
-        context: Context
-    ): MotosListViewModelFactory {
-        return MotosListViewModelFactory()
+    fun provideAlquilerListViewModelFactoy(): VehiculosListViewModelFactory {
+        return VehiculosListViewModelFactory()
     }
 
-    fun provideMotoViewModelFactoy(
-        context: Context
-    ): MotoViewModelFactory {
-        return MotoViewModelFactory()
+    fun provideAlquilerViewModelFactoy(): VehiculoViewModelFactory {
+        return VehiculoViewModelFactory()
     }
 
+
+    fun provideAlquilerDetalleViewModelFactoy(idAlquiler:Int): DetalleVehiculoViewModelFactory {
+        return DetalleVehiculoViewModelFactory(idAlquiler)
+    }
 
 
 }

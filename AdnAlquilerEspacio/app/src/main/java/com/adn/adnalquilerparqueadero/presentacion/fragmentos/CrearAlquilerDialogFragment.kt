@@ -2,7 +2,6 @@ package com.adn.adnalquilerparqueadero.presentacion.fragmentos
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.telecom.Call
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +13,7 @@ import com.adn.adnalquilerparqueadero.databinding.FragmentDialogBinding
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.excepciones.ExcepcionNegocio
 import com.adn.adnalquilerparqueadero.dominio.modelo.Vehiculo
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerMotosListViewModel
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.MotoViewModel
+import com.adn.adnalquilerparqueadero.infraestructura.viewModel.VehiculoViewModel
 import com.adn.adnalquilerparqueadero.utilities.Callback
 import com.adn.adnalquilerparqueadero.utilities.InjectUtils
 import kotlinx.coroutines.launch
@@ -26,8 +24,8 @@ const val MOTOCICLETA ="MOTOCICLETA"
 class RegisterMotoFrament : DialogFragment() {
 
 
-    private val motoRegistroviewModel: MotoViewModel by viewModels {
-        InjectUtils.provideMotoViewModelFactoy(requireActivity())
+    private val vehiculoRegistroviewModel: VehiculoViewModel by viewModels {
+        InjectUtils.provideAlquilerViewModelFactoy()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +41,7 @@ class RegisterMotoFrament : DialogFragment() {
         val binding = FragmentDialogBinding.inflate(inflater, container, false)
 
         binding.apply {
-            motoViewModel = motoRegistroviewModel
+            motoViewModel = vehiculoRegistroviewModel
             lifecycleOwner = viewLifecycleOwner
 
             @SuppressLint("FragmentLiveDataObserve")
@@ -56,7 +54,7 @@ class RegisterMotoFrament : DialogFragment() {
                     if (!placa.isNullOrEmpty() and !cc.isNullOrEmpty())
                     {
                         try {
-                            if (motoRegistroviewModel.placaExiste(placa))
+                            if (vehiculoRegistroviewModel.placaExiste(placa))
                             {
                                 Toast.makeText(activity!!.applicationContext,"Ya se registro un vehiculo con esta placa",Toast.LENGTH_SHORT).show()
 
@@ -92,7 +90,7 @@ class RegisterMotoFrament : DialogFragment() {
         //Todo Implementar Factory
         val alquiler = AlquilerDTO(vehiculo, Date())
 
-        motoRegistroviewModel.agregarAlquiler(alquiler)
+        vehiculoRegistroviewModel.agregarAlquiler(alquiler)
 
     }
 
