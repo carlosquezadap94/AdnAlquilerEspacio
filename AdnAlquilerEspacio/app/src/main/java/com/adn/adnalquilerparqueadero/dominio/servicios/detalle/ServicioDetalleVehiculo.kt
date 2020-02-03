@@ -17,12 +17,12 @@ class ServicioDetalleVehiculo:IserviceDetalle
     }
 
 
-    override fun obtenerAlquiler(id: Int): Alquiler {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun obtenerAlquiler(id: Int) =
+      iAlquilerRepositorioImpl.obtenerAlquilerPorId(id)
 
-    override fun realizarPago(alquilerId: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    override fun realizarPago(alquiler: Alquiler) {
+        iAlquilerRepositorioImpl.actualizarAlquiler(alquiler)
     }
 
 }

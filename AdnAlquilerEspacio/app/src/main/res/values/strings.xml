@@ -5,4 +5,10 @@
     <string name="resumen">Resumén</string>
     <string name="vehiculos">Vehiculos</string>
 
+
+    <string-array name="Vehiculos">
+        <item>AUTOMOVIL</item>
+        <item>MOTOCICLETA</item>
+    </string-array>
+
 </resources>

@@ -8,11 +8,12 @@ import dagger.android.DaggerApplication
 import javax.inject.Singleton
 
 @Module
-class ModuloApp(var application: DaggerApplication) {
+class ModuloApp(var app: Application) {
 
-    @Provides
-    fun provideDaggerApplication(): DaggerApplication {
-        return application
+    lateinit var application: Application
+
+    init {
+        application  =app
     }
 
     @Provides

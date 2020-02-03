@@ -1,5 +1,7 @@
 package com.adn.adnalquilerparqueadero.dominio.inyeccion
 
+import android.app.Application
+import android.content.Context
 import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearCrearAlquiler
 import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.ServicioDetalleVehiculo
 import com.adn.adnalquilerparqueadero.dominio.servicios.listar.ServicioListarVehiculos

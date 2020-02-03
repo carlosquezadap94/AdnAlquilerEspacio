@@ -2,8 +2,8 @@ package com.adn.adnalquilerparqueadero.infraestructura.viewModel
 
 import androidx.lifecycle.ViewModel
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
+import com.adn.adnalquilerparqueadero.dominio.servicios.crear.MOTOCICLETA
 import com.adn.adnalquilerparqueadero.dominio.servicios.listar.ServicioListarVehiculos
-import com.adn.adnalquilerparqueadero.presentacion.fragmentos.MOTOCICLETA
 
 class AlquilerListViewModel internal constructor():ViewModel()
 {

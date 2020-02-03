@@ -33,41 +33,23 @@ class ServicioCrearCrearAlquiler :
         val cantidad = iAlquilerRepositorioImpl.obtenerCantidadXtipoVehiculo(AUTOMOVIL)
         val placa = alquilerDTO.vehiculo.placa
 
-        //TODO Corregir coplamiento
-        if (tipoVehiculo.equals(AUTOMOVIL))
+
+        //TODO Validar coplamiento
+        if (validarEspacioDisponible(cantidad,tipoVehiculo!!))
         {
-            if (cantidad.toInt()< CANTIDAD_AUTOMOVIL)
+            if (validarPlacaVehiculo(placa!!,tipoVehiculo))
             {
-                if (validarPlacaCarro(placa!!))
-                {
-                    iAlquilerRepositorioImpl.crearAlquiler(alquilerDTO)
-                }
-                else
-                {
-                    throw ExcepcionNegocio("Placa automovil no autorizada")
-                }
+                iAlquilerRepositorioImpl.crearAlquiler(alquilerDTO)
             }else
             {
-                throw ExcepcionNegocio("Parqueadero lleno")
+                throw ExcepcionNegocio("Placa no valida para $tipoVehiculo")
             }
-        }
-        else if (tipoVehiculo.equals(MOTOCICLETA))
+        }else
         {
-            if (cantidad.toInt()< CANTIDAD_MOTO)
-            {
-                if (validarPlacaMoto(placa!!))
-                {
-                    iAlquilerRepositorioImpl.crearAlquiler(alquilerDTO)
-                }
-                else
-                {
-                    throw ExcepcionNegocio("Placa motocicleta no autorizada")
-                }
-            }else
-            {
-                throw ExcepcionNegocio("Parqueadero lleno")
-            }
+            throw ExcepcionNegocio("Parqueadero lleno para $tipoVehiculo")
         }
+
+
     }
 
     override fun obtenerVehiculosPorTipo(tipoVehiculo: String)=
@@ -78,21 +60,36 @@ class ServicioCrearCrearAlquiler :
         return iAlquilerRepositorioImpl.estaAlquilado(placa)
     }
 
-    override fun validarPlacaMoto(placa: String): Boolean {
 
-        var pattern = Pattern.compile("^[a-zA-Z]{3}[0-9]{3}\$")
-        var m = pattern.matcher("ABC123")
+    //Todo validar con MAP
+    override fun validarPlacaVehiculo(placa: String,tipoVehiculo: String): Boolean {
+
+        var pattern:Pattern
+        if (tipoVehiculo.equals(AUTOMOVIL))
+        {
+            pattern = Pattern.compile("^[a-zA-Z]{3}[0-9]{3}\$")
+        }else
+        {
+            pattern = Pattern.compile("^[a-zA-Z]{3}[0-9]{2}[a-zA-Z]\$")
+        }
+        var m = pattern.matcher(placa)
         return m.matches()
     }
+    override fun validarEspacioDisponible(cantidad: String, tipoVehiculo: String): Boolean {
+        var tope: Int?
+        if (tipoVehiculo.equals(AUTOMOVIL))
+        {
+            tope = CANTIDAD_AUTOMOVIL
+        }else{
+            tope = CANTIDAD_MOTO
+        }
 
-    override fun validarPlacaCarro(placa: String): Boolean {
-
-        var pattern = Pattern.compile("^[a-zA-Z]{3}[0-9]{2}[a-zA-Z]\$")
-        var m = pattern.matcher("ABC12E")
-        return m.matches()
+        if (cantidad.toInt()>=tope)
+        {
+            return false
+        }
+        return true
     }
-
-
 
 
 }

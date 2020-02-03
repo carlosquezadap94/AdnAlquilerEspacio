@@ -16,7 +16,6 @@ open class Vehiculo(placa:String,cc:Int,tipoVehiculo:String)
     var cc:Int?=null
     var tipoVehiculo:String?=null
 
-
     init {
         this.placa = placa
         this.cc = cc

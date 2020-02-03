@@ -8,4 +8,5 @@
     <dimen name="text35">35sp</dimen>
     <dimen name="dimmen5">5dp</dimen>
     <dimen name="dimmen60">60dp</dimen>
+    <dimen name="dimmen300">300dp</dimen>
 </resources>

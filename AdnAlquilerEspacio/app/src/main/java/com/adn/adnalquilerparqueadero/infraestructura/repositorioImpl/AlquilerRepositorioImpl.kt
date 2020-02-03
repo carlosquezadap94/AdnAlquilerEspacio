@@ -3,6 +3,7 @@ package com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.repositorio.IAlquilerRepositorio
+import com.adn.adnalquilerparqueadero.infraestructura.db.AppDatabase
 import com.adn.adnalquilerparqueadero.infraestructura.db.dao.AlquilerDao
 import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 import kotlinx.coroutines.runBlocking
@@ -14,9 +15,15 @@ class AlquilerRepositorioImpl @Inject constructor(): IAlquilerRepositorio {
 
 
 
-    //@Inject
-     lateinit var alquilerDao:AlquilerDao
+    var alquilerDao: AlquilerDao
 
+    //@Inject
+     @Inject lateinit var appDatabase: AppDatabase
+
+
+    init {
+        this.alquilerDao = appDatabase.alquilerDao()
+    }
 
 
     override suspend  fun  crearAlquiler(alquilerDTO: AlquilerDTO)
@@ -32,6 +39,9 @@ class AlquilerRepositorioImpl @Inject constructor(): IAlquilerRepositorio {
         return convertToDomain(alquilerEntidad)
     }
     override fun actualizarAlquiler(alquiler: Alquiler){
+
+        alquiler.horaSalida  =Date()
+        alquiler.estaActivo=false
         alquilerDao.actualizarAlquiler(convertToEntity(alquiler))
     }
     override fun obtenerAlquilerPorId(id: Int): Alquiler {

@@ -42,17 +42,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/empty_garden"
+                android:id="@+id/empty_alquiler"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No hay motocicletas"
+                android:textSize="@dimen/text30"
+                android:text="No hay vehiculos"
                 android:textAppearance="?attr/textAppearanceHeadline5" />
-
-            <Button
-                android:id="@+id/add_plant"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Agregar moto"/>
 
         </LinearLayout>
 

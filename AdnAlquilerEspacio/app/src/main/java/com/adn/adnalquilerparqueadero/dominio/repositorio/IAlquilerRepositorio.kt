@@ -1,11 +1,9 @@
 package com.adn.adnalquilerparqueadero.dominio.repositorio
 
-import androidx.lifecycle.LiveData
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
-import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 
-interface IAlquilerRepositorio {
+public interface IAlquilerRepositorio {
 
    suspend fun crearAlquiler(alquilerDTO: AlquilerDTO)
 

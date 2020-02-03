@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.FragmentDescripcionBinding
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.DetalleMotoVehiculoViewModel
-import com.adn.adnalquilerparqueadero.infraestructura.viewModel.VehiculoViewModel
 import com.adn.adnalquilerparqueadero.utilities.InjectUtils
 import com.google.android.material.snackbar.Snackbar
 
@@ -48,6 +47,7 @@ class DetalleAlquilerVehiculo : Fragment() {
 
 
         binding.btnPagar.setOnClickListener {
+            detalleVehiculoViewModel.realizarPago()
             Snackbar.make(binding.root, "se ha registrado el pago", Snackbar.LENGTH_LONG)
                 .show()
         }

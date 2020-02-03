@@ -6,7 +6,7 @@ import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntid
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class DetalleMotoVehiculoViewModel ( val idAlquiler:Int):ViewModel()
+class DetalleMotoVehiculoViewModel ( private val idAlquiler:Int):ViewModel()
 {
 
 
@@ -15,6 +15,15 @@ class DetalleMotoVehiculoViewModel ( val idAlquiler:Int):ViewModel()
     init {
         serviceDetalle =  ServicioDetalleVehiculo()
     }
+
+
+    var alquiler = serviceDetalle.obtenerAlquiler(idAlquiler)
+
+    fun realizarPago()
+    {
+        serviceDetalle.realizarPago(alquiler)
+    }
+
 
 
 }

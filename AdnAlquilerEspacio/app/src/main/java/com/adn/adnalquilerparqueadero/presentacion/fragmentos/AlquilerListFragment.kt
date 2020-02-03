@@ -17,7 +17,7 @@ class AlquilerListFragment : Fragment()
 
 
     private val alquilerListViewModel: AlquilerListViewModel by viewModels {
-        InjectUtils.provideAlquilerViewModelFactoy()
+        InjectUtils.provideAlquilerListViewModelFactoy()
     }
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -29,6 +29,11 @@ class AlquilerListFragment : Fragment()
 
         var adapter = VehiculosAlquiladosAdapter()
         binding.recyclerViewVehiculo.adapter = adapter
+
+        binding.apply {
+            viewModel = alquilerListViewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
 
         subscribeUi(adapter,binding)
 
