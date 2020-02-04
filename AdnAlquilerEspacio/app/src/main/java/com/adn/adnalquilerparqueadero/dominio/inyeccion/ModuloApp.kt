@@ -4,26 +4,13 @@ import android.app.Application
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import dagger.android.DaggerApplication
-import javax.inject.Singleton
 
 @Module
-class ModuloApp(var app: Application) {
-
-    lateinit var application: Application
-
-    init {
-        application  =app
-    }
-
+class ModuloApp
+{
     @Provides
-    fun provideApplicationContext(): Context {
+    fun provideApplicationContext(application: Application): Context
+    {
         return application.applicationContext
-    }
-
-    @Provides
-    @Singleton
-    fun app(): Application {
-        return application
     }
 }

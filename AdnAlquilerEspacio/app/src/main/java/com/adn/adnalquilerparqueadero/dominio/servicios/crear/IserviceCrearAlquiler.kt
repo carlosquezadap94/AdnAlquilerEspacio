@@ -5,6 +5,6 @@ import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 
 public interface IserviceCrearAlquiler {
     suspend fun agregarAlquiler(alquilerDTO: AlquilerDTO)
-    fun obtenerVehiculosPorTipo(tipoVehiculo: String): List<Alquiler>
-    fun estaAlquilado(placa: String): Boolean
+    suspend fun obtenerVehiculosPorTipo(tipoVehiculo: String): List<Alquiler>
+    suspend fun estaAlquilado(placa: String): Boolean
 }

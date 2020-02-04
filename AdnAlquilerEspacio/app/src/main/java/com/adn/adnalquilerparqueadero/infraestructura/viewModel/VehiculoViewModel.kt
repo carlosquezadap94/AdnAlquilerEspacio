@@ -4,20 +4,15 @@ import androidx.lifecycle.ViewModel
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearCrearAlquiler
 
-class VehiculoViewModel(): ViewModel()
-{
-    private var serviceAlquilerDominio: ServicioCrearCrearAlquiler
+class VehiculoViewModel(private val serviceAlquilerDominio: ServicioCrearCrearAlquiler) :
+    ViewModel() {
 
-    init {
-        serviceAlquilerDominio =  ServicioCrearCrearAlquiler()
+
+    suspend fun agregarAlquiler(alquilerDTO: AlquilerDTO) {
+        serviceAlquilerDominio.agregarAlquiler(alquilerDTO)
     }
 
-     suspend fun agregarAlquiler(alquilerDTO: AlquilerDTO)
-     {
-         serviceAlquilerDominio.agregarAlquiler(alquilerDTO)
-     }
-
-    fun placaExiste(placa:String) = serviceAlquilerDominio.estaAlquilado(placa)
+    suspend fun placaExiste(placa: String) = serviceAlquilerDominio.estaAlquilado(placa)
 
 }
 

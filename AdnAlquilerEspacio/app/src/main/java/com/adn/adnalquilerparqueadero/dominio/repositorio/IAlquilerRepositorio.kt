@@ -7,16 +7,16 @@ public interface IAlquilerRepositorio {
 
    suspend fun crearAlquiler(alquilerDTO: AlquilerDTO)
 
-   fun obtenerAlquilerPorPlaca(placa: String):Alquiler
+   suspend fun obtenerAlquilerPorPlaca(placa: String):Alquiler
 
-   fun actualizarAlquiler(alquiler:Alquiler)
+   suspend fun actualizarAlquiler(alquiler:Alquiler)
 
-   fun obtenerAlquilerPorId(id: Int):Alquiler
+   suspend fun obtenerAlquilerPorId(id: Int):Alquiler
 
-   fun estaAlquilado(placa: String):Boolean
+   suspend fun estaAlquilado(placa: String):Boolean
 
-   fun getAlquilerFromTipoV(tipoV: String):List<Alquiler>
+   suspend fun getAlquilerFromTipoV(tipoV: String):List<Alquiler>
 
-   fun obtenerCantidadXtipoVehiculo(tipoV: String):String
+   suspend fun obtenerCantidadXtipoVehiculo(tipoV: String):String
 
 }

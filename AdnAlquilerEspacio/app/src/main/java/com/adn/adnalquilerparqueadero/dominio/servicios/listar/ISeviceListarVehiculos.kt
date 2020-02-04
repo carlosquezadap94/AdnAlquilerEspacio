@@ -6,5 +6,5 @@ interface ISeviceListarVehiculos
 {
 
 
-    fun obtenerAlquileTipoV(tipoVehiculo:String):List<Alquiler>
+    suspend fun obtenerAlquileTipoV(tipoVehiculo:String):List<Alquiler>
 }

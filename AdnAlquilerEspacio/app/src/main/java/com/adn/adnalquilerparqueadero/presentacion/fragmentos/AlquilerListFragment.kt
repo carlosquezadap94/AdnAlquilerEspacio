@@ -54,7 +54,7 @@ class AlquilerListFragment : Fragment()
             fragmentTransaction.remove(prev)
         }
         fragmentTransaction.addToBackStack(null)
-        val dialogFragment = RegisterMotoFrament() //here MyDialog is my custom dialog
+        val dialogFragment = CrearAlquilerDialogFragment() //here MyDialog is my custom dialog
         dialogFragment.show(fragmentTransaction, "dialog")
     }
 

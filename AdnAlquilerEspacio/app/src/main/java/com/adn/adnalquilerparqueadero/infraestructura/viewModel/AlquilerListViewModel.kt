@@ -13,6 +13,6 @@ class AlquilerListViewModel internal constructor():ViewModel()
         servicioListarVehiculos =  ServicioListarVehiculos()
     }
 
-    val alquilere:List<Alquiler>  = servicioListarVehiculos.obtenerAlquileTipoV(MOTOCICLETA)
+  //  val alquilere:List<Alquiler>  = servicioListarVehiculos.obtenerAlquileTipoV(MOTOCICLETA)
 
 }

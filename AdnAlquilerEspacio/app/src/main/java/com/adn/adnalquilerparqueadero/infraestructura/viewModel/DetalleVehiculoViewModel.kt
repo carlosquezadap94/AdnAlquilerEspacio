@@ -17,12 +17,15 @@ class DetalleMotoVehiculoViewModel ( private val idAlquiler:Int):ViewModel()
     }
 
 
-    var alquiler = serviceDetalle.obtenerAlquiler(idAlquiler)
+  //  var alquiler = serviceDetalle.obtenerAlquiler(idAlquiler)
 
-    fun realizarPago()
+    /*
+       fun realizarPago()
     {
         serviceDetalle.realizarPago(alquiler)
     }
+     */
+
 
 
 

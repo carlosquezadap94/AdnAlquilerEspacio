@@ -1,22 +1,30 @@
 package com.adn.adnalquilerparqueadero.dominio.inyeccion
 
 import android.app.Application
-import android.content.Context
-import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearCrearAlquiler
-import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.ServicioDetalleVehiculo
-import com.adn.adnalquilerparqueadero.dominio.servicios.listar.ServicioListarVehiculos
+import com.adn.adnalquilerparqueadero.App
+import com.adn.adnalquilerparqueadero.presentacion.actividades.MainActivityModule
+import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [ModuloApp::class,
-    ConfiguracionModulos::class,
-    RoomModule::class])
-public interface ComponenteApp
-{
-    public fun injectCrear(servicioAlquiler: ServicioCrearCrearAlquiler)
-    public fun injectList(servicioAlquiler: ServicioListarVehiculos)
-    public fun injectDetalle(servicioAlquiler: ServicioDetalleVehiculo)
+@Component(
+    modules = [AndroidInjectionModule::class,
+        ModuloApp::class,
+        RoomModule::class,
+        CrearAlquilerModule::class,
+         MainActivityModule::class]
+)
+abstract class ComponenteApp {
+    abstract fun inject(application: App)
 
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: Application): Builder
+
+        fun build(): ComponenteApp
+    }
 }
