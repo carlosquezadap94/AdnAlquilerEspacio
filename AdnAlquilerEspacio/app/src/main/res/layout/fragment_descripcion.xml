@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+
+
 
         <variable
             name="viewModel"
@@ -17,16 +19,15 @@
 
 
     <androidx.cardview.widget.CardView
-        android:orientation="vertical"
-        android:layout_margin="@dimen/dimmen5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimmen5"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
             <LinearLayout
@@ -44,29 +45,50 @@
                 <ImageView
                     android:layout_width="@dimen/dimmen60"
                     android:layout_height="@dimen/dimmen60"
-                    android:src="@drawable/ic_motorcycle_black_24dp" />
+                    app:imageUrl="@{viewModel.alquiler.vehiculo.tipoVehiculo}" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimmen5"
-                    android:fontFamily="@font/roboto_regular" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimmen5"
-                    android:fontFamily="@font/roboto_regular"/>
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimmen5"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{viewModel.alquiler.vehiculo.cc.toString()}" />
 
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimmen5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{viewModel.alquiler.vehiculo.placa}" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimmen5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{viewModel.alquiler.horaLlegada.toString()}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:isGone="@{!viewModel.pago}"
+                    android:layout_marginTop="@dimen/dimmen5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{viewModel.alquiler.horaSalida.toString()}" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimmen5"
+                    app:isGone="@{!viewModel.pago}"
+                    app:insertText="@{viewModel.alquiler.precio}"
+                    android:fontFamily="@font/roboto_regular"
+                     />
             </LinearLayout>
 
 
@@ -74,17 +96,11 @@
                 android:id="@+id/btn_pagar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="PAGAR"
-                >
-
-
+                android:enabled="@{!viewModel.pago}"
+                android:text="PAGAR">
             </Button>
 
         </LinearLayout>
-
-
-
-
 
     </androidx.cardview.widget.CardView>
 

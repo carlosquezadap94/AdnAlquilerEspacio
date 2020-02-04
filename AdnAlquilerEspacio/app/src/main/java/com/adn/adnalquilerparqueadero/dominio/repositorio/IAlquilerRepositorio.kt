@@ -1,22 +1,27 @@
 package com.adn.adnalquilerparqueadero.dominio.repositorio
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
+import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 
 public interface IAlquilerRepositorio {
 
-   suspend fun crearAlquiler(alquilerDTO: AlquilerDTO)
+    suspend fun crearAlquiler(alquilerDTO: AlquilerDTO)
 
-   suspend fun obtenerAlquilerPorPlaca(placa: String):Alquiler
+    fun obtenerAlquilerPorPlaca(placa: String):Alquiler
 
-   suspend fun actualizarAlquiler(alquiler:Alquiler)
+    fun actualizarAlquiler(alquiler:Alquiler)
 
-   suspend fun obtenerAlquilerPorId(id: Int):Alquiler
+    fun obtenerAlquilerPorId(id: Int):Alquiler
 
-   suspend fun estaAlquilado(placa: String):Boolean
+    fun estaAlquilado(placa: String):Boolean
 
-   suspend fun getAlquilerFromTipoV(tipoV: String):List<Alquiler>
+    fun getAlquilerFromTipoV(tipoV: String):LiveData<List<Alquiler>>
 
-   suspend fun obtenerCantidadXtipoVehiculo(tipoV: String):String
+    fun obtenerTodos():LiveData<List<Alquiler>>
+
+    fun obtenerCantidadXtipoVehiculo(tipoV: String):String
 
 }

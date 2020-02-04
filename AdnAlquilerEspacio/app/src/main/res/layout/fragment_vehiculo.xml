@@ -5,12 +5,6 @@
 
     <data>
         <variable
-            name="viewModel"
-            type="com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerListViewModel" />
-        <variable
-            name="callback"
-            type="com.adn.adnalquilerparqueadero.utilities.Callback" />
-        <variable
             name="tieneParqueos"
             type="boolean" />
     </data>

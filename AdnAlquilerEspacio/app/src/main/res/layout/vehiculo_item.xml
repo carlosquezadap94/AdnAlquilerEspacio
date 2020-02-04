@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <data>
@@ -10,7 +11,7 @@
 
         <variable
             name="alquiler"
-            type="com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad"/>
+            type="com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler"/>
 
     </data>
 
@@ -33,6 +34,7 @@
             <ImageView
                 android:layout_width="@dimen/dimmen60"
                 android:layout_height="@dimen/dimmen60"
+                app:imageUrl="@{alquiler.vehiculo.tipoVehiculo}"
                 android:src="@drawable/ic_motorcycle_black_24dp" />
 
             <TextView

@@ -1,6 +1,8 @@
 package com.adn.adnalquilerparqueadero.dominio.inyeccion
 
+import com.adn.adnalquilerparqueadero.presentacion.fragmentos.AlquilerListFragment
 import com.adn.adnalquilerparqueadero.presentacion.fragmentos.CrearAlquilerDialogFragment
+import com.adn.adnalquilerparqueadero.presentacion.fragmentos.DetalleAlquilerVehiculo
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,5 +10,14 @@ import dagger.android.ContributesAndroidInjector
 abstract class CrearAlquilerModule {
 
     @ContributesAndroidInjector
-    abstract fun bindFragment(): CrearAlquilerDialogFragment
+    abstract fun bindFragmentCrear(): CrearAlquilerDialogFragment
+
+
+    @ContributesAndroidInjector
+    abstract fun bindFragmentListar(): AlquilerListFragment
+
+
+    @ContributesAndroidInjector
+    abstract fun bindFragmentDetalle(): DetalleAlquilerVehiculo
+
 }

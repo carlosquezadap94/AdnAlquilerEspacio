@@ -137,6 +137,8 @@ dependencies {
     //Debug database
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     androidTestImplementation('com.android.support.test:runner:1.0.2') {
         exclude group: 'com.android.support', module: 'support-annotations'

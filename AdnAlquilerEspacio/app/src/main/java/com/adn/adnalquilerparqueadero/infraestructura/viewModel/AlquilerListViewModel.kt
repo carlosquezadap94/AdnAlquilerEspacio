@@ -1,18 +1,15 @@
 package com.adn.adnalquilerparqueadero.infraestructura.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
-import com.adn.adnalquilerparqueadero.dominio.servicios.crear.MOTOCICLETA
 import com.adn.adnalquilerparqueadero.dominio.servicios.listar.ServicioListarVehiculos
 
-class AlquilerListViewModel internal constructor():ViewModel()
+class AlquilerListViewModel constructor(private val servicioListarVehiculos: ServicioListarVehiculos) :
+    ViewModel()
 {
-    private var servicioListarVehiculos: ServicioListarVehiculos
+    val alquileres = servicioListarVehiculos.obtenerTodos()
 
-    init {
-        servicioListarVehiculos =  ServicioListarVehiculos()
-    }
-
-  //  val alquilere:List<Alquiler>  = servicioListarVehiculos.obtenerAlquileTipoV(MOTOCICLETA)
-
+    fun obtenerPorTipoVehiculo(tipoVehiculo: String) =
+        servicioListarVehiculos.obtenerAlquileTipoV(tipoVehiculo)
 }

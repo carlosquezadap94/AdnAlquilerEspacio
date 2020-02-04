@@ -40,7 +40,6 @@ class CrearAlquilerDialogFragment : DialogFragment() {
 
     private val vehiculoRegistroviewModel: VehiculoViewModel by viewModels {
         InjectUtils.provideAlquilerViewModelFactoy(
-            activity!!.applicationContext,
             serviceAlquilerDominio
         )
     }

@@ -3,6 +3,7 @@ package com.adn.adnalquilerparqueadero.infraestructura.db.dao
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.*
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 
 @Dao
@@ -20,7 +21,11 @@ interface AlquilerDao {
     fun estaAlquilado(placa: String):Boolean
 
     @Query("SELECT * FROM alquilerEspacio ae WHERE ae.vehiculo_tipoVehiculo = :tipoVehiculo AND ae.estaActivo = 1")
-    fun getAlquilerFromTV(tipoVehiculo: String): List<AlquilerEntidad>
+    fun getAlquilerFromTV(tipoVehiculo: String): LiveData<List<AlquilerEntidad>>
+
+    @Query("SELECT * FROM alquilerEspacio ae WHERE ae.estaActivo = 1")
+    fun obtenerTodos(): LiveData<List<AlquilerEntidad>>
+
 
     @Query("SELECT COUNT(*) FROM alquilerEspacio ae WHERE ae.vehiculo_tipoVehiculo = :tipoVehiculo AND ae.estaActivo = 1")
     fun obtenerCantidadPorTV(tipoVehiculo: String): String

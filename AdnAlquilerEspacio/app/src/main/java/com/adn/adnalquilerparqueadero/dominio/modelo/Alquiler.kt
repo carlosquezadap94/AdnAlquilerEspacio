@@ -7,5 +7,6 @@ data class Alquiler (
     var vehiculo: Vehiculo?=null,
     var horaLlegada: Date?= Date(),
     var horaSalida: Date?= Date(),
-    var estaActivo: Boolean=true
+    var estaActivo: Boolean=true,
+    var precio:Float =0f
 )

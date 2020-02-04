@@ -2,7 +2,6 @@ package com.adn.adnalquilerparqueadero.dominio.inyeccion
 
 import android.app.Application
 import com.adn.adnalquilerparqueadero.App
-import com.adn.adnalquilerparqueadero.presentacion.actividades.MainActivityModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

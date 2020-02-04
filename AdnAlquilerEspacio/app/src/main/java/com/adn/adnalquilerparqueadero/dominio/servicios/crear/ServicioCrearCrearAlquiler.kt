@@ -66,14 +66,11 @@ class ServicioCrearCrearAlquiler @Inject constructor( alquilerRepo: AlquilerRepo
             throw ExcepcionNegocio("Parqueadero lleno para $tipoVehiculo")
         }
     }
-
-    override suspend fun obtenerVehiculosPorTipo(tipoVehiculo: String)=
-         iAlquilerRepositorioImpl.getAlquilerFromTipoV(tipoVehiculo)
-
     override suspend fun estaAlquilado(placa:String): Boolean
     {
         return iAlquilerRepositorioImpl.estaAlquilado(placa)
     }
+
 
     override fun validarPlacaVehiculo(placa: String,tipoVehiculo: String): Boolean
     {
@@ -88,7 +85,6 @@ class ServicioCrearCrearAlquiler @Inject constructor( alquilerRepo: AlquilerRepo
         }
         return false
     }
-
     override fun validarEspacioDisponible(cantidad: String, tipoVehiculo: String): Boolean
     {
         for ((key, value) in VEHICULO_CANTIDAD)
@@ -104,10 +100,9 @@ class ServicioCrearCrearAlquiler @Inject constructor( alquilerRepo: AlquilerRepo
         }
         return false
     }
-
-    override fun validarPrimerLetra(placa: String): Boolean
+    override fun validarPrimerLetra(letra: String): Boolean
     {
-        var primerLetra =  placa.get(0).toString().toUpperCase()
+        var primerLetra =  letra.get(0).toString().toUpperCase()
         val calendar = Calendar.getInstance()
         val day: Int = calendar.get(Calendar.DAY_OF_WEEK)
 
@@ -118,12 +113,9 @@ class ServicioCrearCrearAlquiler @Inject constructor( alquilerRepo: AlquilerRepo
                 {
                     return false
                 }
-                return true
-            }else->
-                {
-                    return true
-                }
+
+            }
         }
-        return false
+        return true
     }
 }

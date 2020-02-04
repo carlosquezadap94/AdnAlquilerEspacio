@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearCrearAlquiler
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.VehiculoViewModel
 
-class VehiculoViewModelFactory(val context: Context,private val serviceAlquilerDominio: ServicioCrearCrearAlquiler): ViewModelProvider.NewInstanceFactory()
+class VehiculoViewModelFactory(private val serviceAlquilerDominio: ServicioCrearCrearAlquiler): ViewModelProvider.NewInstanceFactory()
 {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>)
