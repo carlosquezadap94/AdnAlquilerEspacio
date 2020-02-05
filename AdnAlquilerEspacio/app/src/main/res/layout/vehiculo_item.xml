@@ -10,8 +10,12 @@
 
 
         <variable
+            name="viewModel"
+            type="com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerListViewModel"/>
+
+        <variable
             name="alquiler"
-            type="com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler"/>
+            type="com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad"/>
 
     </data>
 

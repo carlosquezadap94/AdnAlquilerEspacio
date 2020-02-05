@@ -38,7 +38,7 @@ class ServicioCrearCrearAlquiler @Inject constructor( alquilerRepo: AlquilerRepo
     override suspend fun agregarAlquiler(alquilerDTO: AlquilerDTO)
     {
         val tipoVehiculo = alquilerDTO.vehiculo.tipoVehiculo
-        val cantidad = iAlquilerRepositorioImpl.obtenerCantidadXtipoVehiculo(AUTOMOVIL)
+        val cantidad = iAlquilerRepositorioImpl.obtenerCantidadXtipoVehiculo(tipoVehiculo!!)
         val placa = alquilerDTO.vehiculo.placa
 
 

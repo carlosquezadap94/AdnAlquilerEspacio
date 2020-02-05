@@ -11,10 +11,7 @@ import java.util.*
 import javax.inject.Inject
 
 class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao) : IAlquilerRepositorio {
-
-
     var alquilerDao: AlquilerDao
-
 
     init {
         this.alquilerDao = alquilerDao
@@ -57,11 +54,7 @@ class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao) : IA
             }
         }
 
-    override fun obtenerTodos() = Transformations.map(alquilerDao.obtenerTodos()) {
-        it.map {
-            it.toAlquiler()
-        }
-    }
+    override fun obtenerTodos() = alquilerDao.obtenerTodos()
 
 
     override fun obtenerCantidadXtipoVehiculo(tipoV: String) = runBlocking {

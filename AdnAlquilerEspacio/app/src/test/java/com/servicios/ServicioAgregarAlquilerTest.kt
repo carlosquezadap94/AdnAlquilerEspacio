@@ -1,37 +1,47 @@
 package com.servicios
 
-import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.repositorio.IAlquilerRepositorio
 import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearCrearAlquiler
-import com.builder.AlquilerEspacioDataBuilder
+import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
+import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.junit.MockitoJUnitRunner
 
 
-@RunWith(MockitoJUnitRunner.Silent::class)
 class ServicioAgregarAlquilerTest {
 
 
     @Mock
-    private lateinit var repositorioAlquiler:IAlquilerRepositorio
+    lateinit var repositorioImpl: IAlquilerRepositorio
 
     @InjectMocks
-    private lateinit var servicioAlquilerDominio: ServicioCrearCrearAlquiler
+    lateinit var servicioCrearCrearAlquiler:ServicioCrearCrearAlquiler
 
+
+
+    //Se ejecuta cada vez que se realiza un test
     @Test
-    fun devolverVehiculoCorrecto() {
-        //arrange
-        val alquiler: Alquiler = AlquilerEspacioDataBuilder().build()
-
-
-
-
-
+    fun alquilarVehiculo()
+    {
 
     }
+
+
+
+
+    @Test
+    fun obtenerVehiculo()
+    {
+        //Arrange
+
+        //assert+
+        assertEquals(1, 1)
+    }
+
+
+
 
     /*
     @Test

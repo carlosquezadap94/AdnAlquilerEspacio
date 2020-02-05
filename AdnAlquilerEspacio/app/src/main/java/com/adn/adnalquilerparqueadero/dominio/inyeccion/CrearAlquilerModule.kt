@@ -1,5 +1,6 @@
 package com.adn.adnalquilerparqueadero.dominio.inyeccion
 
+import com.adn.adnalquilerparqueadero.presentacion.actividades.MainActivity
 import com.adn.adnalquilerparqueadero.presentacion.fragmentos.AlquilerListFragment
 import com.adn.adnalquilerparqueadero.presentacion.fragmentos.CrearAlquilerDialogFragment
 import com.adn.adnalquilerparqueadero.presentacion.fragmentos.DetalleAlquilerVehiculo
@@ -20,4 +21,6 @@ abstract class CrearAlquilerModule {
     @ContributesAndroidInjector
     abstract fun bindFragmentDetalle(): DetalleAlquilerVehiculo
 
+    @ContributesAndroidInjector
+    abstract fun bindActivity(): MainActivity
 }

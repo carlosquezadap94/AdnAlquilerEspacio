@@ -142,8 +142,8 @@ class CrearAlquilerDialogFragment : DialogFragment() {
 
         val window = dialog!!.window ?: return
         val params = window.attributes
-        params.width = 600
-        params.height = 600
+        params.width = 800
+        params.height = 800
         window.attributes = params
         super.onResume()
     }

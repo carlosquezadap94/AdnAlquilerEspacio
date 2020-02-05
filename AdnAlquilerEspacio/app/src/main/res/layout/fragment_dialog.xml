@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <data>
@@ -22,13 +23,17 @@
         >
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
+            app:counterEnabled="true"
+            app:counterMaxLength="6"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editext_placa"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="text"
+                android:maxLength="6"
+                android:inputType="textEmailAddress"
+                android:digits="qwertyuiopasdfghjklzxcvbnm 1234567890 QWERTYUIOPASDFGHJKLZXCVBNM"
                 android:hint="Placa"
                 >
             </com.google.android.material.textfield.TextInputEditText>
@@ -37,6 +42,8 @@
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
+            app:counterEnabled="true"
+            app:counterMaxLength="4"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -45,6 +52,7 @@
                 android:layout_height="match_parent"
                 android:inputType="number"
                 android:tooltipText="200"
+                android:maxLength="4"
                 android:hint="CC"></com.google.android.material.textfield.TextInputEditText>
 
 

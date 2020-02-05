@@ -20,7 +20,7 @@ public interface IAlquilerRepositorio {
 
     fun getAlquilerFromTipoV(tipoV: String):LiveData<List<Alquiler>>
 
-    fun obtenerTodos():LiveData<List<Alquiler>>
+    fun obtenerTodos():LiveData<List<AlquilerEntidad>>
 
     fun obtenerCantidadXtipoVehiculo(tipoV: String):String
 

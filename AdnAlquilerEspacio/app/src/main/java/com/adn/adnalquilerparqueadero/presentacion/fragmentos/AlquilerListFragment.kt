@@ -3,12 +3,11 @@ package com.adn.adnalquilerparqueadero.presentacion.fragmentos
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import com.adn.adnalquilerparqueadero.databinding.FragmentVehiculoBinding
 import com.adn.adnalquilerparqueadero.dominio.servicios.listar.ServicioListarVehiculos
@@ -18,8 +17,7 @@ import com.adn.adnalquilerparqueadero.utilities.InjectUtils
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-class AlquilerListFragment : Fragment()
-{
+class AlquilerListFragment : Fragment() {
 
     private lateinit var binding: FragmentVehiculoBinding
 
@@ -30,18 +28,19 @@ class AlquilerListFragment : Fragment()
         InjectUtils.provideAlquilerListViewModelFactoy(servicioListarVehiculos)
     }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
-    {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        binding = FragmentVehiculoBinding.inflate(inflater,container,false)
+        binding = FragmentVehiculoBinding.inflate(inflater, container, false)
 
-        var adapter = VehiculosAlquiladosAdapter()
+        var adapter = VehiculosAlquiladosAdapter(servicioListarVehiculos)
 
         binding.recyclerViewVehiculo.adapter = adapter
 
-        subscribeUi(adapter,binding)
+        subscribeUi(adapter, binding)
 
         binding.addFragment.setOnClickListener {
             abrirDialog()
@@ -51,8 +50,7 @@ class AlquilerListFragment : Fragment()
     }
 
 
-    fun abrirDialog ()
-    {
+    fun abrirDialog() {
         val fragmentTransaction = activity!!.supportFragmentManager.beginTransaction()
         val prev = activity!!.supportFragmentManager.findFragmentByTag("dialog")
         if (prev != null) {
@@ -63,9 +61,8 @@ class AlquilerListFragment : Fragment()
         dialogFragment.show(fragmentTransaction, "dialog")
     }
 
-    private fun subscribeUi(adapter: VehiculosAlquiladosAdapter, bindin:FragmentVehiculoBinding)
-    {
-        alquilerListViewModel.alquileres.observe(viewLifecycleOwner) {result->
+    private fun subscribeUi(adapter: VehiculosAlquiladosAdapter, bindin: FragmentVehiculoBinding) {
+        alquilerListViewModel.alquileres.observe(viewLifecycleOwner) { result ->
             bindin.tieneParqueos = !result.isNullOrEmpty()
             adapter.submitList(result)
         }
