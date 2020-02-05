@@ -14,8 +14,8 @@ import org.testng.Assert
 
 open class ServicioAgregarAlquilerTest {
 
-
-    @Mock
+    /*
+     @Mock
     lateinit var repositorioImpl: AlquilerRepositorioImpl
 
     @Mock
@@ -51,6 +51,8 @@ open class ServicioAgregarAlquilerTest {
             repositorioImpl.crearAlquiler(alquilerDTO)
         )
     }
+
+     */
 
 
 }
