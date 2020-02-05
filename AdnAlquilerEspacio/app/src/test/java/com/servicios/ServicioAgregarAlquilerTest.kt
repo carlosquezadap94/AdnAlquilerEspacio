@@ -14,30 +14,18 @@ import org.testng.Assert
 
 open class ServicioAgregarAlquilerTest {
 
-    /*
-     @Mock
+
+    @Mock
     lateinit var repositorioImpl: AlquilerRepositorioImpl
 
     @Mock
     lateinit var servicioCrearCrearAlquiler: IserviceCrearAlquiler
-
 
     @Before
     @Throws(Exception::class)
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         repositorioImpl = Mockito.mock(AlquilerRepositorioImpl::class.java)
-
-
-    }
-
-
-    @Test
-    fun validarPlaca() {
-        // var placa_valida= servicioCrearCrearAlquiler.validarPlacaVehiculo("abc12d","AUTOMOVIL")
-
-
-        Assert.assertEquals(1, 1)
     }
 
     @Test
@@ -51,6 +39,24 @@ open class ServicioAgregarAlquilerTest {
             repositorioImpl.crearAlquiler(alquilerDTO)
         )
     }
+
+
+    /*
+
+
+
+
+
+
+    @Test
+    fun validarPlaca() {
+        // var placa_valida= servicioCrearCrearAlquiler.validarPlacaVehiculo("abc12d","AUTOMOVIL")
+
+
+        Assert.assertEquals(1, 1)
+    }
+
+
 
      */
 
