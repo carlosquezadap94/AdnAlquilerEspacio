@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
+import androidx.lifecycle.Observer
 import com.adn.adnalquilerparqueadero.databinding.FragmentVehiculoBinding
 import com.adn.adnalquilerparqueadero.dominio.servicios.listar.ServicioListarVehiculos
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerListViewModel
@@ -62,10 +62,10 @@ class AlquilerListFragment : Fragment() {
     }
 
     private fun subscribeUi(adapter: VehiculosAlquiladosAdapter, bindin: FragmentVehiculoBinding) {
-        alquilerListViewModel.alquileres.observe(viewLifecycleOwner) { result ->
+        alquilerListViewModel.alquileres.observe(activity!!, Observer { result ->
             bindin.tieneParqueos = !result.isNullOrEmpty()
             adapter.submitList(result)
-        }
+        })
 
     }
 

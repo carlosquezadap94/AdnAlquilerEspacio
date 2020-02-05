@@ -9,12 +9,12 @@ class DetalleMotoVehiculoViewModel(
     private val idAlquiler: Int
 ) : ViewModel() {
 
-    val pago :MutableLiveData<Boolean> = MutableLiveData(false)
+    val pago: MutableLiveData<Boolean> = MutableLiveData(false)
     var alquiler = servicioDetalleVehiculo.obtenerAlquiler(idAlquiler)
 
     suspend fun realizarPago() {
         servicioDetalleVehiculo.realizarPago(alquiler)
-        pago.value  = true
+        pago.value = true
     }
 
 

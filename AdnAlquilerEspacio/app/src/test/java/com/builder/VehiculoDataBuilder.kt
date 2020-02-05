@@ -3,7 +3,7 @@ package com.builder
 import com.adn.adnalquilerparqueadero.dominio.modelo.Vehiculo
 
 const val AUTOMOVIL="AUTOMOVIL"
-class VehiculoDataBuilder
+open class VehiculoDataBuilder
 {
     var placa:String?=null
     var cc:Int?=null
@@ -11,14 +11,17 @@ class VehiculoDataBuilder
 
     init {
         this.placa = "ABC123"
-        this.cc = cc
+        this.cc = 200
         this.tipoVehiculo = AUTOMOVIL
     }
 
 
 
 
-    public fun build():Vehiculo = Vehiculo(placa!!,cc!!,tipoVehiculo!!)
+    fun build():Vehiculo
+        {
+            return Vehiculo(placa!!,cc!!,tipoVehiculo!!)
+        }
 
 
 

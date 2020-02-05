@@ -22,7 +22,7 @@ class VehiculosAlquiladosAdapter(val servicioListarVehiculos: ServicioListarVehi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehiculoViewHolder {
         return VehiculoViewHolder(
             DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context), R.layout.vehiculo_item ,parent, false
+                LayoutInflater.from(parent.context), R.layout.vehiculo_item, parent, false
             )
         )
     }

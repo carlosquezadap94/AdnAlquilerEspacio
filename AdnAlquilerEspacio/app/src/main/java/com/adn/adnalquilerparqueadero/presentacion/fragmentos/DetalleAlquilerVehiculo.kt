@@ -26,9 +26,7 @@ import javax.inject.Inject
  */
 class DetalleAlquilerVehiculo : Fragment() {
 
-
     private val args: DetalleAlquilerVehiculoArgs by navArgs()
-
 
     @Inject
     lateinit var servicioDetalleVehiculo: ServicioDetalleVehiculo
@@ -37,12 +35,10 @@ class DetalleAlquilerVehiculo : Fragment() {
         InjectUtils.provideAlquilerDetalleViewModelFactoy(args.alquilerId, servicioDetalleVehiculo)
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
 
         val binding = DataBindingUtil
             .inflate<FragmentDescripcionBinding>(
@@ -54,7 +50,6 @@ class DetalleAlquilerVehiculo : Fragment() {
                 viewModel = detalleVehiculoViewModel
                 lifecycleOwner = viewLifecycleOwner
             }
-
 
         binding.btnPagar.setOnClickListener {
 
@@ -68,7 +63,6 @@ class DetalleAlquilerVehiculo : Fragment() {
 
         return binding.root
     }
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

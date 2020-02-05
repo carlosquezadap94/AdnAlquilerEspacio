@@ -10,7 +10,8 @@ import kotlinx.coroutines.runBlocking
 import java.util.*
 import javax.inject.Inject
 
-class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao) : IAlquilerRepositorio {
+open class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao) :
+    IAlquilerRepositorio {
     var alquilerDao: AlquilerDao
 
     init {
@@ -18,26 +19,25 @@ class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao) : IA
     }
 
 
-    override suspend fun crearAlquiler(alquilerDTO: AlquilerDTO) {
+    override fun crearAlquiler(alquilerDTO: AlquilerDTO) = runBlocking {
         val alquilerEntity = AlquilerEntidad(
             estaActivo = true,
             horaLlegada = Date(),
             vehiculo = alquilerDTO.vehiculo
         )
 
-        return alquilerDao.insert(alquilerEntity)
+        alquilerDao.insert(alquilerEntity)
     }
 
-    override fun obtenerAlquilerPorPlaca(placa: String) = runBlocking {
-        val alquilerEntidad = alquilerDao.getAlquiler(placa)
-        convertToDomain(alquilerEntidad)
+    override fun obtenerAlquilerPorPlaca(placa: String): Alquiler {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 
     override fun actualizarAlquiler(alquiler: Alquiler) {
         alquiler.horaSalida = Date()
         alquiler.estaActivo = false
-        alquiler.precio =alquiler.precio
+        alquiler.precio = alquiler.precio
         alquilerDao.actualizarAlquiler(convertToEntity(alquiler))
     }
 

@@ -2,10 +2,10 @@ package com.adn.adnalquilerparqueadero.presentacion.fragmentos
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.FragmentControlerBinding
 import com.adn.adnalquilerparqueadero.presentacion.adapters.ParqueaderoPageAdapter
@@ -13,14 +13,12 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 const val VEHICULO_PAGE_INDEX = 0
 
-class ControlerFragment : Fragment()
-{
+class ControlerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View?
-    {
-        val binding = FragmentControlerBinding.inflate(inflater,container,false)
+    ): View? {
+        val binding = FragmentControlerBinding.inflate(inflater, container, false)
 
         val viewPager = binding.viewPager
         viewPager.adapter = ParqueaderoPageAdapter(this)

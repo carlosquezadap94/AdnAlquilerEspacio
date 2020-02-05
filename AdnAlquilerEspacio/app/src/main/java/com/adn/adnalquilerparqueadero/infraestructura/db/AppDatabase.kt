@@ -8,7 +8,6 @@ import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntid
 
 @Database(entities = [AlquilerEntidad::class], version = 1, exportSchema = false)
 @TypeConverters(DateConverters::class)
-abstract class AppDatabase:RoomDatabase()
-{
+abstract class AppDatabase : RoomDatabase() {
     abstract fun alquilerDao(): AlquilerDao
 }

@@ -13,10 +13,8 @@ abstract class CrearAlquilerModule {
     @ContributesAndroidInjector
     abstract fun bindFragmentCrear(): CrearAlquilerDialogFragment
 
-
     @ContributesAndroidInjector
     abstract fun bindFragmentListar(): AlquilerListFragment
-
 
     @ContributesAndroidInjector
     abstract fun bindFragmentDetalle(): DetalleAlquilerVehiculo

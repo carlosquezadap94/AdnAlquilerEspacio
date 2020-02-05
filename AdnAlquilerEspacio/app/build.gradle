@@ -121,6 +121,8 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    kaptTest "com.google.dagger:dagger-compiler:$dagger_version"
+
 
 
     //Rx
@@ -133,6 +135,11 @@ dependencies {
     androidTestImplementation 'junit:junit:4.13'
     testImplementation "androidx.room:room-testing:$rootProject.roomVersion"
     testImplementation 'org.robolectric:robolectric:4.3.1'
+
+    testImplementation "org.mockito:mockito-all:1.10.19"
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+
 
 
     //Debug database
@@ -172,11 +179,6 @@ dependencies {
     testImplementation 'org.powermock:powermock-core:1.7.4'
     testImplementation 'org.powermock:powermock-module-testng:1.7.4'
     testImplementation 'org.powermock:powermock-api-mockito2:1.7.4'
-
-
-
-
-
 
 
 }

@@ -1,6 +1,5 @@
 package com.adn.adnalquilerparqueadero.infraestructura.db.entidades
 
-import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -12,29 +11,35 @@ import java.util.*
 data class AlquilerEntidad(
 
     @PrimaryKey(autoGenerate = true)
-    var id: Int?=null,
+    var id: Int? = null,
 
     @Embedded(prefix = "vehiculo_")
-    var vehiculo: Vehiculo?=null,
+    var vehiculo: Vehiculo? = null,
 
-    var horaLlegada: Date?= Date(),
+    var horaLlegada: Date? = Date(),
 
-    var horaSalida: Date?=Date(),
+    var horaSalida: Date? = Date(),
 
-    var estaActivo: Boolean=true,
+    var estaActivo: Boolean = true,
 
-    var precio:Float =0f
-){
+    var precio: Float = 0f
+) {
 
 
     companion object {
         fun from(alquiler: Alquiler): AlquilerEntidad {
-            return AlquilerEntidad(alquiler.id, alquiler.vehiculo, alquiler.horaLlegada, alquiler.horaSalida, alquiler.estaActivo)
+            return AlquilerEntidad(
+                alquiler.id,
+                alquiler.vehiculo,
+                alquiler.horaLlegada,
+                alquiler.horaSalida,
+                alquiler.estaActivo
+            )
         }
     }
 
     fun toAlquiler(): Alquiler {
-        return Alquiler(id, vehiculo, horaLlegada,horaSalida, estaActivo)
+        return Alquiler(id, vehiculo, horaLlegada, horaSalida, estaActivo)
     }
 }
 

@@ -1,6 +1,5 @@
 package com.adn.adnalquilerparqueadero.presentacion.fragmentos
 
-import android.R
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
@@ -16,8 +15,7 @@ import com.adn.adnalquilerparqueadero.databinding.FragmentDialogBinding
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.excepciones.ExcepcionNegocio
 import com.adn.adnalquilerparqueadero.dominio.modelo.Vehiculo
-import com.adn.adnalquilerparqueadero.dominio.servicios.crear.AUTOMOVIL
-import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearCrearAlquiler
+import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearAlquiler
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.VehiculoViewModel
 import com.adn.adnalquilerparqueadero.utilities.Callback
 import com.adn.adnalquilerparqueadero.utilities.InjectUtils
@@ -30,13 +28,14 @@ import javax.inject.Inject
 
 
 private const val MOTOCICLETA = "MOTOCICLETA"
-val VEHICULOS = arrayOf("AUTOMOVIL", "MOTOCICLETA")
+private const val AUTOMOVIL = "AUTOMOVIL"
+private val VEHICULOS = arrayOf("AUTOMOVIL", "MOTOCICLETA")
 
 class CrearAlquilerDialogFragment : DialogFragment() {
 
 
     @Inject
-    lateinit var serviceAlquilerDominio: ServicioCrearCrearAlquiler
+    lateinit var serviceAlquilerDominio: ServicioCrearAlquiler
 
     private val vehiculoRegistroviewModel: VehiculoViewModel by viewModels {
         InjectUtils.provideAlquilerViewModelFactoy(
@@ -54,7 +53,9 @@ class CrearAlquilerDialogFragment : DialogFragment() {
 
         val spinner = binding.spinnerVehiculos
 
-        val adapter = ArrayAdapter<String>(activity!!, R.layout.simple_spinner_item, VEHICULOS)
+        val adapter =
+            ArrayAdapter<String>(activity!!, android.R.layout.simple_spinner_item, VEHICULOS)
+
         spinner.adapter = adapter
 
         binding.apply {
@@ -65,11 +66,11 @@ class CrearAlquilerDialogFragment : DialogFragment() {
             callback = object : Callback {
                 override fun click() {
 
-                    var placa = binding.editextPlaca.text.toString()
+                    val placa = binding.editextPlaca.text.toString()
                     var cc = binding.editextCc.text.toString()
-                    var tipoVehiculo = binding.spinnerVehiculos.selectedItem.toString()
+                    val tipoVehiculo = binding.spinnerVehiculos.selectedItem.toString()
 
-                    var condicion: Boolean
+                    val condicion: Boolean
 
                     if (tipoVehiculo.equals(AUTOMOVIL)) {
                         if (cc.isNullOrEmpty())
@@ -114,13 +115,12 @@ class CrearAlquilerDialogFragment : DialogFragment() {
         return binding.root
     }
 
-    suspend fun agregarAlquiler(cc: String, placa: String, tipoVehiculo: String) {
+    fun agregarAlquiler(cc: String, placa: String, tipoVehiculo: String) {
         //Todo Implementar factory
         val vehiculo = Vehiculo(placa, cc.toInt(), tipoVehiculo)
 
         //Todo Implementar Factory
         val alquiler = AlquilerDTO(vehiculo, Date())
-
 
         try {
             vehiculoRegistroviewModel.agregarAlquiler(alquiler)
@@ -133,13 +133,12 @@ class CrearAlquilerDialogFragment : DialogFragment() {
 
     }
 
-    suspend fun validarPlaca(placa: String): Boolean {
+    fun validarPlaca(placa: String): Boolean {
         return vehiculoRegistroviewModel.placaExiste(placa)
     }
 
 
     override fun onResume() {
-
         val window = dialog!!.window ?: return
         val params = window.attributes
         params.width = 800
