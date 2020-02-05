@@ -25,8 +25,8 @@ private val PRECIO_POR_HORA = mapOf(
 
 class PagoPorTiempo(val siguiente: IHandler) : IHandler, ICalcularTiempo {
 
-    override fun calcularHoras(dia_inicio: Date, dia_fin: Date): Float {
-        val diferencia = dia_fin.time - dia_inicio.time
+    override fun calcularHoras(diaInicio: Date, diaFin: Date): Float {
+        val diferencia = diaFin.time - diaInicio.time
         val obtenerFuncionTecho = ((diferencia) * 1.0 / ((60 * 60 * 1000) * 1.0))
         val techo: Int = Math.ceil(obtenerFuncionTecho).toInt()
         return techo.toFloat()

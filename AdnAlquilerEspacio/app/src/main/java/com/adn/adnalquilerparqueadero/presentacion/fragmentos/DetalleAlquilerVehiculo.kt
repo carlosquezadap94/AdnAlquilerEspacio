@@ -68,4 +68,6 @@ class DetalleAlquilerVehiculo : Fragment() {
         super.onAttach(context)
         AndroidSupportInjection.inject(this)
     }
+
+
 }

@@ -72,7 +72,7 @@ class CrearAlquilerDialogFragment : DialogFragment() {
 
                     val condicion: Boolean
 
-                    if (tipoVehiculo.equals(AUTOMOVIL)) {
+                    if (tipoVehiculo.equals(AUTOMOVIL)){
                         if (cc.isNullOrEmpty())
                             cc = "0"
                         condicion = !placa.isNullOrEmpty()
@@ -101,7 +101,8 @@ class CrearAlquilerDialogFragment : DialogFragment() {
                         }
 
 
-                    } else {
+                    }
+                    else {
                         Toast.makeText(
                             activity,
                             getString(com.adn.adnalquilerparqueadero.R.string.ingresar_correctos),
@@ -116,10 +117,9 @@ class CrearAlquilerDialogFragment : DialogFragment() {
     }
 
     fun agregarAlquiler(cc: String, placa: String, tipoVehiculo: String) {
-        //Todo Implementar factory
+
         val vehiculo = Vehiculo(placa, cc.toInt(), tipoVehiculo)
 
-        //Todo Implementar Factory
         val alquiler = AlquilerDTO(vehiculo, Date())
 
         try {

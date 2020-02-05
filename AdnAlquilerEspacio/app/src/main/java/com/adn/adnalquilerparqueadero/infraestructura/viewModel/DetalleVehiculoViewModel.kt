@@ -2,6 +2,8 @@ package com.adn.adnalquilerparqueadero.infraestructura.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.ServicioDetalleVehiculo
 
 class DetalleMotoVehiculoViewModel(
@@ -10,11 +12,13 @@ class DetalleMotoVehiculoViewModel(
 ) : ViewModel() {
 
     val pago: MutableLiveData<Boolean> = MutableLiveData(false)
-    var alquiler = servicioDetalleVehiculo.obtenerAlquiler(idAlquiler)
+    var alquiler = MutableLiveData<Alquiler>(servicioDetalleVehiculo.obtenerAlquiler(idAlquiler))
 
     suspend fun realizarPago() {
-        servicioDetalleVehiculo.realizarPago(alquiler)
-        pago.value = true
+        viewModelScope.let {
+            alquiler.value!!.precio = servicioDetalleVehiculo.realizarPago(alquiler.value!!)
+        }
+
     }
 
 

@@ -15,7 +15,7 @@
 
         <variable
             name="alquiler"
-            type="com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad"/>
+            type="com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler"/>
 
     </data>
 

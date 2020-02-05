@@ -1,5 +1,6 @@
 package com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
@@ -29,19 +30,17 @@ open class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao)
         alquilerDao.insert(alquilerEntity)
     }
 
-    override fun obtenerAlquilerPorPlaca(placa: String): Alquiler {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-
-    override fun actualizarAlquiler(alquiler: Alquiler) {
+    override fun actualizarAlquiler(alquiler: Alquiler):Float {
         alquiler.horaSalida = Date()
         alquiler.estaActivo = false
-        alquiler.precio = alquiler.precio
         alquilerDao.actualizarAlquiler(convertToEntity(alquiler))
+        return alquiler.precio
     }
 
-    override fun obtenerAlquilerPorId(id: Int) = convertToDomain(alquilerDao.getAlquilerById(id))
+    override fun obtenerAlquilerPorId(id: Int):Alquiler
+    {
+        return convertToDomain(alquilerDao.getAlquilerById(id))
+    }
 
     override fun estaAlquilado(placa: String) = runBlocking {
         alquilerDao.estaAlquilado(placa)
@@ -54,7 +53,18 @@ open class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao)
             }
         }
 
-    override fun obtenerTodos() = alquilerDao.obtenerTodos()
+    override fun obtenerTodos():LiveData<List<Alquiler>> {
+
+        var alquileres:LiveData<List<AlquilerEntidad>> = alquilerDao.obtenerTodos()
+
+        val alquileresToReturn =Transformations.map(alquileres) {
+            it.map {
+                it.toAlquiler()
+            }
+        }
+
+        return alquileresToReturn
+    }
 
 
     override fun obtenerCantidadXtipoVehiculo(tipoV: String) = runBlocking {

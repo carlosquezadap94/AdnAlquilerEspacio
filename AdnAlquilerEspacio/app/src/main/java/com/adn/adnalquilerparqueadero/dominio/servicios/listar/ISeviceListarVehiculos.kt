@@ -6,6 +6,6 @@ import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntid
 
 interface ISeviceListarVehiculos {
 
-    fun obtenerTodos(): LiveData<List<AlquilerEntidad>>
+    fun obtenerTodos():  LiveData<List<Alquiler>>
     fun obtenerAlquileTipoV(tipoVehiculo: String): LiveData<List<Alquiler>>
 }

@@ -17,26 +17,30 @@ import com.adn.adnalquilerparqueadero.utilities.InjectUtils
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
+
 class AlquilerListFragment : Fragment() {
 
     private lateinit var binding: FragmentVehiculoBinding
+    lateinit var adapter: VehiculosAlquiladosAdapter
 
     @Inject
     lateinit var servicioListarVehiculos: ServicioListarVehiculos
 
-    private val alquilerListViewModel: AlquilerListViewModel by viewModels {
-        InjectUtils.provideAlquilerListViewModelFactoy(servicioListarVehiculos)
+    private val vehiculoListviewModel: AlquilerListViewModel by viewModels {
+        InjectUtils.provideAlquilerListViewModelFactoy(
+            servicioListarVehiculos
+        )
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentVehiculoBinding.inflate(inflater, container, false)
 
-        var adapter = VehiculosAlquiladosAdapter(servicioListarVehiculos)
+        adapter = VehiculosAlquiladosAdapter(servicioListarVehiculos)
 
         binding.recyclerViewVehiculo.adapter = adapter
 
@@ -48,7 +52,6 @@ class AlquilerListFragment : Fragment() {
 
         return binding.root
     }
-
 
     fun abrirDialog() {
         val fragmentTransaction = activity!!.supportFragmentManager.beginTransaction()
@@ -62,17 +65,18 @@ class AlquilerListFragment : Fragment() {
     }
 
     private fun subscribeUi(adapter: VehiculosAlquiladosAdapter, bindin: FragmentVehiculoBinding) {
-        alquilerListViewModel.alquileres.observe(activity!!, Observer { result ->
+        val obter = vehiculoListviewModel.obtenerTodos()
+        obter.observe(viewLifecycleOwner, Observer { result ->
             bindin.tieneParqueos = !result.isNullOrEmpty()
             adapter.submitList(result)
         })
 
     }
 
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         AndroidSupportInjection.inject(this)
     }
+
 
 }

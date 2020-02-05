@@ -19,11 +19,12 @@ class ServicioDetalleVehiculo @Inject constructor(alquilerRepo: AlquilerReposito
     override fun obtenerAlquiler(id: Int) = iAlquilerRepositorioImpl.obtenerAlquilerPorId(id)
 
 
-    override suspend fun realizarPago(alquiler: Alquiler) {
+    override suspend fun realizarPago(alquiler: Alquiler):Float {
         val adicionalMoto = AdicionalMoto()
         val pagoPorTiempo = PagoPorTiempo(adicionalMoto)
         alquiler.precio = pagoPorTiempo.calcularPago(alquiler)
-        return iAlquilerRepositorioImpl.actualizarAlquiler(alquiler)
+        iAlquilerRepositorioImpl.actualizarAlquiler(alquiler)
+        return alquiler.precio
     }
 
 

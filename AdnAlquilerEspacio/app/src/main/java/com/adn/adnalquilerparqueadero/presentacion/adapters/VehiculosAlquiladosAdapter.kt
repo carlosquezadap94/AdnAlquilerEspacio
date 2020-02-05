@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.VehiculoItemBinding
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.servicios.listar.ServicioListarVehiculos
-import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.AlquilerListViewModel
 import com.adn.adnalquilerparqueadero.presentacion.fragmentos.ControlerFragmentDirections
 
 class VehiculosAlquiladosAdapter(val servicioListarVehiculos: ServicioListarVehiculos) :
-    ListAdapter<AlquilerEntidad, RecyclerView.ViewHolder>(AlquilerDiffCallback()) {
+    ListAdapter<Alquiler, RecyclerView.ViewHolder>(AlquilerDiffCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehiculoViewHolder {
@@ -41,13 +41,13 @@ class VehiculosAlquiladosAdapter(val servicioListarVehiculos: ServicioListarVehi
             }
         }
 
-        private fun navigarADetalle(alquiler: AlquilerEntidad, it: View?) {
+        private fun navigarADetalle(alquiler: Alquiler, it: View?) {
             val direction =
                 ControlerFragmentDirections.actionControlerFragmentToDescripcionFragment(alquiler.id!!)
             it!!.findNavController().navigate(direction)
         }
 
-        fun bind(item: AlquilerEntidad, servicioListarVehiculos: ServicioListarVehiculos) {
+        fun bind(item: Alquiler, servicioListarVehiculos: ServicioListarVehiculos) {
 
 
             with(binding) {
@@ -64,12 +64,12 @@ class VehiculosAlquiladosAdapter(val servicioListarVehiculos: ServicioListarVehi
 
 }
 
-private class AlquilerDiffCallback : DiffUtil.ItemCallback<AlquilerEntidad>() {
-    override fun areItemsTheSame(oldItem: AlquilerEntidad, newItem: AlquilerEntidad): Boolean {
+private class AlquilerDiffCallback : DiffUtil.ItemCallback<Alquiler>() {
+    override fun areItemsTheSame(oldItem: Alquiler, newItem: Alquiler): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: AlquilerEntidad, newItem: AlquilerEntidad): Boolean {
+    override fun areContentsTheSame(oldItem: Alquiler, newItem: Alquiler): Boolean {
         return oldItem == newItem
     }
 

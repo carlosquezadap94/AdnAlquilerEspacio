@@ -7,12 +7,12 @@ import java.util.regex.Pattern
 private const val AUTOMOVIL = "AUTOMOVIL"
 private const val MOTOCICLETA = "MOTOCICLETA"
 
-private const val PATTERN_AUTO = "^[a-zA-Z]{3}[0-9]{3}\$"
-private const val PATTERN_MOTO = "^[a-zA-Z]{3}[0-9]{2}[a-zA-Z]\$"
+private const val EXPRE_REGU_AUTO = "^[a-zA-Z]{3}[0-9]{3}\$"
+private const val EXPRE_REGU_MOTO = "^[a-zA-Z]{3}[0-9]{2}[a-zA-Z]\$"
 
 private val PATTERN_PLACA_VEHICULO = mapOf(
-    AUTOMOVIL to PATTERN_AUTO,
-    MOTOCICLETA to PATTERN_MOTO
+    AUTOMOVIL to EXPRE_REGU_AUTO,
+    MOTOCICLETA to EXPRE_REGU_MOTO
 )
 
 class PlacaCorrecta(val siguiente: ICrearChain) : ICrearChain {

@@ -2,15 +2,16 @@ package com.adn.adnalquilerparqueadero.infraestructura.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 
 @Dao
 interface AlquilerDao {
     @Query("SELECT * FROM alquilerEspacio ae WHERE ae.vehiculo_placa = :placa AND ae.estaActivo = 1")
-    fun getAlquiler(placa: String): AlquilerEntidad
+    fun getAlquiler(placa: String): LiveData<AlquilerEntidad>
 
     @Query("SELECT * FROM alquilerEspacio ae WHERE ae.id = :id AND ae.estaActivo = 1")
-    fun getAlquilerByIdLiveData(id: Int): AlquilerEntidad
+    fun getAlquilerByIdLiveData(id: Int): LiveData<AlquilerEntidad>
 
     @Query("SELECT * FROM alquilerEspacio ae WHERE ae.id = :id AND ae.estaActivo = 1")
     fun getAlquilerById(id: Int): AlquilerEntidad
