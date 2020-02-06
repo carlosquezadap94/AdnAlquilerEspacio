@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.FragmentDialogBinding
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.excepciones.ExcepcionNegocio
@@ -73,6 +74,7 @@ class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos {
                     var cc = binding.editextCc.text.toString()
                     val tipoVehiculo = binding.spinnerVehiculos.selectedItem.toString()
 
+
                     val condicion: Boolean
 
                     if (tipoVehiculo.equals(AUTOMOVIL)) {
@@ -126,16 +128,16 @@ class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos {
 
         try {
             if (vehiculoRegistroviewModel.agregarAlquiler(alquiler)) {
-                Toast.makeText(activity, "Registro Agregado", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, resources.getString(R.string.registro_agregado), Toast.LENGTH_SHORT).show()
                 limpiar()
             } else {
-                Toast.makeText(activity, "Error!", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, getString(R.string.error), Toast.LENGTH_SHORT).show()
             }
 
         } catch (e: ExcepcionNegocio) {
-            Toast.makeText(activity, e.mensaje, Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, e.mensaje, Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
-            Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
         }
 
 

@@ -6,6 +6,8 @@
     <string name="vehiculos">Vehiculos</string>
     <string name="vehiculo_ya_registrado">Ya se registro un vehiculo con esta placa</string>
     <string name="ingresar_correctos">Deben ingresar todos los datos</string>
+    <string name="registro_agregado">Registro Agregado</string>
+    <string name="error">Error!</string>
 
 
     <string-array name="Vehiculos">

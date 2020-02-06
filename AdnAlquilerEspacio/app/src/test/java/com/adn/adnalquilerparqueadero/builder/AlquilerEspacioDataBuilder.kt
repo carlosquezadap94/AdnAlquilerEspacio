@@ -1,4 +1,4 @@
-package com.builder
+package com.adn.adnalquilerparqueadero.builder
 
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.modelo.Vehiculo
