@@ -17,6 +17,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
     }
     buildTypes {
         release {
@@ -29,36 +34,6 @@ android {
 
         }
     }
-
-    defaultConfig {
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = ["room.schemaLocation":
-                                     "$projectDir/schemas".toString()]
-            }
-        }
-    }
-    sourceSets {
-        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
-    }
-    testOptions {
-        unitTests.returnDefaultValues = true
-    }
-
-    jacoco {
-        version "0.7.1.201405082137"
-    }
-    task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
-        group = "Reporting"
-        description = "Generate Jacoco coverage reports after running tests."
-        reports {
-            xml.enabled = true
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
     // work-runtime-ktx 2.1.0 and above now requires Java 8
     kotlinOptions {
         jvmTarget = "1.8"
@@ -68,8 +43,16 @@ android {
     }
 }
 
-kapt {
-    generateStubs = true
+jacoco {
+    version "0.7.1.201405082137"
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        xml.enabled = true
+    }
 }
 
 

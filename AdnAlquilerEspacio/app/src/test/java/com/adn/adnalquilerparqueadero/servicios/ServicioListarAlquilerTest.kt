@@ -39,7 +39,7 @@ class ServicioListarAlquilerTest {
         //Act
         val respuestaAgregar = servicioListarVehiculos.obtenerTodos()
 
-        //Assert+
+        //Assert
         Assert.assertEquals(
             repositorioImpl.obtenerTodos().value!!.get(0).id,
             respuestaAgregar.value!!.get(0).id

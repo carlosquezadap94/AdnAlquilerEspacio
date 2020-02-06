@@ -1,6 +1,7 @@
 package com.adn.adnalquilerparqueadero.servicios
 
 import com.adn.adnalquilerparqueadero.builder.AlquilerEspacioDataBuilder
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.ServicioDetalleVehiculo
 import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
 import org.junit.Before
@@ -30,9 +31,25 @@ open class ServicioDetalleTest {
         var alquiler = AlquilerEspacioDataBuilder().build()
 
         //Act
-        val valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler)
+        var valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler)
 
-        //Assert+
+        //Assert
+        Assert.assertEquals(valorApagar, 11000f)
+
+        //Segundo test
+
+        alquiler= Alquiler()
+        //Act
+        valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler)
+        //Assert
+        Assert.assertEquals(valorApagar, 11000f)
+
+        //Tercer test
+
+        var alquiler_null:Alquiler? = null
+        //Act
+        valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler_null!!)
+        //Assert
         Assert.assertEquals(valorApagar, 11000f)
 
     }

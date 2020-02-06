@@ -1,5 +1,6 @@
 package com.adn.adnalquilerparqueadero.presentacion.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,6 +63,7 @@ private class AlquilerDiffCallback : DiffUtil.ItemCallback<Alquiler>() {
         return oldItem.id == newItem.id
     }
 
+    @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(oldItem: Alquiler, newItem: Alquiler): Boolean {
         return oldItem == newItem
     }

@@ -41,7 +41,7 @@ open class ServicioAgregarAlquilerTest {
         //Act
         val respuestaAgregar = servicioCrearCrearAlquiler.agregarAlquiler(alquilerDTO)
 
-        //Assert+
+        //Assert
         Assert.assertEquals(repositorioImpl.crearAlquiler(alquilerDTO), respuestaAgregar)
     }
 
@@ -55,8 +55,15 @@ open class ServicioAgregarAlquilerTest {
         val respuestaAgregar =
             servicioCrearCrearAlquiler.estaAlquilado(alquilerDTO.vehiculo.placa!!)
 
-        //Assert+
+        //Assert
         Assert.assertEquals(repositorioImpl.crearAlquiler(alquilerDTO), respuestaAgregar)
     }
 
+
+    @Test
+    fun test() {
+
+        //Assert
+        Assert.assertEquals(1, 1)
+    }
 }
