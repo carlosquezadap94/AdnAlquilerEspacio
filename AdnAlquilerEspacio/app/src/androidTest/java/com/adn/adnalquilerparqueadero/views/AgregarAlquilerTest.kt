@@ -28,7 +28,7 @@ class AgregarAlquilerTest {
     }
 
 
-    @Ignore
+
     @Test
     fun agregarVehiculo() {
         onView(withId(R.id.viewPager)).perform(ViewActions.swipeLeft())
@@ -49,7 +49,7 @@ class AgregarAlquilerTest {
         objectUtils!!.sleep(1)
         objectUtils!!.matchToast(R.string.vehiculo_ya_registrado)
     }
-    @Ignore
+
     @Test
     fun placaMala() {
         onView(withId(R.id.viewPager)).perform(ViewActions.swipeLeft())
@@ -62,7 +62,7 @@ class AgregarAlquilerTest {
         objectUtils!!.matchToast(R.string.placa_invalida_auto)
     }
 
-    @Ignore
+
     @Test
     fun EspacioVacio() {
         onView(withId(R.id.viewPager)).perform(ViewActions.swipeLeft())

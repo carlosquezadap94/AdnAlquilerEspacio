@@ -26,7 +26,6 @@ class ListarAlquileresTest {
         objectUtils = ObjectUtils()
     }
 
-    @Ignore
     @Test
     fun listarVehiculo() {
         //RecyclerView visible
