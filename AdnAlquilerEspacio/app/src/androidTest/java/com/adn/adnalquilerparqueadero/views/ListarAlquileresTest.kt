@@ -9,6 +9,7 @@ import com.adn.adnalquilerparqueadero.PageObject
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.presentacion.actividades.MainActivity
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 
@@ -25,7 +26,7 @@ class ListarAlquileresTest {
         pageObject = PageObject()
     }
 
-
+    @Ignore
     @Test
     fun listarVehiculo() {
         //RecyclerView visible

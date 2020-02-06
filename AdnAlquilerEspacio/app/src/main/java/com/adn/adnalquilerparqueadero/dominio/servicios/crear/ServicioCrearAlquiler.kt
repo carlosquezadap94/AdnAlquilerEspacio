@@ -21,8 +21,7 @@ private val VEHICULO_CANTIDAD = mapOf(
 
 
 open class ServicioCrearAlquiler @Inject constructor(alquilerRepo: AlquilerRepositorioImpl) :
-    IserviceCrearAlquiler,
-    IServiceValidaciones {
+    IserviceCrearAlquiler, IServiceValidaciones {
 
     private var iAlquilerRepositorioImpl: AlquilerRepositorioImpl
 
@@ -51,12 +50,12 @@ open class ServicioCrearAlquiler @Inject constructor(alquilerRepo: AlquilerRepos
             throw ExcepcionNegocio("Parqueadero lleno para ${alquilerDTO.vehiculo.tipoVehiculo}")
         }
 
+
     }
 
     override fun estaAlquilado(placa: String): Boolean {
         return iAlquilerRepositorioImpl.estaAlquilado(placa)
     }
-
 
     override fun validarEspacioDisponible(cantidad: String, tipoVehiculo: String): Boolean {
         for ((key, value) in VEHICULO_CANTIDAD) {
@@ -69,6 +68,5 @@ open class ServicioCrearAlquiler @Inject constructor(alquilerRepo: AlquilerRepos
         }
         return false
     }
-
 
 }

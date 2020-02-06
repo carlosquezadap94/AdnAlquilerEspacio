@@ -87,14 +87,13 @@ class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos {
 
                     if (condicion) {
 
-
                         val uiScope = CoroutineScope(Dispatchers.Main)
 
                         uiScope.launch {
                             if (validarPlaca(placa)) {
                                 Toast.makeText(
                                     activity!!.applicationContext,
-                                    getString(com.adn.adnalquilerparqueadero.R.string.vehiculo_ya_registrado),
+                                    getString(R.string.vehiculo_ya_registrado),
                                     Toast.LENGTH_SHORT
                                 ).show()
 
@@ -109,7 +108,7 @@ class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos {
                     } else {
                         Toast.makeText(
                             activity,
-                            getString(com.adn.adnalquilerparqueadero.R.string.ingresar_correctos),
+                            getString(R.string.ingresar_correctos),
                             Toast.LENGTH_SHORT
                         ).show()
                     }

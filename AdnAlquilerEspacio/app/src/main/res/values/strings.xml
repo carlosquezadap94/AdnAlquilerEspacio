@@ -7,6 +7,8 @@
     <string name="vehiculo_ya_registrado">Ya se registro un vehiculo con esta placa</string>
     <string name="ingresar_correctos">Deben ingresar todos los datos</string>
     <string name="registro_agregado">Registro Agregado</string>
+    <string name="placa_invalida_auto">Placa no valida para AUTOMOVIL</string>
+    <string name="placa_invalida_motocicleta">Placa no valida para MOTOCICLETA</string>
     <string name="error">Error!</string>
 
 
