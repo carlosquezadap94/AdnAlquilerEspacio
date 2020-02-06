@@ -1,7 +1,6 @@
 package com.adn.adnalquilerparqueadero.dominio.repositorio
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 
@@ -9,7 +8,7 @@ interface IAlquilerRepositorio {
 
     fun crearAlquiler(alquilerDTO: AlquilerDTO): Boolean
 
-    fun actualizarAlquiler(alquiler: Alquiler):LiveData<Alquiler>
+    fun actualizarAlquiler(alquiler: Alquiler): LiveData<Alquiler>
 
     fun obtenerAlquilerPorId(id: Int): Alquiler
 

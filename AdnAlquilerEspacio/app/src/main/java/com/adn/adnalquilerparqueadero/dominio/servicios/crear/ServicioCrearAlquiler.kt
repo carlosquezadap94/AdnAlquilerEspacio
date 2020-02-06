@@ -36,7 +36,7 @@ open class ServicioCrearAlquiler @Inject constructor(alquilerRepo: AlquilerRepos
             iAlquilerRepositorioImpl.obtenerCantidadXtipoVehiculo(alquilerDTO.vehiculo.tipoVehiculo!!)
 
 
-        if (validarEspacioDisponible(cantidad, alquilerDTO.vehiculo.tipoVehiculo!!)) {
+        if (validarEspacioDisponible(cantidad, alquilerDTO.vehiculo.tipoVehiculo!!)){
             val primerLetra = PrimerLetra()
             val placaCorrecta = PlacaCorrecta(primerLetra)
 
@@ -49,7 +49,6 @@ open class ServicioCrearAlquiler @Inject constructor(alquilerRepo: AlquilerRepos
         } else {
             throw ExcepcionNegocio("Parqueadero lleno para ${alquilerDTO.vehiculo.tipoVehiculo}")
         }
-
 
     }
 

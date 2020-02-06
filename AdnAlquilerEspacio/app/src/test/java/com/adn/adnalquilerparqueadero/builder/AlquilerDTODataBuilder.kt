@@ -5,7 +5,7 @@ import com.adn.adnalquilerparqueadero.dominio.modelo.Vehiculo
 import java.text.SimpleDateFormat
 import java.util.*
 
-open class AlquilerDTODataBuilder() {
+open class AlquilerDTODataBuilder {
 
 
     var vehiculo: Vehiculo
@@ -13,7 +13,7 @@ open class AlquilerDTODataBuilder() {
 
     init {
 
-        val date = "02-Feb-2020 08:00:00"
+        val date = "06-Feb-2020 08:00:00"
         val formatterDate = SimpleDateFormat("dd-MMM-yyyy HH:mm:ss")
         val date1: Date = formatterDate.parse(date)!!
 
@@ -21,9 +21,9 @@ open class AlquilerDTODataBuilder() {
         this.horaLlegada = date1
     }
 
-    fun build(): AlquilerDTO
-    {
-        return AlquilerDTO(vehiculo,horaLlegada)
+    fun build(): AlquilerDTO {
+        return AlquilerDTO(vehiculo, horaLlegada)
     }
+
 
 }

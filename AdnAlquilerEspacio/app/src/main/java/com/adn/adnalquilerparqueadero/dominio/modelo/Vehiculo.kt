@@ -11,9 +11,9 @@ las otras clases, debe marcarla con la palabra clave abierta;
   por lo que no se puede heredar ".
  */
 open class Vehiculo(placa: String, cc: Int, tipoVehiculo: String) {
-    var placa: String? = null
-    var cc: Int? = null
-    var tipoVehiculo: String? = null
+     var placa: String? = null
+     var cc: Int? = null
+     var tipoVehiculo: String? = null
 
     init {
         this.placa = placa

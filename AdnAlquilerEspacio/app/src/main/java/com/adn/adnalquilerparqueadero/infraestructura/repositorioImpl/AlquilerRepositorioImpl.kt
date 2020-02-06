@@ -32,16 +32,15 @@ open class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao)
         return@runBlocking (alquilerDao.insert(alquilerEntity) != 0L)
     }
 
-    override fun actualizarAlquiler(alquiler: Alquiler):LiveData<Alquiler> {
+    override fun actualizarAlquiler(alquiler: Alquiler): LiveData<Alquiler> {
         alquiler.horaSalida = Date()
         alquiler.estaActivo = false
         alquilerDao.actualizarAlquiler(convertToEntity(alquiler))
-        var liveData:LiveData<Alquiler> = MutableLiveData<Alquiler>(alquiler)
+        var liveData: LiveData<Alquiler> = MutableLiveData<Alquiler>(alquiler)
         return liveData
     }
 
-    override fun obtenerAlquilerPorId(id: Int):Alquiler
-    {
+    override fun obtenerAlquilerPorId(id: Int): Alquiler {
         return convertToDomain(alquilerDao.getAlquilerById(id))
     }
 
@@ -56,11 +55,11 @@ open class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao)
             }
         }
 
-    override fun obtenerTodos():LiveData<List<Alquiler>> {
+    override fun obtenerTodos(): LiveData<List<Alquiler>> {
 
-        var alquileres:LiveData<List<AlquilerEntidad>> = alquilerDao.obtenerTodos()
+        var alquileres: LiveData<List<AlquilerEntidad>> = alquilerDao.obtenerTodos()
 
-        val alquileresToReturn =Transformations.map(alquileres) {
+        val alquileresToReturn = Transformations.map(alquileres) {
             it.map {
                 it.toAlquiler()
             }

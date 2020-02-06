@@ -5,7 +5,7 @@ import java.util.*
 
 class PrimerLetra : ICrearChain {
     override fun validarCreacion(alquilerDTO: AlquilerDTO): String {
-        var primerLetra = alquilerDTO.vehiculo.placa!!.get(0).toString().toUpperCase()
+        val primerLetra = alquilerDTO.vehiculo.placa!!.get(0).toString().toUpperCase()
         val calendar = Calendar.getInstance()
         val day: Int = calendar.get(Calendar.DAY_OF_WEEK)
 

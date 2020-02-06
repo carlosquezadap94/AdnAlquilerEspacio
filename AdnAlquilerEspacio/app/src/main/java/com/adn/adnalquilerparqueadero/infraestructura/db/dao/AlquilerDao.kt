@@ -2,7 +2,6 @@ package com.adn.adnalquilerparqueadero.infraestructura.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.infraestructura.db.entidades.AlquilerEntidad
 
 @Dao

@@ -34,7 +34,7 @@ class PagoPorTiempo(val siguiente: IHandler) : IHandler, ICalcularTiempo {
 
 
     override fun calcularPago(alquiler: Alquiler): Float {
-        val horas = calcularHoras(alquiler.horaLlegada!!, Date())
+        val horas = calcularHoras(alquiler.horaLlegada!!, alquiler.horaSalida!!)
         val tipoVehiculo = alquiler.vehiculo!!.tipoVehiculo
         var valorPagar: Float
         var dias: Int = (horas / 24).toInt()

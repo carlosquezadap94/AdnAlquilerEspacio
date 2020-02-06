@@ -5,6 +5,7 @@ import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.chainPago.AdicionalMoto
 import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.chainPago.PagoPorTiempo
 import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
+import java.util.*
 import javax.inject.Inject
 
 
@@ -19,13 +20,17 @@ class ServicioDetalleVehiculo @Inject constructor(alquilerRepo: AlquilerReposito
 
     override fun obtenerAlquiler(id: Int) = iAlquilerRepositorioImpl.obtenerAlquilerPorId(id)
 
-
-    override suspend fun realizarPago(alquiler: Alquiler):LiveData<Alquiler> {
-        val adicionalMoto = AdicionalMoto()
-        val pagoPorTiempo = PagoPorTiempo(adicionalMoto)
-        alquiler.precio = pagoPorTiempo.calcularPago(alquiler)
+    override suspend fun realizarPago(alquiler: Alquiler): LiveData<Alquiler> {
+        alquiler.horaSalida = Date()
+        alquiler.precio = calcularPrecio(alquiler)
         return iAlquilerRepositorioImpl.actualizarAlquiler(alquiler)
 
+    }
+
+    override fun calcularPrecio(alquiler: Alquiler): Float {
+        val adicionalMoto = AdicionalMoto()
+        val pagoPorTiempo = PagoPorTiempo(adicionalMoto)
+        return pagoPorTiempo.calcularPago(alquiler)
     }
 
 

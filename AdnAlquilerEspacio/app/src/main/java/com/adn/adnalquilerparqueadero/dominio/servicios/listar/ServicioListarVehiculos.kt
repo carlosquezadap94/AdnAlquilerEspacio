@@ -8,13 +8,8 @@ import javax.inject.Inject
 class ServicioListarVehiculos @Inject constructor(val iAlquilerRepositorioImpl: AlquilerRepositorioImpl) :
     ISeviceListarVehiculos {
 
-
-    override fun obtenerTodos():LiveData<List<Alquiler>> = iAlquilerRepositorioImpl.obtenerTodos()
+    override fun obtenerTodos(): LiveData<List<Alquiler>> = iAlquilerRepositorioImpl.obtenerTodos()
 
     override fun obtenerAlquileTipoV(tipoVehiculo: String) =
         iAlquilerRepositorioImpl.getAlquilerFromTipoV(tipoVehiculo)
-
-
-
-
 }
