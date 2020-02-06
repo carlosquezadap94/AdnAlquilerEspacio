@@ -5,7 +5,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.rule.ActivityTestRule
-import com.adn.adnalquilerparqueadero.PageObject
+import com.adn.adnalquilerparqueadero.ObjectUtils
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.presentacion.actividades.MainActivity
 import org.junit.Before
@@ -15,7 +15,7 @@ import org.junit.Test
 
 class ListarAlquileresTest {
 
-    private var pageObject: PageObject? = null
+    private var objectUtils: ObjectUtils? = null
 
     @Rule
     @JvmField
@@ -23,7 +23,7 @@ class ListarAlquileresTest {
 
     @Before
     fun iniciarPageObject() {
-        pageObject = PageObject()
+        objectUtils = ObjectUtils()
     }
 
     @Ignore

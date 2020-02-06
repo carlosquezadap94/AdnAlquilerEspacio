@@ -4,7 +4,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
-import com.adn.adnalquilerparqueadero.PageObject
+import com.adn.adnalquilerparqueadero.ObjectUtils
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.presentacion.actividades.MainActivity
 import org.junit.Before
@@ -16,7 +16,7 @@ import org.junit.Test
 class AgregarAlquilerTest {
 
 
-    private var pageObject: PageObject? = null
+    private var objectUtils: ObjectUtils? = null
 
     @Rule
     @JvmField
@@ -24,7 +24,7 @@ class AgregarAlquilerTest {
 
     @Before
     fun iniciarPageObject() {
-        pageObject = PageObject()
+        objectUtils = ObjectUtils()
     }
 
 
@@ -32,43 +32,43 @@ class AgregarAlquilerTest {
     @Test
     fun agregarVehiculo() {
         onView(withId(R.id.viewPager)).perform(ViewActions.swipeLeft())
-        pageObject!!.sleep(1)
-        pageObject!!.escribirEdit(R.id.editext_placa, "ASD123")
-        pageObject!!.escribirEdit(R.id.editext_cc, "500")
-        pageObject!!.sleep(1)
-        pageObject!!.clickBoton(R.id.button_agregar)
-        pageObject!!.sleep(1)
-        pageObject!!.matchToast(R.string.registro_agregado)
+        objectUtils!!.sleep(1)
+        objectUtils!!.escribirEditext(R.id.editext_placa, "ASD123")
+        objectUtils!!.escribirEditext(R.id.editext_cc, "500")
+        objectUtils!!.sleep(1)
+        objectUtils!!.clickBoton(R.id.button_agregar)
+        objectUtils!!.sleep(1)
+        objectUtils!!.matchToast(R.string.registro_agregado)
 
         onView(withId(R.id.viewPager)).perform(ViewActions.swipeLeft())
-        pageObject!!.sleep(1)
-        pageObject!!.escribirEdit(R.id.editext_placa, "ASD123")
-        pageObject!!.escribirEdit(R.id.editext_cc, "500")
-        pageObject!!.sleep(1)
-        pageObject!!.clickBoton(R.id.button_agregar)
-        pageObject!!.sleep(1)
-        pageObject!!.matchToast(R.string.vehiculo_ya_registrado)
+        objectUtils!!.sleep(1)
+        objectUtils!!.escribirEditext(R.id.editext_placa, "ASD123")
+        objectUtils!!.escribirEditext(R.id.editext_cc, "500")
+        objectUtils!!.sleep(1)
+        objectUtils!!.clickBoton(R.id.button_agregar)
+        objectUtils!!.sleep(1)
+        objectUtils!!.matchToast(R.string.vehiculo_ya_registrado)
     }
     @Ignore
     @Test
     fun placaMala() {
         onView(withId(R.id.viewPager)).perform(ViewActions.swipeLeft())
-        pageObject!!.sleep(1)
-        pageObject!!.escribirEdit(R.id.editext_placa, "ASD12E")
-        pageObject!!.escribirEdit(R.id.editext_cc, "500")
-        pageObject!!.sleep(1)
-        pageObject!!.clickBoton(R.id.button_agregar)
-        pageObject!!.sleep(1)
-        pageObject!!.matchToast(R.string.placa_invalida_auto)
+        objectUtils!!.sleep(1)
+        objectUtils!!.escribirEditext(R.id.editext_placa, "ASD12E")
+        objectUtils!!.escribirEditext(R.id.editext_cc, "500")
+        objectUtils!!.sleep(1)
+        objectUtils!!.clickBoton(R.id.button_agregar)
+        objectUtils!!.sleep(1)
+        objectUtils!!.matchToast(R.string.placa_invalida_auto)
     }
 
     @Ignore
     @Test
     fun EspacioVacio() {
         onView(withId(R.id.viewPager)).perform(ViewActions.swipeLeft())
-        pageObject!!.clickBoton(R.id.button_agregar)
-        pageObject!!.sleep(1)
-        pageObject!!.matchToast(R.string.ingresar_correctos)
+        objectUtils!!.clickBoton(R.id.button_agregar)
+        objectUtils!!.sleep(1)
+        objectUtils!!.matchToast(R.string.ingresar_correctos)
     }
 
 
