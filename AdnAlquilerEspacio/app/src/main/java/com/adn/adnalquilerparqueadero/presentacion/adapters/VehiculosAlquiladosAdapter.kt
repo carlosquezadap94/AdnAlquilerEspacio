@@ -48,20 +48,13 @@ class VehiculosAlquiladosAdapter(val servicioListarVehiculos: ServicioListarVehi
         }
 
         fun bind(item: Alquiler, servicioListarVehiculos: ServicioListarVehiculos) {
-
-
             with(binding) {
                 binding.alquiler = item
                 viewModel = AlquilerListViewModel(servicioListarVehiculos)
                 executePendingBindings()
             }
-
         }
-
-
     }
-
-
 }
 
 private class AlquilerDiffCallback : DiffUtil.ItemCallback<Alquiler>() {

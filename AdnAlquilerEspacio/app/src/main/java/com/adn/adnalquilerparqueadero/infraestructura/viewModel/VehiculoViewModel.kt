@@ -7,8 +7,8 @@ import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearAlqui
 class VehiculoViewModel(private val serviceAlquilerDominio: ServicioCrearAlquiler) :
     ViewModel() {
 
-    fun agregarAlquiler(alquilerDTO: AlquilerDTO) {
-        serviceAlquilerDominio.agregarAlquiler(alquilerDTO)
+    fun agregarAlquiler(alquilerDTO: AlquilerDTO):Boolean {
+      return  serviceAlquilerDominio.agregarAlquiler(alquilerDTO)
     }
 
     fun placaExiste(placa: String): Boolean {

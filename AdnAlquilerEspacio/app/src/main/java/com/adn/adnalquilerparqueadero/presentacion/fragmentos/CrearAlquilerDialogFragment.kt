@@ -3,12 +3,13 @@ package com.adn.adnalquilerparqueadero.presentacion.fragmentos
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.adn.adnalquilerparqueadero.databinding.FragmentDialogBinding
@@ -31,11 +32,13 @@ private const val MOTOCICLETA = "MOTOCICLETA"
 private const val AUTOMOVIL = "AUTOMOVIL"
 private val VEHICULOS = arrayOf("AUTOMOVIL", "MOTOCICLETA")
 
-class CrearAlquilerDialogFragment : DialogFragment() {
+class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos {
 
 
     @Inject
     lateinit var serviceAlquilerDominio: ServicioCrearAlquiler
+
+    lateinit var binding: FragmentDialogBinding
 
     private val vehiculoRegistroviewModel: VehiculoViewModel by viewModels {
         InjectUtils.provideAlquilerViewModelFactoy(
@@ -49,7 +52,7 @@ class CrearAlquilerDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = FragmentDialogBinding.inflate(inflater, container, false)
+        binding = FragmentDialogBinding.inflate(inflater, container, false)
 
         val spinner = binding.spinnerVehiculos
 
@@ -72,7 +75,7 @@ class CrearAlquilerDialogFragment : DialogFragment() {
 
                     val condicion: Boolean
 
-                    if (tipoVehiculo.equals(AUTOMOVIL)){
+                    if (tipoVehiculo.equals(AUTOMOVIL)) {
                         if (cc.isNullOrEmpty())
                             cc = "0"
                         condicion = !placa.isNullOrEmpty()
@@ -101,8 +104,7 @@ class CrearAlquilerDialogFragment : DialogFragment() {
                         }
 
 
-                    }
-                    else {
+                    } else {
                         Toast.makeText(
                             activity,
                             getString(com.adn.adnalquilerparqueadero.R.string.ingresar_correctos),
@@ -123,7 +125,13 @@ class CrearAlquilerDialogFragment : DialogFragment() {
         val alquiler = AlquilerDTO(vehiculo, Date())
 
         try {
-            vehiculoRegistroviewModel.agregarAlquiler(alquiler)
+            if (vehiculoRegistroviewModel.agregarAlquiler(alquiler)) {
+                Toast.makeText(activity, "Registro Agregado", Toast.LENGTH_LONG).show()
+                limpiar()
+            } else {
+                Toast.makeText(activity, "Error!", Toast.LENGTH_LONG).show()
+            }
+
         } catch (e: ExcepcionNegocio) {
             Toast.makeText(activity, e.mensaje, Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
@@ -138,19 +146,15 @@ class CrearAlquilerDialogFragment : DialogFragment() {
     }
 
 
-    override fun onResume() {
-        val window = dialog!!.window ?: return
-        val params = window.attributes
-        params.width = 800
-        params.height = 800
-        window.attributes = params
-        super.onResume()
-    }
-
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         AndroidSupportInjection.inject(this)
+    }
+
+
+    override fun limpiar() {
+        binding.editextCc.text = Editable.Factory.getInstance().newEditable("")
+        binding.editextPlaca.text = Editable.Factory.getInstance().newEditable("")
     }
 
 

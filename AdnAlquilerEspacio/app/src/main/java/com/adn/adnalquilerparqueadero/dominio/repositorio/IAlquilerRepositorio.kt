@@ -7,9 +7,9 @@ import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 
 interface IAlquilerRepositorio {
 
-    fun crearAlquiler(alquilerDTO: AlquilerDTO): Long
+    fun crearAlquiler(alquilerDTO: AlquilerDTO): Boolean
 
-    fun actualizarAlquiler(alquiler: Alquiler):Float
+    fun actualizarAlquiler(alquiler: Alquiler):LiveData<Alquiler>
 
     fun obtenerAlquilerPorId(id: Int): Alquiler
 

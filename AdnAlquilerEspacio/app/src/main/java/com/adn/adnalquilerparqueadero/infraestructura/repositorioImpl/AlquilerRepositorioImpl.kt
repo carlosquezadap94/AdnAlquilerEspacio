@@ -1,6 +1,7 @@
 package com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
@@ -27,14 +28,16 @@ open class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao)
             vehiculo = alquilerDTO.vehiculo
         )
 
-        alquilerDao.insert(alquilerEntity)
+
+        return@runBlocking (alquilerDao.insert(alquilerEntity) != 0L)
     }
 
-    override fun actualizarAlquiler(alquiler: Alquiler):Float {
+    override fun actualizarAlquiler(alquiler: Alquiler):LiveData<Alquiler> {
         alquiler.horaSalida = Date()
         alquiler.estaActivo = false
         alquilerDao.actualizarAlquiler(convertToEntity(alquiler))
-        return alquiler.precio
+        var liveData:LiveData<Alquiler> = MutableLiveData<Alquiler>(alquiler)
+        return liveData
     }
 
     override fun obtenerAlquilerPorId(id: Int):Alquiler

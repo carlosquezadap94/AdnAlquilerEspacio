@@ -1,5 +1,6 @@
 package com.adn.adnalquilerparqueadero.dominio.servicios.detalle
 
+import androidx.lifecycle.LiveData
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.chainPago.AdicionalMoto
 import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.chainPago.PagoPorTiempo
@@ -19,12 +20,12 @@ class ServicioDetalleVehiculo @Inject constructor(alquilerRepo: AlquilerReposito
     override fun obtenerAlquiler(id: Int) = iAlquilerRepositorioImpl.obtenerAlquilerPorId(id)
 
 
-    override suspend fun realizarPago(alquiler: Alquiler):Float {
+    override suspend fun realizarPago(alquiler: Alquiler):LiveData<Alquiler> {
         val adicionalMoto = AdicionalMoto()
         val pagoPorTiempo = PagoPorTiempo(adicionalMoto)
         alquiler.precio = pagoPorTiempo.calcularPago(alquiler)
-        iAlquilerRepositorioImpl.actualizarAlquiler(alquiler)
-        return alquiler.precio
+        return iAlquilerRepositorioImpl.actualizarAlquiler(alquiler)
+
     }
 
 

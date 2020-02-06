@@ -12,6 +12,7 @@ import com.adn.adnalquilerparqueadero.presentacion.adapters.ParqueaderoPageAdapt
 import com.google.android.material.tabs.TabLayoutMediator
 
 const val VEHICULO_PAGE_INDEX = 0
+const val REGISTRO_VEHICULO_PAGE_INDEX = 1
 
 class ControlerFragment : Fragment() {
     override fun onCreateView(
@@ -36,6 +37,7 @@ class ControlerFragment : Fragment() {
     private fun getTabIcon(position: Int): Int {
         return when (position) {
             VEHICULO_PAGE_INDEX -> R.drawable.ic_account_balance_black_24dp
+            REGISTRO_VEHICULO_PAGE_INDEX -> R.drawable.ic_add_circle_outline_black_24dp
             else -> throw IndexOutOfBoundsException()
         }
     }
@@ -43,6 +45,7 @@ class ControlerFragment : Fragment() {
     private fun getTabTitle(position: Int): String? {
         return when (position) {
             VEHICULO_PAGE_INDEX -> "ALquiler"
+            REGISTRO_VEHICULO_PAGE_INDEX -> "Registrar alquilar"
             else -> null
         }
     }

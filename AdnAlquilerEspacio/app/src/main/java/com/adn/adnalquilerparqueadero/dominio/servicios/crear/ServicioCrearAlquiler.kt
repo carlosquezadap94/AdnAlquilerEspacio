@@ -30,7 +30,7 @@ open class ServicioCrearAlquiler @Inject constructor(alquilerRepo: AlquilerRepos
         this.iAlquilerRepositorioImpl = alquilerRepo
     }
 
-    override fun agregarAlquiler(alquilerDTO: AlquilerDTO): Long {
+    override fun agregarAlquiler(alquilerDTO: AlquilerDTO): Boolean {
 
 
         val cantidad =

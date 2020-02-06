@@ -38,6 +38,7 @@ class AlquilerListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentVehiculoBinding.inflate(inflater, container, false)
 
         adapter = VehiculosAlquiladosAdapter(servicioListarVehiculos)
@@ -46,25 +47,12 @@ class AlquilerListFragment : Fragment() {
 
         subscribeUi(adapter, binding)
 
-        binding.addFragment.setOnClickListener {
-            abrirDialog()
-        }
-
         return binding.root
     }
 
-    fun abrirDialog() {
-        val fragmentTransaction = activity!!.supportFragmentManager.beginTransaction()
-        val prev = activity!!.supportFragmentManager.findFragmentByTag("dialog")
-        if (prev != null) {
-            fragmentTransaction.remove(prev)
-        }
-        fragmentTransaction.addToBackStack(null)
-        val dialogFragment = CrearAlquilerDialogFragment() //here MyDialog is my custom dialog
-        dialogFragment.show(fragmentTransaction, "dialog")
-    }
 
     private fun subscribeUi(adapter: VehiculosAlquiladosAdapter, bindin: FragmentVehiculoBinding) {
+
         val obter = vehiculoListviewModel.obtenerTodos()
         obter.observe(viewLifecycleOwner, Observer { result ->
             bindin.tieneParqueos = !result.isNullOrEmpty()
@@ -73,9 +61,16 @@ class AlquilerListFragment : Fragment() {
 
     }
 
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         AndroidSupportInjection.inject(this)
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        subscribeUi(adapter, binding)
     }
 
 
