@@ -15,7 +15,7 @@ open class AlquilerDTODataBuilder() {
 
         val date = "02-Feb-2020 08:00:00"
         val formatterDate = SimpleDateFormat("dd-MMM-yyyy HH:mm:ss")
-        val date1: Date = formatterDate.parse(date)
+        val date1: Date = formatterDate.parse(date)!!
 
         this.vehiculo = VehiculoDataBuilder().build()
         this.horaLlegada = date1
