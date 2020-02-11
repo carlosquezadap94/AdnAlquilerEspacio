@@ -1,7 +1,6 @@
 package com.adn.adnalquilerparqueadero.servicios
 
 import com.adn.adnalquilerparqueadero.builder.AlquilerEspacioDataBuilder
-import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.servicios.listar.ServicioListarVehiculos
 import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
 import org.junit.Before
@@ -20,7 +19,6 @@ class ServicioListarAlquilerTest {
     @InjectMocks
     lateinit var servicioListarVehiculos: ServicioListarVehiculos
 
-    lateinit var alquilerDTO: AlquilerDTO
 
     @Before
     @Throws(Exception::class)

@@ -21,11 +21,11 @@ open class AlquilerRepositorioImpl @Inject constructor(alquilerDao: AlquilerDao)
     }
 
 
-    override fun crearAlquiler(alquilerDTO: AlquilerDTO) = runBlocking {
+    override fun crearAlquiler(alquiler: Alquiler) = runBlocking {
         val alquilerEntity = AlquilerEntidad(
             estaActivo = true,
             horaLlegada = Date(),
-            vehiculo = alquilerDTO.vehiculo
+            vehiculo = alquiler.vehiculo
         )
 
 

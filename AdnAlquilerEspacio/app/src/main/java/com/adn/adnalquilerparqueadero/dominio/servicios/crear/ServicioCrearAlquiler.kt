@@ -1,7 +1,7 @@
 package com.adn.adnalquilerparqueadero.dominio.servicios.crear
 
-import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.excepciones.ExcepcionNegocio
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.servicios.crear.chainExcepcionesNegocio.PlacaCorrecta
 import com.adn.adnalquilerparqueadero.dominio.servicios.crear.chainExcepcionesNegocio.PrimerLetra
 import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
@@ -29,25 +29,25 @@ open class ServicioCrearAlquiler @Inject constructor(alquilerRepo: AlquilerRepos
         this.iAlquilerRepositorioImpl = alquilerRepo
     }
 
-    override fun agregarAlquiler(alquilerDTO: AlquilerDTO): Boolean {
+    override fun agregarAlquiler(alquiler: Alquiler): Boolean {
 
 
         val cantidad =
-            iAlquilerRepositorioImpl.obtenerCantidadXtipoVehiculo(alquilerDTO.vehiculo.tipoVehiculo!!)
+            iAlquilerRepositorioImpl.obtenerCantidadXtipoVehiculo(alquiler.vehiculo!!.tipoVehiculo!!)
 
 
-        if (validarEspacioDisponible(cantidad, alquilerDTO.vehiculo.tipoVehiculo!!)){
+        if (validarEspacioDisponible(cantidad, alquiler.vehiculo!!.tipoVehiculo!!)){
             val primerLetra = PrimerLetra()
             val placaCorrecta = PlacaCorrecta(primerLetra)
 
-            val message = placaCorrecta.validarCreacion(alquilerDTO)
+            val message = placaCorrecta.validarCreacion(alquiler)
             if (message.equals("true")) {
-                return iAlquilerRepositorioImpl.crearAlquiler(alquilerDTO)
+                return iAlquilerRepositorioImpl.crearAlquiler(alquiler!!)
             } else {
                 throw ExcepcionNegocio(message)
             }
         } else {
-            throw ExcepcionNegocio("Parqueadero lleno para ${alquilerDTO.vehiculo.tipoVehiculo}")
+            throw ExcepcionNegocio("Parqueadero lleno para ${alquiler.vehiculo!!.tipoVehiculo}")
         }
 
     }

@@ -10,7 +10,7 @@ open class VehiculoDataBuilder
     var tipoVehiculo:String?=null
 
     init {
-        this.placa = "ABC123"
+        this.placa = "FBC123"
         this.cc = 200
         this.tipoVehiculo = AUTOMOVIL
     }

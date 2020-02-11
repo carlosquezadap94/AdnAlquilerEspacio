@@ -1,6 +1,8 @@
 package com.adn.adnalquilerparqueadero.servicios
 
 import com.adn.adnalquilerparqueadero.builder.AlquilerEspacioDataBuilder
+import com.adn.adnalquilerparqueadero.dominio.excepciones.ExcepcionNegocio
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.ServicioDetalleVehiculo
 import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
 import org.junit.Before
@@ -10,6 +12,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.testng.Assert
+import java.lang.NullPointerException
 
 open class ServicioDetalleTest {
 
@@ -39,29 +42,26 @@ open class ServicioDetalleTest {
         //Assert
         Assert.assertEquals(valorApagar, 11000f)
 
-        //****Segundo test****
+    }
 
-        /*
 
+    @Test(expected = NullPointerException::class)
+    fun validaPrecioNull()
+    {
         //Arrange
-        alquiler= Alquiler()
+        val alquiler_null: Alquiler? = null
         //Act
-        valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler)
-        //Assert
-        Assert.assertEquals(valorApagar, 11000f)
-
-        //****Tercer test****
-
-        var alquiler_null:Alquiler? = null
-        //Act
-        valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler_null!!)
-        //Assert
-        Assert.assertEquals(valorApagar, 11000f)
-         */
-
-
+        val valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler_null!!)
     }
 
-         */
+    @Test(expected = NullPointerException::class)
+    fun validaPrecioInstanciaSinDatos()
+    {
+        //Arrange
+        val alquiler= Alquiler()
+        //Act
+        val valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler)
+        //Assert
     }
+
 }

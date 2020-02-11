@@ -1,11 +1,11 @@
 package com.adn.adnalquilerparqueadero.dominio.servicios.crear.chainExcepcionesNegocio
 
-import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import java.util.*
 
 class PrimerLetra : ICrearChain {
-    override fun validarCreacion(alquilerDTO: AlquilerDTO): String {
-        val primerLetra = alquilerDTO.vehiculo.placa!!.get(0).toString().toUpperCase()
+    override fun validarCreacion(alquiler: Alquiler): String {
+        val primerLetra = alquiler.vehiculo!!.placa!!.get(0).toString().toUpperCase()
         val calendar = Calendar.getInstance()
         val day: Int = calendar.get(Calendar.DAY_OF_WEEK)
 

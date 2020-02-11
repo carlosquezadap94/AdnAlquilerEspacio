@@ -1,6 +1,7 @@
 package com.adn.adnalquilerparqueadero.dominio.servicios.crear.chainExcepcionesNegocio
 
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import java.util.regex.Pattern
 
 
@@ -16,20 +17,20 @@ private val PATTERN_PLACA_VEHICULO = mapOf(
 )
 
 class PlacaCorrecta(val siguiente: ICrearChain) : ICrearChain {
-    override fun validarCreacion(alquilerDTO: AlquilerDTO): String {
+    override fun validarCreacion(alquiler: Alquiler): String {
         for ((key, value) in PATTERN_PLACA_VEHICULO) {
-            if (key.equals(alquilerDTO.vehiculo.tipoVehiculo)) {
+            if (key.equals(alquiler.vehiculo!!.tipoVehiculo)) {
                 val pattern = Pattern.compile(value)
-                val m = pattern.matcher(alquilerDTO.vehiculo.placa!!)
+                val m = pattern.matcher(alquiler.vehiculo!!.placa!!)
                 if (m.matches()) {
-                    return siguiente.validarCreacion(alquilerDTO)
+                    return siguiente.validarCreacion(alquiler)
                 } else {
-                    return "Placa no valida para ${alquilerDTO.vehiculo.tipoVehiculo}"
+                    return "Placa no valida para ${alquiler.vehiculo!!.tipoVehiculo}"
                 }
 
             }
         }
-        return "Placa no valida para ${alquilerDTO.vehiculo.tipoVehiculo}"
+        return "Placa no valida para ${alquiler.vehiculo!!.tipoVehiculo}"
     }
 
 }

@@ -1,8 +1,8 @@
 package com.adn.adnalquilerparqueadero.servicios
 
 
-import com.adn.adnalquilerparqueadero.builder.AlquilerDTODataBuilder
-import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
+import com.adn.adnalquilerparqueadero.builder.AlquilerEspacioDataBuilder
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearAlquiler
 import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
 import org.junit.Before
@@ -22,7 +22,7 @@ open class ServicioAgregarAlquilerTest {
     @InjectMocks
     lateinit var servicioCrearCrearAlquiler: ServicioCrearAlquiler
 
-    lateinit var alquilerDTO: AlquilerDTO
+    lateinit var alquiler: Alquiler
 
     @Before
     @Throws(Exception::class)
@@ -32,38 +32,31 @@ open class ServicioAgregarAlquilerTest {
     }
 
     @Test
-    fun crearVehiculo() {
+    fun crearVehiculoLunes() {
         //Arrange
-        alquilerDTO = AlquilerDTODataBuilder().build()
-        Mockito.`when`(repositorioImpl.crearAlquiler(alquilerDTO)).thenReturn(true)
-        Mockito.`when`(repositorioImpl.obtenerCantidadXtipoVehiculo(alquilerDTO.vehiculo.tipoVehiculo!!))
+        alquiler = AlquilerEspacioDataBuilder().build()
+        Mockito.`when`(repositorioImpl.crearAlquiler(alquiler)).thenReturn(true)
+        Mockito.`when`(repositorioImpl.obtenerCantidadXtipoVehiculo(alquiler.vehiculo!!.tipoVehiculo!!))
             .thenReturn("5")
         //Act
-        val respuestaAgregar = servicioCrearCrearAlquiler.agregarAlquiler(alquilerDTO)
+        val respuestaAgregar = servicioCrearCrearAlquiler.agregarAlquiler(alquiler)
 
         //Assert
-        Assert.assertEquals(repositorioImpl.crearAlquiler(alquilerDTO), respuestaAgregar)
+        Assert.assertEquals(repositorioImpl.crearAlquiler(alquiler), respuestaAgregar)
     }
 
     @Test
     fun estaAlquilado() {
         //Arrange
-        alquilerDTO = AlquilerDTODataBuilder().build()
-        Mockito.`when`(repositorioImpl.estaAlquilado(alquilerDTO.vehiculo.placa!!))
+        alquiler = AlquilerEspacioDataBuilder().build()
+        Mockito.`when`(repositorioImpl.estaAlquilado(alquiler.vehiculo!!.placa!!))
             .thenReturn(false)
         //Act
         val respuestaAgregar =
-            servicioCrearCrearAlquiler.estaAlquilado(alquilerDTO.vehiculo.placa!!)
+            servicioCrearCrearAlquiler.estaAlquilado(alquiler.vehiculo!!.placa!!)
 
         //Assert
-        Assert.assertEquals(repositorioImpl.crearAlquiler(alquilerDTO), respuestaAgregar)
+        Assert.assertEquals(repositorioImpl.crearAlquiler(alquiler), respuestaAgregar)
     }
 
-
-    @Test
-    fun test() {
-
-        //Assert
-        Assert.assertEquals(1, 1)
-    }
 }

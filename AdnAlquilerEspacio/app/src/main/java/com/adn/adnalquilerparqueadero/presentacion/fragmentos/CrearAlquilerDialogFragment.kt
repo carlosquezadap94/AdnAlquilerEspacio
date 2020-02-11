@@ -16,6 +16,7 @@ import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.FragmentDialogBinding
 import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.excepciones.ExcepcionNegocio
+import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.modelo.Vehiculo
 import com.adn.adnalquilerparqueadero.dominio.servicios.crear.ServicioCrearAlquiler
 import com.adn.adnalquilerparqueadero.infraestructura.viewModel.VehiculoViewModel
@@ -123,7 +124,7 @@ class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos {
 
         val vehiculo = Vehiculo(placa, cc.toInt(), tipoVehiculo)
 
-        val alquiler = AlquilerDTO(vehiculo, Date())
+        val alquiler = Alquiler(vehiculo = vehiculo, horaLlegada = Date())
 
         try {
             if (vehiculoRegistroviewModel.agregarAlquiler(alquiler)) {
