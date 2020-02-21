@@ -67,9 +67,9 @@ open class ServicioDetalleTest {
     @Test(expected = NullPointerException::class)
     fun validaPrecioNull() {
         //Arrange
-        val alquiler_null: Alquiler? = null
+        val alquilerNull: Alquiler? = null
         //Act
-        servicioDetalleVehiculo.calcularPrecio(alquiler_null!!)
+        servicioDetalleVehiculo.calcularPrecio(alquilerNull!!)
     }
 
     @Test(expected = NullPointerException::class)

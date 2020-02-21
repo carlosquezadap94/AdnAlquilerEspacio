@@ -64,7 +64,7 @@ class AgregarAlquilerTest {
 
 
     @Test
-    fun EspacioVacio() {
+    fun espacioVacio() {
         onView(withId(R.id.viewPager)).perform(ViewActions.swipeLeft())
         objectUtils!!.clickBoton(R.id.button_agregar)
         objectUtils!!.sleep(1)

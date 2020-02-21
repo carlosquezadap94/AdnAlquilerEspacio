@@ -78,40 +78,15 @@ class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos, IValidaciones {
                     val condicion: Boolean
 
                     if (tipoVehiculo.equals(AUTOMOVIL)) {
-                        if (cc.isNullOrEmpty())
+                        if (camposVacios(cc))
                             cc = "0"
-                        condicion = !placa.isNullOrEmpty()
+                        condicion = !camposVacios(placa)
                     } else {
-                        condicion = !placa.isNullOrEmpty() and !cc.isNullOrEmpty()
+                        condicion = !camposVacios(placa) and !camposVacios(cc)
                     }
 
-                    if (condicion) {
+                    agregarAuto(condicion,placa,cc,tipoVehiculo)
 
-                        val uiScope = CoroutineScope(Dispatchers.Main)
-
-                        uiScope.launch {
-                            if (validarPlaca(placa)) {
-                                Toast.makeText(
-                                    activity!!.applicationContext,
-                                    getString(R.string.vehiculo_ya_registrado),
-                                    Toast.LENGTH_SHORT
-                                ).show()
-
-                            } else {
-                                lifecycleScope.launch {
-                                    agregarAlquiler(cc, placa, tipoVehiculo)
-                                }
-                            }
-                        }
-
-
-                    } else {
-                        Toast.makeText(
-                            activity,
-                            getString(R.string.ingresar_correctos),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
 
                 }
             }
@@ -160,7 +135,36 @@ class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos, IValidaciones {
 
     override fun camposVacios(campo:String) = campo.isEmpty()
 
+    private fun agregarAuto(condicion:Boolean,placa:String,cc:String,tipoVehiculo: String)
+    {
+        if (condicion) {
 
+            val uiScope = CoroutineScope(Dispatchers.Main)
+
+            uiScope.launch {
+                if (validarPlaca(placa)) {
+                    Toast.makeText(
+                        activity!!.applicationContext,
+                        getString(R.string.vehiculo_ya_registrado),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                } else {
+                    lifecycleScope.launch {
+                        agregarAlquiler(cc, placa, tipoVehiculo)
+                    }
+                }
+            }
+
+
+        } else {
+            Toast.makeText(
+                activity,
+                getString(R.string.ingresar_correctos),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 
 
 
