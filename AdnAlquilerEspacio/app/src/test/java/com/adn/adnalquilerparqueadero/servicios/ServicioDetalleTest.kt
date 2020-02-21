@@ -12,7 +12,8 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.testng.Assert
-import java.lang.NullPointerException
+import java.text.SimpleDateFormat
+import java.util.*
 
 open class ServicioDetalleTest {
 
@@ -41,27 +42,44 @@ open class ServicioDetalleTest {
 
         //Assert
         Assert.assertEquals(valorApagar, 11000f)
+    }
 
+
+    @Test(expected = ExcepcionNegocio::class)
+    fun validarPrecioFechaIncorrecta() {
+        //Arrange
+        var alquiler = AlquilerEspacioDataBuilder().build()
+
+        val dateSalida = "05-Feb-2020 11:00:00"
+        val formatterDate = SimpleDateFormat("dd-MMM-yyyy HH:mm:ss")
+        val horaSalida: Date = formatterDate.parse(dateSalida)!!
+
+        alquiler.horaSalida = horaSalida
+
+        //Act
+        var valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler)
+
+        //Assert
+        Assert.assertEquals(valorApagar, 11000f)
     }
 
 
     @Test(expected = NullPointerException::class)
-    fun validaPrecioNull()
-    {
+    fun validaPrecioNull() {
         //Arrange
         val alquiler_null: Alquiler? = null
         //Act
-        val valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler_null!!)
+        servicioDetalleVehiculo.calcularPrecio(alquiler_null!!)
     }
 
     @Test(expected = NullPointerException::class)
-    fun validaPrecioInstanciaSinDatos()
-    {
+    fun validaPrecioInstanciaSinDatos() {
         //Arrange
-        val alquiler= Alquiler()
+        val alquiler = Alquiler()
         //Act
-        val valorApagar = servicioDetalleVehiculo.calcularPrecio(alquiler)
+        servicioDetalleVehiculo.calcularPrecio(alquiler)
         //Assert
     }
+
 
 }

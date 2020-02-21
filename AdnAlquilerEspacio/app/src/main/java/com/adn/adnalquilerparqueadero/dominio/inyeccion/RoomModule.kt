@@ -2,6 +2,7 @@ package com.adn.adnalquilerparqueadero.dominio.inyeccion
 
 import android.content.Context
 import androidx.room.Room
+import com.adn.adnalquilerparqueadero.dominio.repositorio.IAlquilerRepositorio
 import com.adn.adnalquilerparqueadero.infraestructura.db.AppDatabase
 import com.adn.adnalquilerparqueadero.infraestructura.db.dao.AlquilerDao
 import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
@@ -28,7 +29,7 @@ class RoomModule {
 
 
     @Provides
-    fun alquilerRepo(alquilerDao: AlquilerDao): AlquilerRepositorioImpl {
+    fun alquilerRepo(alquilerDao: AlquilerDao): IAlquilerRepositorio {
         return AlquilerRepositorioImpl(alquilerDao)
     }
 

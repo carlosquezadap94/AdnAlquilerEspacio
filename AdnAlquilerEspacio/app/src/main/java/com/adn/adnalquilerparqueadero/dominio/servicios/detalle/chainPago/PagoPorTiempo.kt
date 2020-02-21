@@ -10,7 +10,7 @@ private const val AUTOMOVIL = "AUTOMOVIL"
 private const val MOTOCICLETA = "MOTOCICLETA"
 
 private const val VALOR_DIA_CARRO = 8000
-private const val VALOR_DIA_MOTO = 8000
+private const val VALOR_DIA_MOTO = 6000
 
 private const val VALOR_HORA_CARRO = 1000
 private const val VALOR_HORA_MOTO = 500
@@ -31,6 +31,8 @@ class PagoPorTiempo(val siguiente: IHandler) : IHandler, ICalcularTiempo {
         val diferencia = diaFin.time - diaInicio.time
         val obtenerFuncionTecho = ((diferencia) * 1.0 / ((60 * 60 * 1000) * 1.0))
         val techo: Int = Math.ceil(obtenerFuncionTecho).toInt()
+        if (techo<0f)
+            throw ExcepcionNegocio("La fecha de inicio debe ser menor a la fecha final")
         return techo.toFloat()
     }
 
@@ -46,12 +48,15 @@ class PagoPorTiempo(val siguiente: IHandler) : IHandler, ICalcularTiempo {
             var valorPagar: Float
             var dias: Int = (horas / 24).toInt()
             var tHoras: Int = (horas % 24).toInt()
+
             if (tHoras > 9) {
                 dias = dias.inc()
                 tHoras = 0
             }
+
             val precioDia: Int = PRECIO_POR_DIA.get(tipoVehiculo)!! * dias
             val precioHora: Int = PRECIO_POR_HORA.get(tipoVehiculo)!! * tHoras
+
             valorPagar = precioDia.toFloat() + precioHora.toFloat()
 
             if (alquiler.vehiculo!!.tipoVehiculo.equals(MOTOCICLETA)) {
@@ -59,10 +64,6 @@ class PagoPorTiempo(val siguiente: IHandler) : IHandler, ICalcularTiempo {
             }
             return valorPagar
         }
-
-
-
-        return 0f
     }
 
 

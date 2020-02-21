@@ -19,6 +19,8 @@ import javax.inject.Singleton
 abstract class ComponenteApp {
     abstract fun inject(application: App)
 
+
+
     @Component.Builder
     interface Builder {
         @BindsInstance

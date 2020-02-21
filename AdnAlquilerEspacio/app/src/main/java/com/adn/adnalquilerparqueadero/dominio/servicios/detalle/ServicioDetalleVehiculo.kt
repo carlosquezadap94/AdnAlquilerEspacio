@@ -2,6 +2,7 @@ package com.adn.adnalquilerparqueadero.dominio.servicios.detalle
 
 import androidx.lifecycle.LiveData
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
+import com.adn.adnalquilerparqueadero.dominio.repositorio.IAlquilerRepositorio
 import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.chainPago.AdicionalMoto
 import com.adn.adnalquilerparqueadero.dominio.servicios.detalle.chainPago.PagoPorTiempo
 import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
@@ -9,10 +10,10 @@ import java.util.*
 import javax.inject.Inject
 
 
-class ServicioDetalleVehiculo @Inject constructor(alquilerRepo: AlquilerRepositorioImpl) :
+class ServicioDetalleVehiculo @Inject constructor(alquilerRepo: IAlquilerRepositorio) :
     IserviceDetalle {
 
-    var iAlquilerRepositorioImpl: AlquilerRepositorioImpl
+    var iAlquilerRepositorioImpl: IAlquilerRepositorio
 
     init {
         this.iAlquilerRepositorioImpl = alquilerRepo

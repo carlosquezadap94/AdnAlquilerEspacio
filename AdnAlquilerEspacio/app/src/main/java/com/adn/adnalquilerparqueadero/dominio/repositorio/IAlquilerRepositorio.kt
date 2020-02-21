@@ -1,7 +1,6 @@
 package com.adn.adnalquilerparqueadero.dominio.repositorio
 
 import androidx.lifecycle.LiveData
-import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 
 interface IAlquilerRepositorio {

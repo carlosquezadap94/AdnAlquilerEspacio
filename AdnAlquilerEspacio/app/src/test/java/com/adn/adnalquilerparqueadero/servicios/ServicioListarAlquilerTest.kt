@@ -45,4 +45,20 @@ class ServicioListarAlquilerTest {
     }
 
 
+    @Test
+    fun validarTamanio() {
+        //Arrange
+        Mockito.`when`(repositorioImpl.obtenerTodos())
+            .thenReturn(AlquilerEspacioDataBuilder().buildListLiveData())
+        //Act
+        val respuestaAgregar = servicioListarVehiculos.obtenerTodos().value!!.size
+
+        //Assert
+        Assert.assertEquals(
+            repositorioImpl.obtenerTodos().value!!.size,
+            respuestaAgregar
+        )
+    }
+
+
 }

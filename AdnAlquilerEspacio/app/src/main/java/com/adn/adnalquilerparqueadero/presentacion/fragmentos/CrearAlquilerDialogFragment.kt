@@ -14,7 +14,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.adn.adnalquilerparqueadero.R
 import com.adn.adnalquilerparqueadero.databinding.FragmentDialogBinding
-import com.adn.adnalquilerparqueadero.dominio.dto.AlquilerDTO
 import com.adn.adnalquilerparqueadero.dominio.excepciones.ExcepcionNegocio
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
 import com.adn.adnalquilerparqueadero.dominio.modelo.Vehiculo
@@ -34,7 +33,7 @@ private const val MOTOCICLETA = "MOTOCICLETA"
 private const val AUTOMOVIL = "AUTOMOVIL"
 private val VEHICULOS = arrayOf("AUTOMOVIL", "MOTOCICLETA")
 
-class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos {
+class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos, IValidaciones {
 
 
     @Inject
@@ -158,6 +157,12 @@ class CrearAlquilerDialogFragment : Fragment(), ILimpiarCampos {
         binding.editextCc.text = Editable.Factory.getInstance().newEditable("")
         binding.editextPlaca.text = Editable.Factory.getInstance().newEditable("")
     }
+
+    override fun camposVacios(campo:String) = campo.isEmpty()
+
+
+
+
 
 
 }

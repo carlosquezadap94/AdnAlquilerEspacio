@@ -2,9 +2,9 @@ package com.adn.adnalquilerparqueadero.dominio.servicios.crear
 
 import com.adn.adnalquilerparqueadero.dominio.excepciones.ExcepcionNegocio
 import com.adn.adnalquilerparqueadero.dominio.modelo.Alquiler
+import com.adn.adnalquilerparqueadero.dominio.repositorio.IAlquilerRepositorio
 import com.adn.adnalquilerparqueadero.dominio.servicios.crear.chainExcepcionesNegocio.PlacaCorrecta
 import com.adn.adnalquilerparqueadero.dominio.servicios.crear.chainExcepcionesNegocio.PrimerLetra
-import com.adn.adnalquilerparqueadero.infraestructura.repositorioImpl.AlquilerRepositorioImpl
 import javax.inject.Inject
 
 
@@ -20,10 +20,10 @@ private val VEHICULO_CANTIDAD = mapOf(
 )
 
 
-open class ServicioCrearAlquiler @Inject constructor(alquilerRepo: AlquilerRepositorioImpl) :
+open class ServicioCrearAlquiler @Inject constructor(alquilerRepo: IAlquilerRepositorio) :
     IserviceCrearAlquiler, IServiceValidaciones {
 
-    private var iAlquilerRepositorioImpl: AlquilerRepositorioImpl
+    private var iAlquilerRepositorioImpl: IAlquilerRepositorio
 
     init {
         this.iAlquilerRepositorioImpl = alquilerRepo
@@ -31,18 +31,17 @@ open class ServicioCrearAlquiler @Inject constructor(alquilerRepo: AlquilerRepos
 
     override fun agregarAlquiler(alquiler: Alquiler): Boolean {
 
-
         val cantidad =
             iAlquilerRepositorioImpl.obtenerCantidadXtipoVehiculo(alquiler.vehiculo!!.tipoVehiculo!!)
 
 
-        if (validarEspacioDisponible(cantidad, alquiler.vehiculo!!.tipoVehiculo!!)){
+        if (validarEspacioDisponible(cantidad, alquiler.vehiculo!!.tipoVehiculo!!)) {
             val primerLetra = PrimerLetra()
             val placaCorrecta = PlacaCorrecta(primerLetra)
 
             val message = placaCorrecta.validarCreacion(alquiler)
             if (message.equals("true")) {
-                return iAlquilerRepositorioImpl.crearAlquiler(alquiler!!)
+                return iAlquilerRepositorioImpl.crearAlquiler(alquiler)
             } else {
                 throw ExcepcionNegocio(message)
             }
